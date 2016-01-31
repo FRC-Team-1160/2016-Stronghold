@@ -24,10 +24,10 @@ public class DriveTrain extends Subsystem{
 	}
 	
 	public DriveTrain(){
-		fl = new Talon(RobotMap.DT_FrontLeft);
-		bl = new Talon(RobotMap.DT_BackLeft);
-		fr = new Talon(RobotMap.DT_FrontRight);
-		br = new Talon(RobotMap.DT_BackRight);
+		fl = new Talon(RobotMap.DT_FRONTLEFT);
+		bl = new Talon(RobotMap.DT_BACKLEFT);
+		fr = new Talon(RobotMap.DT_FRONTRIGHT);
+		br = new Talon(RobotMap.DT_BACKRIGHT);
 		timer = new Timer();
 	}
 	
@@ -39,7 +39,6 @@ public class DriveTrain extends Subsystem{
 	}
 	@Override
 	protected void initDefaultCommand() {
-		// TODO Auto-generated method stub
 		
 	}
 

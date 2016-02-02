@@ -3,6 +3,7 @@ package org.usfirst.frc.team1160.robot;
 
 import org.usfirst.frc.team1160.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team1160.robot.subsystems.Shooter;
+import org.usfirst.frc.team1160.robot.subsystems.Vision;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -16,6 +17,7 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 	public static DriveTrain dt;
 	public static Shooter shoot;
+	public static Vision see;
 
     Command autonomousCommand;
     SendableChooser chooser;
@@ -26,7 +28,8 @@ public class Robot extends IterativeRobot {
      */
     public void robotInit() {
     	dt = DriveTrain.getInstance();
-		oi = new OI();
+		see = Vision.getInstance();
+    	oi = OI.getInstance();
     }
 
 	/**

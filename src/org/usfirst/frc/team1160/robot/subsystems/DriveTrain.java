@@ -2,6 +2,7 @@ package org.usfirst.frc.team1160.robot.subsystems;
 
 import org.usfirst.frc.team1160.robot.OI;
 import org.usfirst.frc.team1160.robot.RobotMap;
+import org.usfirst.frc.team1160.robot.commands.ManualDrive;
 
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Talon;
@@ -39,7 +40,7 @@ public class DriveTrain extends Subsystem{
 	}
 	@Override
 	protected void initDefaultCommand() {
-		
+		setDefaultCommand(new ManualDrive());
 	}
 
 }

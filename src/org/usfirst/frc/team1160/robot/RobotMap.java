@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
  * the wiring easier and significantly reduces the number of magic numbers
  * floating around.
  */
-public class RobotMap {
+public interface RobotMap {
 
 	//Speed Controllers
 	public static int DT_FRONTLEFT = 0;
@@ -19,6 +19,15 @@ public class RobotMap {
 	public static int S_FLYWHEEL_LARGE = 4;
 	public static int S_FLYWHEEL_SMALL = 5;
 
+	//Encoders
+	public static int PID_DT_LEFT_A = 0;
+	public static int PID_DT_LEFT_B = 1;
+	public static int PID_DT_RIGHT_A = 2;
+	public static int PID_DT_RIGHT_B = 3;
+	public static int PID_S_LARGE_A = 4;
+	public static int PID_S_LARGE_B = 5;
+	public static int PID_S_SMALL_A = 6;
+	public static int PID_S_SMALL_B = 7;
 	
 	//Joysticks
 	public static int STICK = 1;

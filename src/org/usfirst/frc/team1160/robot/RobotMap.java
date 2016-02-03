@@ -24,8 +24,8 @@ public interface RobotMap {
 	public static int PID_DT_LEFT_B = 1;
 	public static int PID_DT_RIGHT_A = 2;
 	public static int PID_DT_RIGHT_B = 3;
-	public static int PID_S_LARGE_A = 4;
-	public static int PID_S_LARGE_B = 5;
+	public static int PID_S_BIG_A = 4;
+	public static int PID_S_BIG_B = 5;
 	public static int PID_S_SMALL_A = 6;
 	public static int PID_S_SMALL_B = 7;
 	

@@ -2,14 +2,16 @@ package org.usfirst.frc.team1160.robot.subsystems;
 
 import org.usfirst.frc.team1160.robot.RobotMap;
 
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
-public class Shooter extends Subsystem{
+public class Shooter extends Subsystem implements RobotMap{
 	
 	public static Shooter instance;
 	
 	Talon big, small;
+	Encoder enc_big, enc_small;
 	
 	public static Shooter getInstance(){
 		if(instance == null){
@@ -19,9 +21,10 @@ public class Shooter extends Subsystem{
 	}
 	
 	public Shooter(){
-		big = new Talon(RobotMap.S_FLYWHEEL_LARGE);
-		small = new Talon(RobotMap.S_FLYWHEEL_SMALL);
-		  
+		big = new Talon(S_FLYWHEEL_LARGE);
+		small = new Talon(S_FLYWHEEL_SMALL);
+		enc_big = new Encoder(PID_S_BIG_A, PID_S_BIG_B);
+		enc_small = new Encoder(PID_S_SMALL_A, PID_S_SMALL_B);
 	}
 	
 	public void setFlywheel(double speed){

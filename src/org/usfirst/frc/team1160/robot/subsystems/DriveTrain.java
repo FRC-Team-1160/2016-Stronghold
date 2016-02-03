@@ -17,7 +17,7 @@ public class DriveTrain extends Subsystem implements RobotMap{
 	Timer timer;
 	RobotDrive dt;
 	Talon fl, bl, fr, br;
-	Encoder left, right;
+	Encoder enc_left, enc_right;
 	
 	public static DriveTrain getInstance(){
 		if(instance == null){
@@ -31,8 +31,8 @@ public class DriveTrain extends Subsystem implements RobotMap{
 		bl = new Talon(DT_BACKLEFT);
 		fr = new Talon(DT_FRONTRIGHT);
 		br = new Talon(DT_BACKRIGHT);
-		left = new Encoder(PID_DT_LEFT_A, PID_DT_LEFT_B);
-		right = new Encoder(PID_DT_RIGHT_A, PID_DT_RIGHT_B);
+		enc_left = new Encoder(PID_DT_LEFT_A, PID_DT_LEFT_B);
+		enc_right = new Encoder(PID_DT_RIGHT_A, PID_DT_RIGHT_B);
 		timer = new Timer();
 	}
 	

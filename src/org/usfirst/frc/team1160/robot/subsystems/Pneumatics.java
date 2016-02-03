@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
-public class Pneumatics extends Subsystem{
+public class Pneumatics extends Subsystem implements RobotMap{
 
 	private static Pneumatics instance;
 	
@@ -26,27 +26,27 @@ public class Pneumatics extends Subsystem{
 	}
 	
 	private Pneumatics(){
-		comp = new Compressor(RobotMap.COMPRESSOR);
+		comp = new Compressor(COMPRESSOR);
 		comp.start();
 		
-		pivot = new DoubleSolenoid(RobotMap.S_PIVOT_A,RobotMap.S_PIVOT_B);
-		hold = new DoubleSolenoid(RobotMap.S_HOLD_A,RobotMap.S_HOLD_B);
+		pivot = new DoubleSolenoid(S_PIVOT_A, S_PIVOT_B);
+		hold = new DoubleSolenoid(S_HOLD_A, S_HOLD_B);
 	}
 	
 	
 	public void pivotOut(){
-		pivot.set(RobotMap.EXT);
+		pivot.set(EXT);
 	}
 	
 	public void pivotIn(){
-		pivot.set(RobotMap.RET);
+		pivot.set(RET);
 	}
 	
 	public void release(){
-		hold.set(RobotMap.EXT);
+		hold.set(EXT);
 	}
 	public void contain(){
-		hold.set(RobotMap.RET);
+		hold.set(RET);
 	}
 	
 }

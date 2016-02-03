@@ -6,11 +6,11 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class Intake extends Command{
 
-	double speed;
+	double rate;
 	
-	public Intake(double rate){
+	public Intake(double speed){
 		requires(Robot.shoot);
-		speed = rate;
+		rate = speed;
 	}
 	
 	@Override
@@ -21,7 +21,7 @@ public class Intake extends Command{
 	@Override
 	protected void execute() {
 		// TODO Auto-generated method stub
-		Robot.shoot.setFlywheel(speed);
+		Robot.shoot.setFlywheel(rate);
 	}
 
 	@Override

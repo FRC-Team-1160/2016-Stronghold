@@ -6,9 +6,11 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class SpinWheels extends Command{
 
+	double rate;
 	
-	public SpinWheels(){
+	public SpinWheels(double speed){
 		requires(Robot.shoot);
+		rate = speed;
 	}
 	@Override
 	protected void initialize() {
@@ -18,8 +20,7 @@ public class SpinWheels extends Command{
 
 	@Override
 	protected void execute() {
-		
-		 Robot.shoot.setFlywheel(1);
+		 Robot.shoot.setFlywheel(rate);
 	}
 
 	@Override

@@ -59,4 +59,6 @@ public interface RobotMap {
 	public static int I = 1;
 	public static int D = 1;
 	public static int ABS_TOL = 1;
+	public static double SCALE = 1;
+
 }

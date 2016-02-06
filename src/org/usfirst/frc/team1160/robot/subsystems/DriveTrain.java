@@ -18,6 +18,7 @@ public class DriveTrain extends Subsystem implements RobotMap{
 	RobotDrive dt;
 	Talon fl, bl, fr, br;
 	Encoder enc_left, enc_right;
+	public PID lPID, rPID;
 	
 	public static DriveTrain getInstance(){
 		if(instance == null){
@@ -33,8 +34,10 @@ public class DriveTrain extends Subsystem implements RobotMap{
 		br = new Talon(DT_BACKRIGHT);
 		enc_left = new Encoder(PID_DT_LEFT_A, PID_DT_LEFT_B);
 		enc_right = new Encoder(PID_DT_RIGHT_A, PID_DT_RIGHT_B);
+		lPID = new PID("Left",fl,bl,enc_left);
+		rPID = new PID("Right",fr,br,enc_right);
 		timer = new Timer();
-	}
+	} 
 	
 	public void Drive(){
 		fl.set(OI.getInstance().getStick().getCubeZ() - OI.getInstance().getStick().getCubeY());
@@ -42,6 +45,11 @@ public class DriveTrain extends Subsystem implements RobotMap{
 		fr.set(OI.getInstance().getStick().getCubeZ() + OI.getInstance().getStick().getCubeY());
 		br.set(OI.getInstance().getStick().getCubeZ() + OI.getInstance().getStick().getCubeY());
 	}
+	
+	public boolean commandDone(){
+		return (lPID.finished() && rPID.finished());
+	}
+	
 	@Override
 	protected void initDefaultCommand() {
 		setDefaultCommand(new ManualDrive());

@@ -2,12 +2,14 @@ package org.usfirst.frc.team1160.robot;
 
 import org.usfirst.frc.team1160.robot.commands.Detect;
 
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 
-public class OI {
+public class OI implements RobotMap{
     
 	public static OI instance;
+	Joystick autoInput;
 	ModifiedJoystick stick;
 	JoystickButton detect;
 	
@@ -19,15 +21,20 @@ public class OI {
 		}
 	
 	public OI(){
-		stick = new ModifiedJoystick(RobotMap.STICK);
+		stick = new ModifiedJoystick(STICK);
+		autoInput = new Joystick(AUTO_INPUT_PORT);
 	}
 	
 	public ModifiedJoystick getStick(){
 		return stick;
 	}
 	
+	public Joystick getAutoInput(){
+		return autoInput;
+	}
+	
 	public void buttons(){
-		detect = new JoystickButton(stick,RobotMap.SEE_BUTTON);
+		detect = new JoystickButton(stick,SEE_BUTTON);
 		
 		tieButtons();
 	}

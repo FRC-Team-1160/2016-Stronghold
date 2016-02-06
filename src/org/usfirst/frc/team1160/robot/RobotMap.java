@@ -10,6 +10,8 @@ import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
  * floating around.
  */
 public interface RobotMap {
+	//Constants
+	public static final int INTAKE_SPEED = 0;
 
 	//Speed Controllers
 	public static final int DT_FRONTLEFT = 0;
@@ -35,6 +37,11 @@ public interface RobotMap {
 	
 	//Joystick Buttons
 	public static final int SEE_BUTTON = 8;
+	public static final int FIRE = 0;
+	public static final int INTAKE = 0;
+	public static final int PIVOT_UP = 0;
+	public static final int PIVOT_DOWN = 0;
+	public static final int STOP = 0;
 	
 	//Shooter
 	public static final int S_MIDDLE = 4;

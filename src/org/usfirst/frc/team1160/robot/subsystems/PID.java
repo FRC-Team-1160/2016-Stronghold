@@ -59,7 +59,7 @@ public class PID  extends PIDSubsystem implements RobotMap{
 		SmartDashboard.putNumber(this.getName() + ": MOTOR: ", output*(SCALE));
     	this.logEncoder();
     	motor1.pidWrite(output*(SCALE));
-    	motor2.pidWrite(output*(SCALE ));
+    	motor2.pidWrite(output*(SCALE));
 	}
 
 }

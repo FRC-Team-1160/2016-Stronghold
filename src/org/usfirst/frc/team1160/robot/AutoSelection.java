@@ -23,10 +23,10 @@ public class AutoSelection {
 				return;
 			}
 		}
-		
 	}
 	
 	public Command picker(){
+		
 		return new LowBar();
 	}
 	

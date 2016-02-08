@@ -22,7 +22,7 @@ public class Detect extends Command{
 
 	@Override
 	protected boolean isFinished() {
-		return Robot.see.align();
+		return Robot.see.alignCheck();
 	}
 
 	@Override

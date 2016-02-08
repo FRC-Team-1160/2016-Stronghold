@@ -59,6 +59,8 @@ public interface RobotMap {
 	//Vision Variables
 	public static final int X_MAX = 480;
 	public static final int X_MIN = 0;
+	public static final int Y_MAX = 360;
+	public static final int Y_MIN = 0;
 	
 	//PID Variables
 	public static final double ENC_DISTANCE_PER_PULSE = 0.005;

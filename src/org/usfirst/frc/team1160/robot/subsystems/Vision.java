@@ -26,12 +26,20 @@ public class Vision extends Subsystem implements RobotMap{
 		timer = new Timer();
 		table = NetworkTable.getTable("GRIP/myContoursReport");
 		defaultValue = new double[0];
+		centerX = new double[defaultValue.length];
+		centerY = new double [defaultValue.length];
+		
 	}
 	
-	public boolean align(){
-			for(int i = 0;i < centerY.length; i++){
-			if (centerY[i] <= X_MAX && centerY[i] >= X_MIN){
+	public boolean alignCheck(){
+		centerX = table.getNumberArray("centerX", defaultValue);
+		centerY = table.getNumberArray("centerY", defaultValue);
+		
+		for(int i = 0;i < centerY.length; i++){
+			if (centerY[i] <= Y_MAX && centerY[i] >= Y_MIN){
+				if (centerX[i] <= X_MAX && centerX[i] >= X_MIN){
 				return true;			
+					}
 				}
 			}
 			return false;

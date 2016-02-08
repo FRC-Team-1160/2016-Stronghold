@@ -12,7 +12,25 @@ import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 public interface RobotMap {
 	//Constants
 	public static final int INTAKE_SPEED = 0;
+	public static final int LOWBAR_DISTANCE = 0;
+	//A Group
+	public static final int PORTCULLIS_A_DISTANCE = 0;
+	public static final int PORTCULLIS_B_DISTANCE = 0;
+	public static final int CHEVAL_A_DISTANCE = 0;
+	public static final int CHEVAL_B_DISTANCE = 0;
+	//B Group
+	public static final int MOAT_DISTANCE = 0;
+	public static final int RAMPART_DISTANCE = 0;
+	//C Group
+	public static final int DRAWBRIDGE_A_DISTANCE = 0;
+	public static final int DRAWBRIDGE_B_DISTANCE = 0;
+	public static final int SALLYPORT_A_DISTANCE = 0;
+	public static final int SALLYPORT_B_DISTANCE = 0;
+	//D Group
+	public static final int ROUGH_DISTANCE = 0;
+	public static final int ROCK_DISTANCE = 0;
 
+	
 	//Speed Controllers
 	public static final int DT_FRONTLEFT = 0;
 	public static final int DT_BACKLEFT = 1;
@@ -21,6 +39,7 @@ public interface RobotMap {
 	public static final int S_FLYWHEEL_LARGE = 4;
 	public static final int S_FLYWHEEL_SMALL = 5;
 
+	
 	//Encoders
 	public static final int PID_DT_LEFT_A = 0;
 	public static final int PID_DT_LEFT_B = 1;
@@ -31,9 +50,11 @@ public interface RobotMap {
 	public static final int PID_S_SMALL_A = 6;
 	public static final int PID_S_SMALL_B = 7;
 	
+	
 	//Joysticks
 	public static final int STICK = 1;
 	public static final int AUTO_INPUT_PORT = 0;
+	
 	
 	//Joystick Buttons
 	public static final int SEE_BUTTON = 8;
@@ -43,9 +64,11 @@ public interface RobotMap {
 	public static final int PIVOT_DOWN = 0;
 	public static final int STOP = 0;
 	
+	
 	//Shooter
 	public static final int S_MIDDLE = 4;
 	public static final int S_TOP = 5;
+	
 	
 	//Pneumatics
 	public static final int COMPRESSOR = 0;
@@ -56,11 +79,13 @@ public interface RobotMap {
 	public static final Value EXT = DoubleSolenoid.Value.kForward;
     public static final Value RET = DoubleSolenoid.Value.kReverse;
 	
+    
 	//Vision Variables
 	public static final int X_MAX = 480;
 	public static final int X_MIN = 0;
 	public static final int Y_MAX = 360;
 	public static final int Y_MIN = 0;
+	
 	
 	//PID Variables
 	public static final double ENC_DISTANCE_PER_PULSE = 0.005;

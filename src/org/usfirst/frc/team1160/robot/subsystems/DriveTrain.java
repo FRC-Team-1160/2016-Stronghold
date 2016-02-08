@@ -46,9 +46,10 @@ public class DriveTrain extends Subsystem implements RobotMap{
 		br.set(OI.getInstance().getStick().getCubeZ() + OI.getInstance().getStick().getCubeY());
 	}
 	
+	//Check directions of motor, make sure setpoint is going correct way
 	public void DriveDistance(double distance){
-		lPID.setSetpoint(distance);
-		rPID.setSetpoint(-distance);
+		lPID.setSetpoint(-distance);
+		rPID.setSetpoint(distance);
 	}
 	
 	public boolean commandDone(){

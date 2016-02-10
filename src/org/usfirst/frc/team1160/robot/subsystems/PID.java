@@ -3,6 +3,7 @@ package org.usfirst.frc.team1160.robot.subsystems;
 import org.usfirst.frc.team1160.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -11,7 +12,7 @@ public class PID  extends PIDSubsystem implements RobotMap{
 
 	private Talon motor1,motor2;
 	private Encoder enc;
-
+	
 	
 	
 	public PID(String name,Talon motor1,Talon motor2, Encoder enc){
@@ -22,8 +23,14 @@ public class PID  extends PIDSubsystem implements RobotMap{
 		enc.setDistancePerPulse(ENC_DISTANCE_PER_PULSE);
 		this.getPIDController().setContinuous();
 		this.getPIDController().setAbsoluteTolerance(RobotMap.ABS_TOL);
-	
-		
+	}
+	public PID(String name,Talon motor1, Encoder enc){
+		super(name, RobotMap.P, RobotMap.I, RobotMap.D);
+		this.motor1 = motor1;
+		this.enc = enc;
+		enc.setDistancePerPulse(ENC_DISTANCE_PER_PULSE);
+		this.getPIDController().setContinuous();
+		this.getPIDController().setAbsoluteTolerance(RobotMap.ABS_TOL);
 	}
 	
 	@Override

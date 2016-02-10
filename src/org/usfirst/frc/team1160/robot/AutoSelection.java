@@ -32,7 +32,7 @@ public class AutoSelection implements RobotMap{
 			}
 		}
 	}
-	
+	 
 	public Command picker(int[] switches){
 		switch (switches[0]) {
 		case 0: return new LowBar();

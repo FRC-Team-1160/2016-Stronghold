@@ -5,10 +5,12 @@ import org.usfirst.frc.team1160.robot.RobotMap;
 import org.usfirst.frc.team1160.robot.commands.ManualDrive;
 
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class DriveTrain extends Subsystem implements RobotMap{
 
@@ -19,6 +21,8 @@ public class DriveTrain extends Subsystem implements RobotMap{
 	Talon fl, bl, fr, br;
 	Encoder enc_left, enc_right;
 	public PID lPID, rPID;
+	private PowerDistributionPanel panel;
+
 	
 	public static DriveTrain getInstance(){
 		if(instance == null){
@@ -37,6 +41,7 @@ public class DriveTrain extends Subsystem implements RobotMap{
 		lPID = new PID("Left",fl,bl,enc_left);
 		rPID = new PID("Right",fr,br,enc_right);
 		timer = new Timer();
+		panel = new PowerDistributionPanel();
 	} 
 	
 	public void Drive(){
@@ -52,6 +57,27 @@ public class DriveTrain extends Subsystem implements RobotMap{
 		rPID.setSetpoint(distance);
 	}
 	
+	public void Rotate(double distance){
+		lPID.setSetpoint(-distance);
+		rPID.setSetpoint(distance);
+	}
+	 public void rotateFrame(boolean half, int direction){
+	    	if(half){
+	    		lPID.setSetpoint(RobotMap.L_180 * direction);
+	    		rPID.setSetpoint(RobotMap.R_180 * direction);
+	    		}
+	    	else{
+	    		lPID.setSetpoint((RobotMap.L_180/2) * direction);
+	    		rPID.setSetpoint((RobotMap.R_180/2) * direction);
+	    	
+	    	}
+	    }
+	 public void logPower(){
+	    	SmartDashboard.putNumber("FrontLeft Power: ", panel.getCurrent(P_MOTOR_FL));
+	    	SmartDashboard.putNumber("BackLeft Power: ", panel.getCurrent(P_MOTOR_BL));
+	    	SmartDashboard.putNumber("FrontRight Power: ", panel.getCurrent(P_MOTOR_FR));
+	    	SmartDashboard.putNumber("BackRight Power: ", panel.getCurrent(P_MOTOR_BR));
+	    }
 	public boolean commandDone(){
 		return (lPID.finished() && rPID.finished());
 	}

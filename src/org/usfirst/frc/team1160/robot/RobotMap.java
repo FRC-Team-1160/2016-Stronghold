@@ -95,5 +95,12 @@ public interface RobotMap {
 	public static int D = 1;
 	public static final int ABS_TOL = 1;
 	public static double SCALE = 1;
+	public static final double L_180 = 1;
+	public static final double R_180 = 1;
+	
+	public static final int P_MOTOR_BL = 13;
+    public static final int P_MOTOR_BR = 14;
+    public static final int P_MOTOR_FL = 12;
+    public static final int P_MOTOR_FR = 15;
 
 }

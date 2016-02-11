@@ -69,6 +69,9 @@ public interface RobotMap {
 	public static final int S_MIDDLE = 4;
 	public static final int S_TOP = 5;
 	
+	//Shooter Speeds
+	public static final double FIRE_BIG = 1;
+	
 	
 	//Pneumatics
 	public static final int COMPRESSOR = 0;

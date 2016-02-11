@@ -15,22 +15,22 @@ public class PID  extends PIDSubsystem implements RobotMap{
 	
 	
 	
-	public PID(String name,Talon motor1,Talon motor2, Encoder enc){
-		super(name, RobotMap.P, RobotMap.I, RobotMap.D);
+	public PID(String name, Talon motor1, Talon motor2, Encoder enc){
+		super(name, P, I, D);
 		this.motor1 = motor1;
 		this.motor2 = motor2;
 		this.enc = enc;
 		enc.setDistancePerPulse(ENC_DISTANCE_PER_PULSE);
 		this.getPIDController().setContinuous();
-		this.getPIDController().setAbsoluteTolerance(RobotMap.ABS_TOL);
+		this.getPIDController().setAbsoluteTolerance(ABS_TOL);
 	}
-	public PID(String name,Talon motor1, Encoder enc){
-		super(name, RobotMap.P, RobotMap.I, RobotMap.D);
+	public PID(String name, Talon motor1, Encoder enc){
+		super(name, P, I, D);
 		this.motor1 = motor1;
 		this.enc = enc;
 		enc.setDistancePerPulse(ENC_DISTANCE_PER_PULSE);
 		this.getPIDController().setContinuous();
-		this.getPIDController().setAbsoluteTolerance(RobotMap.ABS_TOL);
+		this.getPIDController().setAbsoluteTolerance(ABS_TOL);
 	}
 	
 	@Override

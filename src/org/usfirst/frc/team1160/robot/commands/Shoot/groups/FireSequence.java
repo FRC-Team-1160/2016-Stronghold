@@ -10,8 +10,9 @@ public class FireSequence extends CommandGroup implements RobotMap{
 
 	Timer time;
 	
-	public FireSequence(double speed){
+	public FireSequence(){
 		addSequential(new SpinWheels(FIRE_BIG));
+		
 	}
 	
 	

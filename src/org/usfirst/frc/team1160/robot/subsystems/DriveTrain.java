@@ -57,21 +57,16 @@ public class DriveTrain extends Subsystem implements RobotMap{
 		rPID.setSetpoint(distance);
 	}
 	
-	public void Rotate(double distance){
-		lPID.setSetpoint(-distance);
+	public void RotateLeft(double distance){
+		lPID.setSetpoint(distance);
 		rPID.setSetpoint(distance);
 	}
-	 public void rotateFrame(boolean half, int direction){
-	    	if(half){
-	    		lPID.setSetpoint(RobotMap.L_180 * direction);
-	    		rPID.setSetpoint(RobotMap.R_180 * direction);
-	    		}
-	    	else{
-	    		lPID.setSetpoint((RobotMap.L_180/2) * direction);
-	    		rPID.setSetpoint((RobotMap.R_180/2) * direction);
+	public void RotateRight(double distance){
+		lPID.setSetpoint(distance);
+		rPID.setSetpoint(distance);
+	}
 	    	
-	    	}
-	    }
+	
 	 public void logPower(){
 	    	SmartDashboard.putNumber("FrontLeft Power: ", panel.getCurrent(P_MOTOR_FL));
 	    	SmartDashboard.putNumber("BackLeft Power: ", panel.getCurrent(P_MOTOR_BL));

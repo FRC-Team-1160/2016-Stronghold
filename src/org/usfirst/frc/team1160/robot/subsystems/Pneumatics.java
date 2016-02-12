@@ -4,12 +4,14 @@ import org.usfirst.frc.team1160.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class Pneumatics extends Subsystem implements RobotMap{
 
 	private static Pneumatics instance;
 	
+	private Timer time;
 	Compressor comp;
 	DoubleSolenoid pivot,hold;
 	
@@ -31,6 +33,7 @@ public class Pneumatics extends Subsystem implements RobotMap{
 		
 		pivot = new DoubleSolenoid(S_PIVOT_A, S_PIVOT_B);
 		hold = new DoubleSolenoid(S_HOLD_A, S_HOLD_B);
+		time = new Timer();
 	}
 	
 	
@@ -47,6 +50,15 @@ public class Pneumatics extends Subsystem implements RobotMap{
 	}
 	public void contain(){
 		hold.set(RET);
+	}
+	
+	public void start(){
+		time.reset();
+		time.start();
+	}
+	
+	public double getTime(){
+		return time.get();
 	}
 	
 }

@@ -68,6 +68,9 @@ public interface RobotMap {
 	//Shooter
 	public static final int S_MIDDLE = 4;
 	public static final int S_TOP = 5;
+		//placeholder
+	public static final double FIRING_TIME = 1;
+	public static final double FIRING_SPEED = 1;
 	
 	
 	//Pneumatics

@@ -72,6 +72,9 @@ public interface RobotMap {
 	public static final double FIRING_TIME = 1;
 	public static final double FIRING_SPEED = 1;
 	
+	//Shooter Speeds
+	public static final double FIRE_BIG = 1;
+	
 	
 	//Pneumatics
 	public static final int COMPRESSOR = 0;

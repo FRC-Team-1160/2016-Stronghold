@@ -14,6 +14,7 @@ public class Shooter extends Subsystem implements RobotMap{
 	Talon big, small;
 	Encoder enc_big, enc_small;
 	PID bP, sP;
+	double rpm, initV;
 	
 	public static Shooter getInstance(){
 		if(instance == null){
@@ -29,6 +30,11 @@ public class Shooter extends Subsystem implements RobotMap{
 		enc_small = new Encoder(PID_S_SMALL_A, PID_S_SMALL_B, false, CounterBase.EncodingType.k1X);
 		bP = new PID("bigWheelPID",big,enc_big);
 		sP = new PID("smallWheelPID",small,enc_small);
+	}
+	
+	public double distanceRPM(double distance){
+		
+		return 0;
 	}
 	
 	@SuppressWarnings("deprecation")

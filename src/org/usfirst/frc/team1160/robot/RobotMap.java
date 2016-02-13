@@ -13,6 +13,9 @@ public interface RobotMap {
 	//Constants
 	public static final int INTAKE_SPEED = 0;
 	public static final int LOWBAR_DISTANCE = 0;
+	public static final double GRAVITY = -9.8;
+	public static final double SHOOT_ANGLE = 38;
+	public static final double Y_DISTANCE = 2;
 	//A Group
 	public static final int PORTCULLIS_A_DISTANCE = 0;
 	public static final int PORTCULLIS_B_DISTANCE = 0;

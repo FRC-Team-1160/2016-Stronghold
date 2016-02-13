@@ -89,12 +89,30 @@ public interface RobotMap {
     public static final Value RET = DoubleSolenoid.Value.kReverse;
 	
     
-	//Vision Variables
-	public static final int X_MAX = 480;
+	//Vision Parameters
+	
+    //Targeting Variables
+    public static final int X_MAX = 480;
 	public static final int X_MIN = 0;
 	public static final int Y_MAX = 360;
 	public static final int Y_MIN = 0;
 	
+	//Image Boundaries
+	public static final int X_MAX_BOUND = 480;
+	public static final int X_MIN_BOUND = 0;
+	public static final int Y_MAX_BOUND = 360;
+	public static final int Y_MIN_BOUND = 0;
+	public static final int HALF_Y_MAX_BOUND = Y_MAX_BOUND/2;
+	
+	//Camera Variables
+	public static final double CAMERA_VIEW_WIDTH_DEGREES = 63;
+	public static final double CAMERA_VIEW_HEIGHT_DEGREES = 51;
+	public static final double HALF_CV_HEIGHT_DEGREES = CAMERA_VIEW_HEIGHT_DEGREES/2;
+		//placeholder
+	public static final double ANGLE_FROM_GROUND = 40;
+	
+	// Actual Distances
+	public static final double TARGET_HEIGHT_CENTER_FEET = 8.08;
 	
 	//PID Variables
 	public static final double ENC_DISTANCE_PER_PULSE = 0.005;

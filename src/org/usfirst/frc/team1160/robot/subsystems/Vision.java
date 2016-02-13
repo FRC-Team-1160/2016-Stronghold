@@ -13,7 +13,9 @@ public class Vision extends Subsystem implements RobotMap{
 	public Timer timer;
 	public NetworkTable table;
 	
-	public double[] areas, centerY, centerX, height, width, defaultValue;
+	private double[] areas, centerY, centerX, height, width, defaultValue;
+	private double theta, yPixelDisplacement, dtt;
+	
 	
 	public static Vision getInstance(){
 		if (instance == null){
@@ -28,6 +30,7 @@ public class Vision extends Subsystem implements RobotMap{
 		defaultValue = new double[0];
 		centerX = new double[defaultValue.length];
 		centerY = new double [defaultValue.length];
+		height = new double[defaultValue.length];
 		
 	}
 	
@@ -36,10 +39,8 @@ public class Vision extends Subsystem implements RobotMap{
 		centerY = table.getNumberArray("centerY", defaultValue);
 		
 		for(int i = 0;i < centerY.length; i++){
-			if (centerY[i] <= Y_MAX && centerY[i] >= Y_MIN){
-				if (centerX[i] <= X_MAX && centerX[i] >= X_MIN){
+			if (centerY[i] <= Y_MAX && centerY[i] >= Y_MIN && centerX[i] <= X_MAX && centerX[i] >= X_MIN){
 				return true;			
-					}
 				}
 			}
 			return false;
@@ -77,6 +78,18 @@ public class Vision extends Subsystem implements RobotMap{
 		}
 		System.out.println();	
 
+	}
+	
+	public double getDistanceToTarget(int index){
+	yPixelDisplacement = height[index] - centerY[index];
+	
+	theta = Math.atan((yPixelDisplacement/HALF_Y_MAX_BOUND)*Math.tan(HALF_CV_HEIGHT_DEGREES));
+	dtt = TARGET_HEIGHT_CENTER_FEET/(Math.tan(ANGLE_FROM_GROUND + theta));
+	
+	return dtt;
+	
+	
+	
 	}
 	
 	@Override

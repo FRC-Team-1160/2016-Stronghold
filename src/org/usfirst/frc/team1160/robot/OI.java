@@ -4,6 +4,7 @@ import org.usfirst.frc.team1160.robot.commands.Detect;
 import org.usfirst.frc.team1160.robot.commands.Shoot.Intake;
 import org.usfirst.frc.team1160.robot.commands.Shoot.SpinWheels;
 import org.usfirst.frc.team1160.robot.commands.Shoot.StopWheels;
+import org.usfirst.frc.team1160.robot.commands.Shoot.TestFire;
 import org.usfirst.frc.team1160.robot.commands.air.PickupPosition;
 import org.usfirst.frc.team1160.robot.commands.air.ShootPosition;
 
@@ -14,9 +15,9 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 public class OI implements RobotMap{
     
 	public static OI instance;
-	Joystick autoInput;
+	Joystick autoInput, fireTest;
 	ModifiedJoystick stick;
-	JoystickButton detect, fire, stop, intake, up, down;
+	JoystickButton detect, fire, stop, intake, up, down, test;
 	
 	public static OI getInstance(){
 		if(instance == null){
@@ -27,6 +28,7 @@ public class OI implements RobotMap{
 	
 	public OI(){
 		stick = new ModifiedJoystick(STICK);
+		fireTest = new Joystick(TEST_STICK);
 		autoInput = new Joystick(AUTO_INPUT_PORT);
 	}
 	
@@ -37,6 +39,7 @@ public class OI implements RobotMap{
 		intake = new JoystickButton(stick, INTAKE);
 		up = new JoystickButton(stick, PIVOT_UP);
 		down = new JoystickButton(stick, PIVOT_DOWN);
+		test = new JoystickButton(fireTest, TEST);
 		
 		tieButtons();
 	}
@@ -48,6 +51,7 @@ public class OI implements RobotMap{
 		intake.whenPressed(new Intake(INTAKE_SPEED));
 		up.whenPressed(new ShootPosition());
 		down.whenPressed(new PickupPosition());
+		test.whenPressed(new TestFire());
 	}
 	
 	public ModifiedJoystick getStick(){
@@ -56,6 +60,10 @@ public class OI implements RobotMap{
 	
 	public Joystick getAutoInput(){
 		return autoInput;
+	}
+	
+	public Joystick getTest(){
+		return fireTest;
 	}
 	
 }

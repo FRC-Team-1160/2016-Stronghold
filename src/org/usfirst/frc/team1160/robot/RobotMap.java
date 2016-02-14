@@ -75,6 +75,13 @@ public interface RobotMap {
 	public static final double FIRING_TIME = 1;
 	public static final double FIRING_SPEED = 1;
 	
+	//Shooting Equation Variables
+	public static final double GRAVITATIONAL_ACCEL = -32.17;
+	public static final double BALL_VERTICAL_DISPLACEMENT = 6.56;
+	public static final double SHOOTER_WHEEL_CIRCUMFERENCE = Math.PI/3;
+	public static final double SHOOTER_ANGLE_DEGREES = 52;
+	public static final double SHOOTER_ANGLE_RADIANS = Math.toRadians(SHOOTER_ANGLE_DEGREES);
+	
 	//Shooter Speeds
 	public static final double FIRE_BIG = 1;
 	
@@ -108,11 +115,13 @@ public interface RobotMap {
 	public static final double CAMERA_VIEW_WIDTH_DEGREES = 63;
 	public static final double CAMERA_VIEW_HEIGHT_DEGREES = 51;
 	public static final double HALF_CV_HEIGHT_DEGREES = CAMERA_VIEW_HEIGHT_DEGREES/2;
+	public static final double HALF_CV_HEIGHT_RADIANS = Math.toRadians(HALF_CV_HEIGHT_DEGREES);
 		//placeholder
 	public static final double ANGLE_FROM_GROUND = 40;
+	public static final double ANGLE_FROM_GROUND_RADIANS = Math.toRadians(ANGLE_FROM_GROUND);
 	
 	// Actual Distances
-	public static final double TARGET_HEIGHT_CENTER_FEET = 8.08;
+	public static final double TARGET_CENTER_HEIGHT_FEET = 8.08;
 	
 	//PID Variables
 	public static final double ENC_DISTANCE_PER_PULSE = 0.005;

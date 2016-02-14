@@ -14,7 +14,7 @@ public class Shooter extends Subsystem implements RobotMap{
 	Talon big, small;
 	Encoder enc_big, enc_small;
 	PID bP, sP;
-	double rpm, initV;
+	private double rpm, initV, angleSec, motorOutput;
 	
 	public static Shooter getInstance(){
 		if(instance == null){
@@ -46,8 +46,31 @@ public class Shooter extends Subsystem implements RobotMap{
 		big.set(speed);
 		small.set(speed);
 	}
+	public double speedFromDistance(double distance){
+		angleSec = 1/Math.cos(SHOOTER_ANGLE_RADIANS);
+		rpm = ((distance*angleSec*Math.sqrt((GRAVITATIONAL_ACCEL)/(2*(BALL_VERTICAL_DISPLACEMENT - distance*Math.tan(SHOOTER_ANGLE_RADIANS)))))/SHOOTER_WHEEL_CIRCUMFERENCE)*60;	
+		//motorOutput = 
+		return rpm;
+	}
+
+	public void bangBang(double targetRPM){
+		@SuppressWarnings("deprecation")
+		double smallCurrentRPM = (1/enc_small.getPeriod())*60;
+		double largeCurrentRPM = (1/enc_big.getPeriod())*60;
+		if(smallCurrentRPM<targetRPM){
+			small.set(1);
+		}
+		else{
+			small.set(0);
+		}
+		if(largeCurrentRPM<targetRPM){
+			big.set(1);
+		}
+		else{
+			big.set(0);
+		}
+	}
 	protected void initDefaultCommand() {
-		
 	}
 
 }

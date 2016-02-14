@@ -83,8 +83,8 @@ public class Vision extends Subsystem implements RobotMap{
 	public double getDistanceToTarget(int index){
 	yPixelDisplacement = height[index] - centerY[index];
 	
-	theta = Math.atan((yPixelDisplacement/HALF_Y_MAX_BOUND)*Math.tan(HALF_CV_HEIGHT_DEGREES));
-	dtt = TARGET_HEIGHT_CENTER_FEET/(Math.tan(ANGLE_FROM_GROUND + theta));
+	theta = Math.atan((yPixelDisplacement/HALF_Y_MAX_BOUND)*Math.tan(HALF_CV_HEIGHT_RADIANS));
+	dtt = TARGET_CENTER_HEIGHT_FEET/(Math.tan(ANGLE_FROM_GROUND_RADIANS + theta));
 	
 	return dtt;
 	

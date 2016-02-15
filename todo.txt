@@ -9,3 +9,8 @@ RetroTape height: 1ft
 RetroTape length: 1ft 8in
 Bottom of tape: 6ft 11in
 Top of tape: 7ft 1in
+
+
+DONE:
+
+Drive train

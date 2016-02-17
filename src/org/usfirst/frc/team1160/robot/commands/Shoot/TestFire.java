@@ -9,6 +9,7 @@ public class TestFire extends Command implements RobotMap{
 
 	public TestFire(){
 		requires(Robot.shoot);
+		System.out.println("worksoers?");
 	}
 	
 	@Override

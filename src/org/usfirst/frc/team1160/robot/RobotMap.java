@@ -55,6 +55,7 @@ public interface RobotMap {
 	
 	
 	//Joysticks
+	public static final int TEST_STICK = 2;
 	public static final int STICK = 1;
 	public static final int AUTO_INPUT_PORT = 0;
 	
@@ -66,6 +67,7 @@ public interface RobotMap {
 	public static final int PIVOT_UP = 0;
 	public static final int PIVOT_DOWN = 0;
 	public static final int STOP = 0;
+	public static final int TEST = 1;
 	
 	
 	//Shooter

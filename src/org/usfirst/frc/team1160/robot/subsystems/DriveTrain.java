@@ -49,6 +49,10 @@ public class DriveTrain extends Subsystem implements RobotMap{
 		bl.set(OI.getInstance().getStick().getCubeZ() - OI.getInstance().getStick().getCubeY());
 		fr.set(OI.getInstance().getStick().getCubeZ() + OI.getInstance().getStick().getCubeY());
 		br.set(OI.getInstance().getStick().getCubeZ() + OI.getInstance().getStick().getCubeY());
+		/*fl.set(-OI.getInstance().getStick().getY());
+		bl.set(-OI.getInstance().getStick().getY());
+		fr.set(OI.getInstance().getStick().getCubeZ());
+		br.set(OI.getInstance().getStick().getCubeZ());*/
 	}
 	
 	//Check directions of motor, make sure setpoint is going correct way

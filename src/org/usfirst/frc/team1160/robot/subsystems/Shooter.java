@@ -75,6 +75,7 @@ public class Shooter extends Subsystem implements RobotMap{
 	}
 
 	public void testFire(){
+		System.out.println("works?");
 		big.set(OI.getInstance().getTest().getZ());
 		small.set(-OI.getInstance().getTest().getZ());
 	}

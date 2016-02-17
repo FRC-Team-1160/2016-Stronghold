@@ -52,6 +52,7 @@ public class OI implements RobotMap{
 		up.whenPressed(new ShootPosition());
 		down.whenPressed(new PickupPosition());
 		test.whenPressed(new TestFire());
+		System.out.println("WOY");
 	}
 	
 	public ModifiedJoystick getStick(){
@@ -63,6 +64,7 @@ public class OI implements RobotMap{
 	}
 	
 	public Joystick getTest(){
+		System.out.println("PLS WORK");
 		return fireTest;
 	}
 	

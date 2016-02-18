@@ -62,11 +62,11 @@ public interface RobotMap {
 	
 	//Joystick Buttons
 	public static final int SEE_BUTTON = 8;
-	public static final int FIRE = 0;
+	public static final int FIRE = 9;
 	public static final int INTAKE = 2;
-	public static final int PIVOT_UP = 0;
-	public static final int PIVOT_DOWN = 0;
-	public static final int STOP = 0;
+	public static final int PIVOT_UP = 8;
+	public static final int PIVOT_DOWN = 7;
+	public static final int STOP = 6;
 	public static final int TEST = 1;
 	
 	

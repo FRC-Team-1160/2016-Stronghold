@@ -30,6 +30,8 @@ public class OI implements RobotMap{
 		stick = new ModifiedJoystick(STICK);
 		fireTest = new Joystick(TEST_STICK);
 		autoInput = new Joystick(AUTO_INPUT_PORT);
+		
+		buttons();
 	}
 	
 	public void buttons(){

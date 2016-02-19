@@ -9,12 +9,12 @@ import edu.wpi.first.wpilibj.networktables.NetworkTable;
 public class Vision extends Subsystem implements RobotMap{
 
 
-	public static Vision instance;
-	public Timer timer;
-	public NetworkTable table;
+	private static Vision instance;
 	
+	private Timer timer;
 	private double[] areas, centerY, centerX, height, width, defaultValue;
 	private double theta, yPixelDisplacement, dtt;
+	public NetworkTable table;
 	
 	
 	public static Vision getInstance(){
@@ -24,7 +24,7 @@ public class Vision extends Subsystem implements RobotMap{
 		return instance;
 	}
 	
-	public Vision(){
+	private Vision(){
 		timer = new Timer();
 		table = NetworkTable.getTable("GRIP/myContoursReport");
 		defaultValue = new double[0];
@@ -85,6 +85,8 @@ public class Vision extends Subsystem implements RobotMap{
 	
 	theta = Math.atan((yPixelDisplacement/HALF_Y_MAX_BOUND)*Math.tan(HALF_CV_HEIGHT_RADIANS));
 	dtt = TARGET_CENTER_HEIGHT_FEET/(Math.tan(ANGLE_FROM_GROUND_RADIANS + theta));
+	
+	System.out.println(dtt);
 	
 	return dtt;
 	

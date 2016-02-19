@@ -12,8 +12,8 @@ public class Pneumatics extends Subsystem implements RobotMap{
 	private static Pneumatics instance;
 	
 	private Timer time;
-	Compressor comp;
-	DoubleSolenoid pivot,hold;
+	protected final Compressor comp;
+	protected final DoubleSolenoid pivot,hold;
 	
 	@Override
 	protected void initDefaultCommand() {

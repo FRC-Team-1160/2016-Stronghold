@@ -26,11 +26,9 @@ public class Robot extends IterativeRobot {
 
 
     public void robotInit() {
-    	System.out.println("wat");
     	dt = DriveTrain.getInstance();
     	shoot = Shooter.getInstance();
-    	
-		see = Vision.getInstance();
+   		see = Vision.getInstance();
 		air = Pneumatics.getInstance();
 		oi = OI.getInstance();
     }

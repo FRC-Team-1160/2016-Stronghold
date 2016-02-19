@@ -6,23 +6,20 @@ import org.usfirst.frc.team1160.robot.commands.ManualDrive;
 
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
-import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class DriveTrain extends Subsystem implements RobotMap{
-
-	public static DriveTrain instance;
 	
-	Timer timer;
-	RobotDrive dt;
-	Talon fl, bl, fr, br;
-	Encoder enc_left, enc_right;
+	private static DriveTrain instance;
+	
 	public PID lPID, rPID;
-	private PowerDistributionPanel panel;
-	
+	protected final Talon fl, bl, fr, br;
+	protected final Encoder enc_left, enc_right;
+	private final PowerDistributionPanel panel;
+	private Timer timer;
 	
     /******************************************************************
      * Singleton for DriveTrain constructor
@@ -44,7 +41,7 @@ public class DriveTrain extends Subsystem implements RobotMap{
      * -New instances of the PID class are created
      * -Values for Proportional and Derivative are given to SmartDash
      ******************************************************************/
-	public DriveTrain(){
+	private DriveTrain(){
 		fl = new Talon(DT_FRONTLEFT);
 		bl = new Talon(DT_BACKLEFT);
 		fr = new Talon(DT_FRONTRIGHT);
@@ -67,6 +64,7 @@ public class DriveTrain extends Subsystem implements RobotMap{
 		bl.set(OI.getInstance().getStick().getCubeZ() - OI.getInstance().getStick().getCubeY());
 		fr.set(OI.getInstance().getStick().getCubeZ() + OI.getInstance().getStick().getCubeY());
 		br.set(OI.getInstance().getStick().getCubeZ() + OI.getInstance().getStick().getCubeY());
+		logPower();
 	}
 	
 	
@@ -105,11 +103,13 @@ public class DriveTrain extends Subsystem implements RobotMap{
 	    	SmartDashboard.putNumber("BackLeft Power: ", panel.getCurrent(P_MOTOR_BL));
 	    	SmartDashboard.putNumber("FrontRight Power: ", panel.getCurrent(P_MOTOR_FR));
 	    	SmartDashboard.putNumber("BackRight Power: ", panel.getCurrent(P_MOTOR_BR));
+	    	SmartDashboard.putNumber("Total PDP Volts: ", panel.getVoltage());
+	    	SmartDashboard.putNumber("Total PDP Watts: ", panel.getTotalPower());
 	    }
 	 
 	
     /******************************************************************
-     * 
+     * Commands call this for PID to see if both sides are done
      ******************************************************************/
 	public boolean commandDone(){
 		return (lPID.finished() && rPID.finished());

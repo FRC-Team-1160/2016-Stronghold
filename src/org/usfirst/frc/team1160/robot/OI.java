@@ -1,6 +1,7 @@
 package org.usfirst.frc.team1160.robot;
 
 import org.usfirst.frc.team1160.robot.commands.Detect;
+import org.usfirst.frc.team1160.robot.commands.Distance;
 import org.usfirst.frc.team1160.robot.commands.Shoot.Intake;
 import org.usfirst.frc.team1160.robot.commands.Shoot.SpinWheels;
 import org.usfirst.frc.team1160.robot.commands.Shoot.StopWheels;
@@ -17,7 +18,7 @@ public class OI implements RobotMap{
 	public static OI instance;
 	Joystick autoInput, fireTest;
 	ModifiedJoystick stick;
-	JoystickButton detect, fire, stop, intake, up, down, test;
+	JoystickButton detect, fire, stop, intake, up, down, test, see;
 	
 	public static OI getInstance(){
 		if(instance == null){
@@ -40,6 +41,7 @@ public class OI implements RobotMap{
 		up = new JoystickButton(stick, PIVOT_UP);
 		down = new JoystickButton(stick, PIVOT_DOWN);
 		test = new JoystickButton(fireTest, TEST);
+		see = new JoystickButton(stick,SEE);
 		
 		tieButtons();
 	}
@@ -52,6 +54,7 @@ public class OI implements RobotMap{
 		up.whenPressed(new ShootPosition());
 		down.whenPressed(new PickupPosition());
 		test.whenPressed(new TestFire());
+		see.whenPressed(new Distance());
 	}
 	
 	public ModifiedJoystick getStick(){

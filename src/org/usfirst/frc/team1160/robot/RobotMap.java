@@ -68,6 +68,7 @@ public interface RobotMap {
 	public static final int PIVOT_DOWN = 0;
 	public static final int STOP = 0;
 	public static final int TEST = 1;
+	public static final int SEE = 2;
 	
 	
 	//Shooter

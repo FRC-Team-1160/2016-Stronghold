@@ -12,9 +12,9 @@ public class Shooter extends Subsystem implements RobotMap{
 	
 	public static Shooter instance;
 	
-	CANTalon big, small;
-	Encoder enc_big, enc_small;
-	PID bP, sP;
+	protected final CANTalon big, small;
+	protected final Encoder enc_big, enc_small;
+	public PID bP, sP;
 	private double rpm, initV, angleSec, motorOutput;
 	
 	public static Shooter getInstance(){
@@ -24,7 +24,7 @@ public class Shooter extends Subsystem implements RobotMap{
 		return instance;
 	}
 	
-	public Shooter(){
+	private Shooter(){
 		big = new CANTalon(S_FLYWHEEL_LARGE);
 		small = new CANTalon(S_FLYWHEEL_SMALL);
 		enc_big = new Encoder(PID_S_BIG_A, PID_S_BIG_B, false, CounterBase.EncodingType.k1X);

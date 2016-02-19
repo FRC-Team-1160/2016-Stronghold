@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
  */
 public interface RobotMap {
 	//Constants
-	public static final int INTAKE_SPEED = 0;
+	public static final double INTAKE_SPEED = 0.05;
 	public static final int LOWBAR_DISTANCE = 0;
 	public static final double GRAVITY = -9.8;
 	public static final double SHOOT_ANGLE = 38;
@@ -36,11 +36,11 @@ public interface RobotMap {
 	
 	//Speed Controllers
 	public static final int DT_FRONTLEFT = 0;
-	public static final int DT_BACKLEFT = 1;
-	public static final int DT_FRONTRIGHT = 2;
+	public static final int DT_BACKLEFT = 2;
+	public static final int DT_FRONTRIGHT = 1;
 	public static final int DT_BACKRIGHT = 3;
-	public static final int S_FLYWHEEL_LARGE = 4;
-	public static final int S_FLYWHEEL_SMALL = 5;
+	public static final int S_FLYWHEEL_LARGE = 5;
+	public static final int S_FLYWHEEL_SMALL = 4;
 
 	
 	//Encoders
@@ -62,11 +62,11 @@ public interface RobotMap {
 	
 	//Joystick Buttons
 	public static final int SEE_BUTTON = 8;
-	public static final int FIRE = 0;
-	public static final int INTAKE = 0;
-	public static final int PIVOT_UP = 0;
-	public static final int PIVOT_DOWN = 0;
-	public static final int STOP = 0;
+	public static final int FIRE = 9;
+	public static final int INTAKE = 2;
+	public static final int PIVOT_UP = 8;
+	public static final int PIVOT_DOWN = 7;
+	public static final int STOP = 6;
 	public static final int TEST = 1;
 	public static final int SEE = 2;
 	

@@ -26,8 +26,9 @@ public class Robot extends IterativeRobot {
 
 
     public void robotInit() {
-    	//dt = DriveTrain.getInstance();
-		see = Vision.getInstance();
+    	dt = DriveTrain.getInstance();
+    	shoot = Shooter.getInstance();
+   		see = Vision.getInstance();
 		air = Pneumatics.getInstance();
 		oi = OI.getInstance();
     }
@@ -84,6 +85,7 @@ public class Robot extends IterativeRobot {
      * This function is called periodically during operator control
      */
     public void teleopPeriodic() {
+    	//System.out.println("oh yes");
         Scheduler.getInstance().run();
     }
     

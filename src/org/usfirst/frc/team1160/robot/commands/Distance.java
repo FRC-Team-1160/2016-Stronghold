@@ -1,29 +1,26 @@
-package org.usfirst.frc.team1160.robot.commands.Shoot;
+package org.usfirst.frc.team1160.robot.commands;
 
 import org.usfirst.frc.team1160.robot.Robot;
-import org.usfirst.frc.team1160.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class TestFire extends Command implements RobotMap{
+public class Distance extends Command{
 
-	public TestFire(){
-		requires(Robot.shoot);
-	}
-	
 	@Override
 	protected void initialize() {
-		System.out.println("worksoers!!!!?");
+		// TODO Auto-generated method stub
+		Robot.see.getDistanceToTarget(0);
 	}
 
 	@Override
 	protected void execute() {
-		System.out.println("worksoers?");
-		Robot.shoot.testFire();
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
 	protected boolean isFinished() {
+		// TODO Auto-generated method stub
 		return false;
 	}
 

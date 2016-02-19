@@ -31,6 +31,8 @@ public class OI implements RobotMap{
 		stick = new ModifiedJoystick(STICK);
 		fireTest = new Joystick(TEST_STICK);
 		autoInput = new Joystick(AUTO_INPUT_PORT);
+		
+		buttons();
 	}
 	
 	public void buttons(){
@@ -55,6 +57,7 @@ public class OI implements RobotMap{
 		down.whenPressed(new PickupPosition());
 		test.whenPressed(new TestFire());
 		see.whenPressed(new Distance());
+		System.out.println("WOY");
 	}
 	
 	public ModifiedJoystick getStick(){
@@ -66,6 +69,7 @@ public class OI implements RobotMap{
 	}
 	
 	public Joystick getTest(){
+		System.out.println("PLS WORK");
 		return fireTest;
 	}
 	

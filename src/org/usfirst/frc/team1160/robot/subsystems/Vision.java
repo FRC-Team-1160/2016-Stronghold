@@ -81,17 +81,22 @@ public class Vision extends Subsystem implements RobotMap{
 	}
 	
 	public double getDistanceToTarget(int index){
+	height = table.getNumberArray("height", defaultValue);
+	centerY = table.getNumberArray("centerY", defaultValue);
+		
 	yPixelDisplacement = height[index] - centerY[index];
 	
 	theta = Math.atan((yPixelDisplacement/HALF_Y_MAX_BOUND)*Math.tan(HALF_CV_HEIGHT_RADIANS));
 	dtt = TARGET_CENTER_HEIGHT_FEET/(Math.tan(ANGLE_FROM_GROUND_RADIANS + theta));
 	
-	System.out.println(dtt);
+	System.out.println("Robot is " + dtt + " feet away from the tower.");
 	
 	return dtt;
+	}
 	
-	
-	
+	public void testing(){
+		height = table.getNumberArray("height", defaultValue);
+		System.out.println("height is: " + height[defaultValue.length]);
 	}
 	
 	@Override

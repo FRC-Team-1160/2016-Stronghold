@@ -61,9 +61,9 @@ public interface RobotMap {
 	
 	
 	//Joystick Buttons
-	public static final int SEE_BUTTON = 8;
+	public static final int SEE_BUTTON = 11;
 	public static final int FIRE = 9;
-	public static final int INTAKE = 2;
+	public static final int INTAKE = 3;
 	public static final int PIVOT_UP = 8;
 	public static final int PIVOT_DOWN = 7;
 	public static final int STOP = 6;
@@ -120,11 +120,11 @@ public interface RobotMap {
 	public static final double HALF_CV_HEIGHT_DEGREES = CAMERA_VIEW_HEIGHT_DEGREES/2;
 	public static final double HALF_CV_HEIGHT_RADIANS = Math.toRadians(HALF_CV_HEIGHT_DEGREES);
 		//placeholder
-	public static final double ANGLE_FROM_GROUND = 40;
+	public static final double ANGLE_FROM_GROUND = 45;
 	public static final double ANGLE_FROM_GROUND_RADIANS = Math.toRadians(ANGLE_FROM_GROUND);
 	
 	// Actual Distances
-	public static final double TARGET_CENTER_HEIGHT_FEET = 8.08;
+	public static final double TARGET_CENTER_HEIGHT_FEET = 8.08 - (32/12);
 	
 	//PID Variables
 	public static final double ENC_DISTANCE_PER_PULSE = 0.005;

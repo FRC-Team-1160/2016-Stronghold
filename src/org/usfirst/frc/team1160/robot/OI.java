@@ -42,21 +42,21 @@ public class OI implements RobotMap{
 		intake = new JoystickButton(stick, INTAKE);
 		up = new JoystickButton(stick, PIVOT_UP);
 		down = new JoystickButton(stick, PIVOT_DOWN);
-		test = new JoystickButton(fireTest, TEST);
+		test = new JoystickButton(stick, TEST);
 		see = new JoystickButton(stick,SEE);
 		
 		tieButtons();
 	}
 	
 	public void tieButtons(){
-		detect.whenPressed(new Detect());
+		//detect.whenPressed(new Detect());
 		fire.whenPressed(new SpinWheels(1));
 		stop.whenPressed(new StopWheels());
 		intake.whenPressed(new Intake(INTAKE_SPEED));
 		up.whenPressed(new ShootPosition());
 		down.whenPressed(new PickupPosition());
 		test.whenPressed(new TestFire());
-		see.whenPressed(new Distance());
+		see.whenPressed(new Distance(0));
 		System.out.println("WOY");
 	}
 	

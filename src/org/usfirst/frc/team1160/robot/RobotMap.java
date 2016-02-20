@@ -121,11 +121,11 @@ public interface RobotMap {
 	public static final double HALF_CV_HEIGHT_DEGREES = CAMERA_VIEW_HEIGHT_DEGREES/2;
 	public static final double HALF_CV_HEIGHT_RADIANS = Math.toRadians(HALF_CV_HEIGHT_DEGREES);
 		//placeholder
-	public static final double ANGLE_FROM_GROUND = 45;
+	public static final double ANGLE_FROM_GROUND = 39;
 	public static final double ANGLE_FROM_GROUND_RADIANS = Math.toRadians(ANGLE_FROM_GROUND);
 	
 	// Actual Distances
-	public static final double TARGET_CENTER_HEIGHT_FEET = 8.08 - (32/12);
+	public static final double TARGET_CENTER_HEIGHT_FEET = 8.08 - (4.25/12);
 	
 	//PID Variables
 	public static final double ENC_DISTANCE_PER_PULSE = 0.005;

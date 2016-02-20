@@ -116,7 +116,7 @@ public class Vision extends Subsystem implements RobotMap{
 	
 	@Override
 	protected void initDefaultCommand() {
-		setDefaultCommand(new CameraAngle());
+		//setDefaultCommand(new CameraAngle());
 	}
 
 }

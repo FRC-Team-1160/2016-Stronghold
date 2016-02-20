@@ -109,9 +109,9 @@ public interface RobotMap {
 	public static final int Y_MIN = 0;
 	
 	//Image Boundaries
-	public static final int X_MAX_BOUND = 480;
+	public static final int X_MAX_BOUND = 320;
 	public static final int X_MIN_BOUND = 0;
-	public static final int Y_MAX_BOUND = 360;
+	public static final int Y_MAX_BOUND = 240;
 	public static final int Y_MIN_BOUND = 0;
 	public static final int HALF_Y_MAX_BOUND = Y_MAX_BOUND/2;
 	

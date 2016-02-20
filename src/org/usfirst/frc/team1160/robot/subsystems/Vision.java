@@ -56,6 +56,11 @@ public class Vision extends Subsystem implements RobotMap{
 		camAngle.set(OI.getInstance().getStick().getCubeZ());
 	}
 	
+	public void setCamAngle(double angle){
+		camAngle.set(angle);
+		System.out.println("Angle set to " + angle + " degrees.");
+	}
+	
 	public void visualize(){
 		table = NetworkTable.getTable("GRIP/myContoursReport");
 		

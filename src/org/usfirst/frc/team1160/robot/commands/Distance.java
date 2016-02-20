@@ -4,12 +4,19 @@ import org.usfirst.frc.team1160.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 
+
 public class Distance extends Command{
 
+	int index;
+	public Distance(int index){
+		requires(Robot.see);
+		this.index = index;
+	}
+	
 	@Override
 	protected void initialize() {
 		// TODO Auto-generated method stub
-		Robot.see.getDistanceToTarget(0);
+		Robot.see.getDistanceToTarget(index);
 	}
 
 	@Override
@@ -21,7 +28,7 @@ public class Distance extends Command{
 	@Override
 	protected boolean isFinished() {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override

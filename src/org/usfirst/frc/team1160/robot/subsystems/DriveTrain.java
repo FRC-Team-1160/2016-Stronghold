@@ -63,9 +63,9 @@ public class DriveTrain extends Subsystem implements RobotMap{
 		fl.set(OI.getInstance().getStick().getCubeZ() - OI.getInstance().getStick().getCubeY());
 		bl.set(OI.getInstance().getStick().getCubeZ() - OI.getInstance().getStick().getCubeY());
 		fr.set(OI.getInstance().getStick().getCubeZ() + OI.getInstance().getStick().getCubeY());
-		br.set(OI.getInstance().getStick().getCubeZ() + OI.getInstance().getStick().getCubeY());
+		/*br.set(OI.getInstance().getStick().getCubeZ() + OI.getInstance().getStick().getCubeY());
 		logPower();
-		/*fl.set(-OI.getInstance().getStick().getY());
+		fl.set(-OI.getInstance().getStick().getY());
 		bl.set(-OI.getInstance().getStick().getY());
 		fr.set(OI.getInstance().getStick().getCubeZ());
 		br.set(OI.getInstance().getStick().getCubeZ());*/

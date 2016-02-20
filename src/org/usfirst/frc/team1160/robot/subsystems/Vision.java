@@ -1,7 +1,10 @@
 package org.usfirst.frc.team1160.robot.subsystems;
 
+import org.usfirst.frc.team1160.robot.OI;
 import org.usfirst.frc.team1160.robot.RobotMap;
+import org.usfirst.frc.team1160.robot.commands.CameraAngle;
 
+import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
@@ -15,6 +18,7 @@ public class Vision extends Subsystem implements RobotMap{
 	private double[] areas, centerY, centerX, height, width, defaultValue;
 	private double theta, yPixelDisplacement, dtt;
 	public NetworkTable table;
+	private Servo camAngle;
 	
 	
 	public static Vision getInstance(){
@@ -28,6 +32,7 @@ public class Vision extends Subsystem implements RobotMap{
 		timer = new Timer();
 		table = NetworkTable.getTable("GRIP/myContoursReport");
 		defaultValue = new double[0];
+		camAngle = new Servo(SERVO);
 		centerX = new double[defaultValue.length];
 		centerY = new double [defaultValue.length];
 		height = new double[defaultValue.length];
@@ -44,6 +49,11 @@ public class Vision extends Subsystem implements RobotMap{
 				}
 			}
 			return false;
+	}
+	
+	public void angleAdjust(){
+		System.out.println("set angle to: " + camAngle.get());
+		camAngle.set(OI.getInstance().getStick().getCubeZ());
 	}
 	
 	public void visualize(){
@@ -101,7 +111,7 @@ public class Vision extends Subsystem implements RobotMap{
 	
 	@Override
 	protected void initDefaultCommand() {
-		
+		setDefaultCommand(new CameraAngle());
 	}
 
 }

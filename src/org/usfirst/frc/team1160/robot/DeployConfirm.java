@@ -18,7 +18,7 @@ public class DeployConfirm {
 		select[7] = "Error: 404 Could not find the codes";
 		select[8] = "Chips Ahoy!";
 		
-		System.out.println(select[rand.nextInt(select.length)] + " " + System.currentTimeMillis() % 8);
+		System.out.println(select[rand.nextInt(select.length)] + " " + System.currentTimeMillis() % 100);
 	}
 	
 }

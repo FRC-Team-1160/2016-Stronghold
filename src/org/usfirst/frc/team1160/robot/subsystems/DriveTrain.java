@@ -60,12 +60,12 @@ public class DriveTrain extends Subsystem implements RobotMap{
      *  Some maths to make the motors go the right (or left) way
      ******************************************************************/
 	public void Drive(){
-		fl.set(OI.getInstance().getStick().getCubeZ() - OI.getInstance().getStick().getCubeY());
+/*		fl.set(OI.getInstance().getStick().getCubeZ() - OI.getInstance().getStick().getCubeY());
 		bl.set(OI.getInstance().getStick().getCubeZ() - OI.getInstance().getStick().getCubeY());
 		fr.set(OI.getInstance().getStick().getCubeZ() + OI.getInstance().getStick().getCubeY());
-		/*br.set(OI.getInstance().getStick().getCubeZ() + OI.getInstance().getStick().getCubeY());
-		logPower();
-		fl.set(-OI.getInstance().getStick().getY());
+		br.set(OI.getInstance().getStick().getCubeZ() + OI.getInstance().getStick().getCubeY());
+		logPower();*/
+		/*fl.set(-OI.getInstance().getStick().getY());
 		bl.set(-OI.getInstance().getStick().getY());
 		fr.set(OI.getInstance().getStick().getCubeZ());
 		br.set(OI.getInstance().getStick().getCubeZ());*/
@@ -108,7 +108,7 @@ public class DriveTrain extends Subsystem implements RobotMap{
 	    	SmartDashboard.putNumber("FrontRight Power: ", panel.getCurrent(P_MOTOR_FR));
 	    	SmartDashboard.putNumber("BackRight Power: ", panel.getCurrent(P_MOTOR_BR));
 	    	SmartDashboard.putNumber("Total PDP Volts: ", panel.getVoltage());
-	    	SmartDashboard.putNumber("Total PDP Watts: ", panel.getTotalPower());
+	    	//SmartDashboard.putNumber("Total PDP Watts: ", panel.getTotalPower());
 	    }
 	 
 	

@@ -41,6 +41,7 @@ public interface RobotMap {
 	public static final int DT_BACKRIGHT = 3;
 	public static final int S_FLYWHEEL_LARGE = 5;
 	public static final int S_FLYWHEEL_SMALL = 4;
+	public static final int SERVO = 6;
 
 	
 	//Encoders

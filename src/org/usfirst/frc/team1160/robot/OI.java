@@ -68,7 +68,7 @@ public class OI implements RobotMap{
 	}
 	
 	public Joystick getTest(){
-		System.out.println("PLS WORK");
+//		System.out.println("PLS WORK");
 		return fireTest;
 	}
 	

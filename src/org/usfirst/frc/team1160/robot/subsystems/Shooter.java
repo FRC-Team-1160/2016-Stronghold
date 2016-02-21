@@ -80,6 +80,7 @@ public class Shooter extends Subsystem implements RobotMap{
 		else{
 			big.set(0);
 		}
+		System.out.println(targetRPM);
 	}
 	protected void initDefaultCommand() {
 		//setDefaultCommand(new TestFire());

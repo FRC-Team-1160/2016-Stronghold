@@ -14,7 +14,7 @@ public class FireSequence extends CommandGroup implements RobotMap{
 	public FireSequence(double speed){
 		
 		addSequential(new ShootPosition());
-		addParallel(new SpinWheels(Robot.shoot.speedFromDistance(Robot.see.getDistanceToTarget(0))),FIRING_TIME+.2);
+		addParallel(new SpinWheels(Robot.shoot.speedFromDistance(Robot.see.getDistance())),FIRING_TIME+.2);
 		addParallel(new ReadyAimFire());
 		addSequential(new StopWheels());
 		addSequential(new CradleHold());

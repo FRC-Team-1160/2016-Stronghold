@@ -1,13 +1,11 @@
 package org.usfirst.frc.team1160.robot.subsystems;
 
-import org.usfirst.frc.team1160.robot.OI;
 import org.usfirst.frc.team1160.robot.RobotMap;
 import org.usfirst.frc.team1160.robot.commands.ManualDrive;
 
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.Talon;
-import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -19,7 +17,6 @@ public class DriveTrain extends Subsystem implements RobotMap{
 	protected final Talon fl, bl, fr, br;
 	protected final Encoder enc_left, enc_right;
 	private final PowerDistributionPanel panel;
-	private Timer timer;
 	
     /******************************************************************
      * Singleton for DriveTrain constructor
@@ -50,7 +47,6 @@ public class DriveTrain extends Subsystem implements RobotMap{
 		enc_right = new Encoder(PID_DT_RIGHT_A, PID_DT_RIGHT_B);
 		lPID = new PID("Left",fl,bl,enc_left);
 		rPID = new PID("Right",fr,br,enc_right);
-		timer = new Timer();
 		panel = new PowerDistributionPanel();
 	}
 	

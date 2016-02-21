@@ -1,6 +1,5 @@
 package org.usfirst.frc.team1160.robot;
 
-import org.usfirst.frc.team1160.robot.commands.Detect;
 import org.usfirst.frc.team1160.robot.commands.Distance;
 import org.usfirst.frc.team1160.robot.commands.Shoot.Intake;
 import org.usfirst.frc.team1160.robot.commands.Shoot.SpinWheels;

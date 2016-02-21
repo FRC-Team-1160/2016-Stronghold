@@ -1,6 +1,5 @@
 package org.usfirst.frc.team1160.robot.subsystems;
 
-import org.usfirst.frc.team1160.robot.OI;
 import org.usfirst.frc.team1160.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.CANTalon;
@@ -15,7 +14,7 @@ public class Shooter extends Subsystem implements RobotMap{
 	protected final CANTalon big, small;
 	protected final Encoder enc_big, enc_small;
 	public PID bP, sP;
-	private double rpm, initV, angleSec, motorOutput, finalRPM;
+	private double rpm, angleSec, finalRPM;
 	
 	public static Shooter getInstance(){
 		if(instance == null){
@@ -59,8 +58,8 @@ public class Shooter extends Subsystem implements RobotMap{
 		return FT_TO_M*(distance*angleSec*Math.sqrt((GRAVITATIONAL_ACCEL)/(2*(BALL_VERTICAL_DISPLACEMENT - distance*Math.tan(SHOOTER_ANGLE_RADIANS)))));
 	}
 	
-	public double addEnergy(double rpm, double velocity){
-		finalRPM = rpm + 102.788*velocity;
+	public double addEnergy(double distance){
+		finalRPM = speedFromDistance(distance) + 102.788*velocity(distance);
 		
 		return finalRPM;
 	}
@@ -83,10 +82,12 @@ public class Shooter extends Subsystem implements RobotMap{
 		}
 	}
 	protected void initDefaultCommand() {
+		//setDefaultCommand(new TestFire());
 	}
 
 	public double testFire(double distance){
-		return addEnergy(speedFromDistance(distance), velocity(distance));
+		//System.out.println(addEnergy(speedFromDistance(distance), velocity(distance)));
+		return addEnergy(distance);
 	}
 	
 }

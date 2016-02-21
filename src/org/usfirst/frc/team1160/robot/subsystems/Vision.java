@@ -2,10 +2,8 @@ package org.usfirst.frc.team1160.robot.subsystems;
 
 import org.usfirst.frc.team1160.robot.OI;
 import org.usfirst.frc.team1160.robot.RobotMap;
-import org.usfirst.frc.team1160.robot.commands.CameraAngle;
 
 import edu.wpi.first.wpilibj.Servo;
-import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
 
@@ -14,7 +12,6 @@ public class Vision extends Subsystem implements RobotMap{
 
 	private static Vision instance;
 	
-	private Timer timer;
 	private double[] areas, centerY, centerX, height, width, defaultValue;
 	private double theta, yPixelDisplacement, dtt, distance;
 	public NetworkTable table;
@@ -29,7 +26,6 @@ public class Vision extends Subsystem implements RobotMap{
 	}
 	
 	private Vision(){
-		timer = new Timer();
 		table = NetworkTable.getTable("GRIP/myContoursReport");
 		defaultValue = new double[0];
 		camAngle = new Servo(SERVO);

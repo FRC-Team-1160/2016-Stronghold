@@ -6,6 +6,7 @@ import org.usfirst.frc.team1160.robot.RobotMap;
 import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Vision extends Subsystem implements RobotMap{
 
@@ -58,8 +59,9 @@ public class Vision extends Subsystem implements RobotMap{
 		table = NetworkTable.getTable("GRIP/myContoursReport");
 		width = table.getNumberArray("width", defaultValue);
 		distance = FOCAL_X*WIDTH_ACTUAL/width[0];
-		System.out.println("Width is reported as: " + width[0] + " pixels");
-		System.out.println("Robot is: " + distance/12 + " feet away - BY WIDTH");
+		//System.out.println("Width is reported as: " + width[0] + " pixels");
+		//System.out.println("Robot is: " + distance/12 + " feet away - BY WIDTH");
+		SmartDashboard.putNumber("Distance Recorded as: ", distance/12);
 		return distance/12;
 	}
 	

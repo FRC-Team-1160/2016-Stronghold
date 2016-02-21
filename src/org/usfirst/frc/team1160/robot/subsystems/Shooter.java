@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj.CounterBase;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Shooter extends Subsystem implements RobotMap{
 	
@@ -15,7 +16,7 @@ public class Shooter extends Subsystem implements RobotMap{
 	protected final CANTalon big, small;
 	protected final Encoder enc_big, enc_small;
 	public PID bP, sP;
-	private double rpm, angleSec, finalRPM;
+	private double rpm, angleSec, finalRPM, smallCurrentRPM, largeCurrentRPM, logVel, logDis;
 	private Vision vision;
 	private Timer time;
 	
@@ -60,7 +61,9 @@ public class Shooter extends Subsystem implements RobotMap{
 	
 	public double velocity(double distance){
 		angleSec = 1/Math.cos(SHOOTER_ANGLE_RADIANS);
-		return FT_TO_M*(distance*angleSec*Math.sqrt((GRAVITATIONAL_ACCEL)/(2*(BALL_VERTICAL_DISPLACEMENT - distance*Math.tan(SHOOTER_ANGLE_RADIANS)))));
+		logVel = FT_TO_M*(distance*angleSec*Math.sqrt((GRAVITATIONAL_ACCEL)/(2*(BALL_VERTICAL_DISPLACEMENT - distance*Math.tan(SHOOTER_ANGLE_RADIANS)))));
+		SmartDashboard.putNumber("Goal Velocity Set At: ", logVel);
+		return logVel;
 	} 
 	
 	public double addEnergy(){
@@ -73,8 +76,11 @@ public class Shooter extends Subsystem implements RobotMap{
 	
 	@SuppressWarnings("deprecation")
 	public void bangBang(double targetRPM){
-		double smallCurrentRPM = (1/enc_small.getPeriod())*60;
-		double largeCurrentRPM = (1/enc_big.getPeriod())*60;
+		smallCurrentRPM = (1/enc_small.getPeriod())*60;
+		largeCurrentRPM = (1/enc_big.getPeriod())*60;
+		SmartDashboard.putNumber("Bottom Wheel RPM: ", smallCurrentRPM);
+		SmartDashboard.putNumber("Top Wheel RPM: ", largeCurrentRPM);
+		SmartDashboard.putNumber("Goal RPM: ", targetRPM);
 		if(smallCurrentRPM<targetRPM){
 			small.set(1);
 		}

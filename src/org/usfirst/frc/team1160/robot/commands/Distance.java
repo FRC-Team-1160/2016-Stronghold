@@ -16,7 +16,8 @@ public class Distance extends Command{
 	@Override
 	protected void initialize() {
 		// TODO Auto-generated method stub
-		Robot.see.getDistanceToTarget(index);
+		//Robot.see.getDistanceToTarget(index);
+		Robot.see.getDistance();
 	}
 
 	@Override

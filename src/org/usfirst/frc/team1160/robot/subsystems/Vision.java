@@ -16,7 +16,7 @@ public class Vision extends Subsystem implements RobotMap{
 	
 	private Timer timer;
 	private double[] areas, centerY, centerX, height, width, defaultValue;
-	private double theta, yPixelDisplacement, dtt;
+	private double theta, yPixelDisplacement, dtt, distance;
 	public NetworkTable table;
 	private Servo camAngle;
 	
@@ -49,6 +49,14 @@ public class Vision extends Subsystem implements RobotMap{
 				}
 			}
 			return false;
+	}
+	
+	public double getDistance(){
+		width = table.getNumberArray("width", defaultValue);
+		distance = FOCAL*WIDTH_ACTUAL/width[0];
+		System.out.println("Width is reported as: " + width[0] + " pixels");
+		System.out.println("Robot is: " + distance/12 + " feet away");
+		return distance;
 	}
 	
 	public void angleAdjust(){

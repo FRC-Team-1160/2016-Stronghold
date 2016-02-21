@@ -58,8 +58,8 @@ public class Vision extends Subsystem implements RobotMap{
 		table = NetworkTable.getTable("GRIP/myContoursReport");
 		width = table.getNumberArray("width", defaultValue);
 		distance = FOCAL_X*WIDTH_ACTUAL/width[0];
-		System.out.println("Width is reported as: " + width[0] + " pixels");
-		System.out.println("Robot is: " + distance/12 + " feet away - BY WIDTH");
+		//System.out.println("Width is reported as: " + width[0] + " pixels");
+		//System.out.println("Robot is: " + distance/12 + " feet away - BY WIDTH");
 		return distance/12;
 	}
 	

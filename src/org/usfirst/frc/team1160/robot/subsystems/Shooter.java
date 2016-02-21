@@ -62,7 +62,6 @@ public class Shooter extends Subsystem implements RobotMap{
 	
 	public double addEnergy(){
 		finalRPM = speedFromDistance(vision.getDistance()) + 102.788*velocity(vision.getDistance());
-		
 		return finalRPM;
 	}
 	
@@ -82,8 +81,18 @@ public class Shooter extends Subsystem implements RobotMap{
 		else{
 			big.set(0);
 		}
-		System.out.println(targetRPM);
+		System.out.println("BANG BANG BANG BANG!!! : " + targetRPM);
 	}
+	
+	public boolean isDone(double rpm){
+		if(rpm < 60/enc_small.getPeriod() && rpm > 60/enc_big.getPeriod()){
+			return true;
+		}
+		System.out.println("Current RPM (small wheel): " + 60/enc_small.getPeriod());
+		System.out.println("Current RPM (big wheel): " + 60/enc_big.getPeriod());
+		return false;
+	}
+	
 	protected void initDefaultCommand() {
 		//setDefaultCommand(new TestFire());
 	}

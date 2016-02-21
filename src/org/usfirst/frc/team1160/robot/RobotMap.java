@@ -111,7 +111,7 @@ public interface RobotMap {
 	public static final int X_MIN = 0;
 	public static final int Y_MAX = 360;
 	public static final int Y_MIN = 0;
-	public static final double FOCAL_X = 312.625;
+	public static final double FOCAL_X = 360;
 	public static final double FOCAL_Y = 247.7;
 	
 	//Image Boundaries

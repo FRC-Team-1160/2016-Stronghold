@@ -13,6 +13,8 @@ public class CradlePush extends Command{
 	@Override
 	protected void initialize() {
 		Robot.air.release();
+		System.out.println("Shot Complete");
+
 	}
 
 	@Override

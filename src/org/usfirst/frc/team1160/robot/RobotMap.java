@@ -81,7 +81,7 @@ public interface RobotMap {
 	public static final int S_TOP = 5;
 		//placeholder
 	public static final double FIRING_TIME = 1;
-	public static final double FIRING_SPEED = 1;
+	//public static final double FIRING_SPEED = 1;
 	
 	//Shooting Equation Variables
 	public static final double GRAVITATIONAL_ACCEL = -32.17;

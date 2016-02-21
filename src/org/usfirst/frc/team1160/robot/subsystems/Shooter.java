@@ -5,6 +5,7 @@ import org.usfirst.frc.team1160.robot.RobotMap;
 import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.CounterBase;
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class Shooter extends Subsystem implements RobotMap{
@@ -16,6 +17,7 @@ public class Shooter extends Subsystem implements RobotMap{
 	public PID bP, sP;
 	private double rpm, angleSec, finalRPM;
 	private Vision vision;
+	private Timer time;
 	
 	public static Shooter getInstance(){
 		if(instance == null){
@@ -30,6 +32,7 @@ public class Shooter extends Subsystem implements RobotMap{
 		enc_big = new Encoder(PID_S_BIG_A, PID_S_BIG_B, false, CounterBase.EncodingType.k1X);
 		enc_small = new Encoder(PID_S_SMALL_A, PID_S_SMALL_B, false, CounterBase.EncodingType.k1X);
 		vision = Vision.getInstance();
+		time = new Timer();
 		//bP = new PID("bigWheelPID",big,enc_big);
 		//sP = new PID("smallWheelPID",small,enc_small);
 	}
@@ -58,10 +61,13 @@ public class Shooter extends Subsystem implements RobotMap{
 	public double velocity(double distance){
 		angleSec = 1/Math.cos(SHOOTER_ANGLE_RADIANS);
 		return FT_TO_M*(distance*angleSec*Math.sqrt((GRAVITATIONAL_ACCEL)/(2*(BALL_VERTICAL_DISPLACEMENT - distance*Math.tan(SHOOTER_ANGLE_RADIANS)))));
-	}
+	} 
 	
 	public double addEnergy(){
-		finalRPM = speedFromDistance(vision.getDistance()) + 102.788*velocity(vision.getDistance());
+		finalRPM = speedFromDistance(vision.getDistance()) + 102.788*velocity(vision.getDistance());		finalRPM = speedFromDistance(vision.getDistance()) + 102.788*velocity(vision.getDistance());
+		//Test for bot w/o camera
+			//finalRPM = speedFromDistance(10);
+
 		return finalRPM;
 	}
 	
@@ -81,9 +87,10 @@ public class Shooter extends Subsystem implements RobotMap{
 		else{
 			big.set(0);
 		}
-		System.out.println("BANG BANG BANG BANG!!! : " + targetRPM);
+		//System.out.println("BANG BANG BANG BANG!!! : " + targetRPM);
 	}
 	
+	@SuppressWarnings("deprecation")
 	public boolean isDone(double rpm){
 		if(rpm < 60/enc_small.getPeriod() && rpm > 60/enc_big.getPeriod()){
 			return true;
@@ -100,6 +107,14 @@ public class Shooter extends Subsystem implements RobotMap{
 	public double testFire(double distance){
 		//System.out.println(addEnergy(speedFromDistance(distance), velocity(distance)));
 		return 0;
+	}
+	public void startTime(){
+		time.reset();
+		time.start();
+	}
+	
+	public double getTime(){
+		return time.get();
 	}
 	
 }

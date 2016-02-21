@@ -110,7 +110,7 @@ public class Vision extends Subsystem implements RobotMap{
 	/**************************************************************************************************
 	 * Find distance by similar triangles and trig
 	 * Should work, doesn't right now for some reason
-	 * Probably missing something rather simple
+	 * Need to figure out how to find theta
 	 **************************************************************************************************/
 	public double getDistanceToTarget(int index){
 	height = table.getNumberArray("height", defaultValue);

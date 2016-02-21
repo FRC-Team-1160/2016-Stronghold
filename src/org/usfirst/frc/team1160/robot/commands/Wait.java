@@ -7,11 +7,11 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class Wait extends Command{
 
-	private double millitime,timeElapsed;
+	private double waitTime,timeElapsed;
 
 	public Wait(double time){
 		requires(Robot.air);
-		millitime = time; 		
+		waitTime = time; 		
 	}
 	
 	@Override
@@ -27,7 +27,7 @@ public class Wait extends Command{
 
 	@Override
 	protected boolean isFinished() {
-		if(timeElapsed>millitime){
+		if(timeElapsed>=waitTime){
 			return true;
 		}
 		return false;

@@ -12,12 +12,13 @@ public class StopWheels extends Command{
 	
 	@Override
 	protected void initialize() {
-		
+		Robot.shoot.setFlywheel(0);
+		System.out.println("Wheels Stopped");
+
 	}
 
 	@Override
 	protected void execute() {
-		Robot.shoot.setFlywheel(0);
 	}
 
 	@Override

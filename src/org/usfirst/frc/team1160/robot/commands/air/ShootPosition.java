@@ -12,6 +12,7 @@ public class ShootPosition extends Command{
 
 	protected void initialize() {
 		Robot.air.pivotIn();
+		System.out.println("In Position");
 	}
 
 	protected void execute() {

@@ -39,13 +39,13 @@ public interface RobotMap {
 
 	
 	//Speed Controllers
-	public static final int DT_FRONTLEFT = 0;
-	public static final int DT_BACKLEFT = 2;
-	public static final int DT_FRONTRIGHT = 1;
+	public static final int DT_FRONTLEFT = 6;
+	public static final int DT_BACKLEFT = 5;
+	public static final int DT_FRONTRIGHT = 4;
 	public static final int DT_BACKRIGHT = 3;
-	public static final int S_FLYWHEEL_LARGE = 5;
-	public static final int S_FLYWHEEL_SMALL = 4;
-	public static final int SERVO = 6;
+	public static final int S_FLYWHEEL_LARGE = 7;
+	public static final int S_FLYWHEEL_SMALL = 8;
+	public static final int SERVO = 1;
 
 	
 	//Encoders

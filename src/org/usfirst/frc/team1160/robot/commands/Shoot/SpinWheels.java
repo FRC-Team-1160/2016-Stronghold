@@ -8,9 +8,8 @@ public class SpinWheels extends Command{
 
 	double rate;
 	
-	public SpinWheels(double rpm){
+	public SpinWheels(){
 		requires(Robot.shoot);
-		rate = rpm;
 	}
 	@Override
 	protected void initialize() {
@@ -19,12 +18,13 @@ public class SpinWheels extends Command{
 
 	@Override
 	protected void execute() {
-		 Robot.shoot.bangBang(rate);
+		System.out.println("going at " + Robot.shoot.addEnergy());
+		Robot.shoot.bangBang(Robot.shoot.addEnergy());
 	}
 
 	@Override
 	protected boolean isFinished() {
-		return false;
+		return true;
 	}
 
 	@Override

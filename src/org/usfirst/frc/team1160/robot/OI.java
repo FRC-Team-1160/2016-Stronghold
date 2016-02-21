@@ -1,6 +1,7 @@
 package org.usfirst.frc.team1160.robot;
 
 import org.usfirst.frc.team1160.robot.commands.Distance;
+import org.usfirst.frc.team1160.robot.commands.Shoot.FireSequence;
 import org.usfirst.frc.team1160.robot.commands.Shoot.Intake;
 import org.usfirst.frc.team1160.robot.commands.Shoot.SpinWheels;
 import org.usfirst.frc.team1160.robot.commands.Shoot.StopWheels;
@@ -49,12 +50,12 @@ public class OI implements RobotMap{
 	
 	public void tieButtons(){
 		//detect.whenPressed(new Detect());
-		fire.whenPressed(new SpinWheels(1));
+		fire.whenPressed(new SpinWheels());
 		stop.whenPressed(new StopWheels());
 		intake.whenPressed(new Intake(INTAKE_SPEED));
 		up.whenPressed(new ShootPosition());
 		down.whenPressed(new PickupPosition());
-		test.whenPressed(new TestFire());
+		test.whenPressed(new FireSequence());
 		see.whenPressed(new Distance(0));
 		System.out.println("WOY");
 	}

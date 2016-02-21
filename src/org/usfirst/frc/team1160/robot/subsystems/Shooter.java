@@ -15,6 +15,7 @@ public class Shooter extends Subsystem implements RobotMap{
 	protected final Encoder enc_big, enc_small;
 	public PID bP, sP;
 	private double rpm, angleSec, finalRPM;
+	private Vision vision;
 	
 	public static Shooter getInstance(){
 		if(instance == null){
@@ -28,6 +29,7 @@ public class Shooter extends Subsystem implements RobotMap{
 		small = new CANTalon(S_FLYWHEEL_SMALL);
 		enc_big = new Encoder(PID_S_BIG_A, PID_S_BIG_B, false, CounterBase.EncodingType.k1X);
 		enc_small = new Encoder(PID_S_SMALL_A, PID_S_SMALL_B, false, CounterBase.EncodingType.k1X);
+		vision = Vision.getInstance();
 		//bP = new PID("bigWheelPID",big,enc_big);
 		//sP = new PID("smallWheelPID",small,enc_small);
 	}
@@ -58,8 +60,8 @@ public class Shooter extends Subsystem implements RobotMap{
 		return FT_TO_M*(distance*angleSec*Math.sqrt((GRAVITATIONAL_ACCEL)/(2*(BALL_VERTICAL_DISPLACEMENT - distance*Math.tan(SHOOTER_ANGLE_RADIANS)))));
 	}
 	
-	public double addEnergy(double distance){
-		finalRPM = speedFromDistance(distance) + 102.788*velocity(distance);
+	public double addEnergy(){
+		finalRPM = speedFromDistance(vision.getDistance()) + 102.788*velocity(vision.getDistance());
 		
 		return finalRPM;
 	}
@@ -88,7 +90,7 @@ public class Shooter extends Subsystem implements RobotMap{
 
 	public double testFire(double distance){
 		//System.out.println(addEnergy(speedFromDistance(distance), velocity(distance)));
-		return addEnergy(distance);
+		return 0;
 	}
 	
 }

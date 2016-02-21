@@ -1,5 +1,6 @@
 package org.usfirst.frc.team1160.robot.subsystems;
 
+import org.usfirst.frc.team1160.robot.OI;
 import org.usfirst.frc.team1160.robot.RobotMap;
 import org.usfirst.frc.team1160.robot.commands.ManualDrive;
 
@@ -56,11 +57,11 @@ public class DriveTrain extends Subsystem implements RobotMap{
      *  Some maths to make the motors go the right (or left) way
      ******************************************************************/
 	public void Drive(){
-/*		fl.set(OI.getInstance().getStick().getCubeZ() - OI.getInstance().getStick().getCubeY());
+		fl.set(OI.getInstance().getStick().getCubeZ() - OI.getInstance().getStick().getCubeY());
 		bl.set(OI.getInstance().getStick().getCubeZ() - OI.getInstance().getStick().getCubeY());
 		fr.set(OI.getInstance().getStick().getCubeZ() + OI.getInstance().getStick().getCubeY());
 		br.set(OI.getInstance().getStick().getCubeZ() + OI.getInstance().getStick().getCubeY());
-		logPower();*/
+		logPower();
 		/*fl.set(-OI.getInstance().getStick().getY());
 		bl.set(-OI.getInstance().getStick().getY());
 		fr.set(OI.getInstance().getStick().getCubeZ());

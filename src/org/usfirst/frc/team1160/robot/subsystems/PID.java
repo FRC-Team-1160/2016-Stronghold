@@ -2,6 +2,7 @@ package org.usfirst.frc.team1160.robot.subsystems;
 
 import org.usfirst.frc.team1160.robot.RobotMap;
 
+import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
@@ -9,12 +10,12 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class PID  extends PIDSubsystem implements RobotMap{
 
-	private Talon motor1,motor2;
+	private CANTalon motor1,motor2;
 	private Encoder enc;
 	
 	
 	
-	public PID(String name, Talon motor1, Talon motor2, Encoder enc){
+	public PID(String name, CANTalon motor1, CANTalon motor2, Encoder enc){
 		super(name, P, I, D);
 		this.motor1 = motor1;
 		this.motor2 = motor2;
@@ -23,7 +24,7 @@ public class PID  extends PIDSubsystem implements RobotMap{
 		this.getPIDController().setContinuous();
 		this.getPIDController().setAbsoluteTolerance(ABS_TOL);
 	}
-	public PID(String name, Talon motor1, Encoder enc){
+	public PID(String name, CANTalon motor1, Encoder enc){
 		super(name, P, I, D);
 		this.motor1 = motor1;
 		this.enc = enc;

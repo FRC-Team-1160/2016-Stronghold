@@ -5,7 +5,7 @@ import org.usfirst.frc.team1160.robot.commands.ManualDrive;
 
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
-import edu.wpi.first.wpilibj.Talon;
+import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -14,7 +14,7 @@ public class DriveTrain extends Subsystem implements RobotMap{
 	private static DriveTrain instance;
 	
 	public PID lPID, rPID;
-	protected final Talon fl, bl, fr, br;
+	protected final CANTalon fl, bl, fr, br;
 	protected final Encoder enc_left, enc_right;
 	private final PowerDistributionPanel panel;
 	
@@ -39,10 +39,10 @@ public class DriveTrain extends Subsystem implements RobotMap{
      * -Values for Proportional and Derivative are given to SmartDash
      ******************************************************************/
 	private DriveTrain(){
-		fl = new Talon(DT_FRONTLEFT);
-		bl = new Talon(DT_BACKLEFT);
-		fr = new Talon(DT_FRONTRIGHT);
-		br = new Talon(DT_BACKRIGHT);
+		fl = new CANTalon(DT_FRONTLEFT);
+		bl = new CANTalon(DT_BACKLEFT);
+		fr = new CANTalon(DT_FRONTRIGHT);
+		br = new CANTalon(DT_BACKRIGHT);
 		enc_left = new Encoder(PID_DT_LEFT_A, PID_DT_LEFT_B);
 		enc_right = new Encoder(PID_DT_RIGHT_A, PID_DT_RIGHT_B);
 		lPID = new PID("Left",fl,bl,enc_left);

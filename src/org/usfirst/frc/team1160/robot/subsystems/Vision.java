@@ -51,6 +51,13 @@ public class Vision extends Subsystem implements RobotMap{
 			return false;
 	}
 	
+	/**************************************************************************************************
+	 * http://www.pyimagesearch.com/2015/01/19/find-distance-camera-objectmarker-using-python-opencv/
+	 * Basically fractions: 
+	 * uses apparent size of image (pixels)
+	 * uses actual size of object (inches)
+	 * uses focal length of camera (preset conditions)
+	 **************************************************************************************************/
 	public double getDistance(){
 		table = NetworkTable.getTable("GRIP/myContoursReport");
 		width = table.getNumberArray("width", defaultValue);
@@ -104,6 +111,11 @@ public class Vision extends Subsystem implements RobotMap{
 
 	}
 	
+	/**************************************************************************************************
+	 * Find distance by similar triangles and trig
+	 * Should work, doesn't right now for some reason
+	 * Probably missing something rather simple
+	 **************************************************************************************************/
 	public double getDistanceToTarget(int index){
 	height = table.getNumberArray("height", defaultValue);
 	centerY = table.getNumberArray("centerY", defaultValue);

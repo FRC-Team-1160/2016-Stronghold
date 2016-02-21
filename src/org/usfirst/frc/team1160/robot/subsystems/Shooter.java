@@ -15,7 +15,7 @@ public class Shooter extends Subsystem implements RobotMap{
 	protected final CANTalon big, small;
 	protected final Encoder enc_big, enc_small;
 	public PID bP, sP;
-	private double rpm, initV, angleSec, motorOutput;
+	private double rpm, initV, angleSec, motorOutput, finalRPM;
 	
 	public static Shooter getInstance(){
 		if(instance == null){
@@ -49,9 +49,20 @@ public class Shooter extends Subsystem implements RobotMap{
 	}
 	public double speedFromDistance(double distance){
 		angleSec = 1/Math.cos(SHOOTER_ANGLE_RADIANS);
-		rpm = ((distance*angleSec*Math.sqrt((GRAVITATIONAL_ACCEL)/(2*(BALL_VERTICAL_DISPLACEMENT - distance*Math.tan(SHOOTER_ANGLE_RADIANS)))))/SHOOTER_WHEEL_CIRCUMFERENCE)*60;	
+		rpm = ((distance*angleSec*Math.sqrt((GRAVITATIONAL_ACCEL)/(2*(BALL_VERTICAL_DISPLACEMENT - distance*Math.tan(SHOOTER_ANGLE_RADIANS)))))/SHOOTER_WHEEL_CIRCUMFERENCE)*60;
 		//motorOutput = 
 		return rpm;
+	}
+	
+	public double velocity(double distance){
+		angleSec = 1/Math.cos(SHOOTER_ANGLE_RADIANS);
+		return FT_TO_M*(distance*angleSec*Math.sqrt((GRAVITATIONAL_ACCEL)/(2*(BALL_VERTICAL_DISPLACEMENT - distance*Math.tan(SHOOTER_ANGLE_RADIANS)))));
+	}
+	
+	public double addEnergy(double rpm, double velocity){
+		finalRPM = rpm + 102.788*velocity;
+		
+		return finalRPM;
 	}
 	
 	@SuppressWarnings("deprecation")
@@ -74,10 +85,8 @@ public class Shooter extends Subsystem implements RobotMap{
 	protected void initDefaultCommand() {
 	}
 
-	public void testFire(){
-		System.out.println("works?");
-		big.set(OI.getInstance().getTest().getZ());
-		small.set(-OI.getInstance().getTest().getZ());
+	public double testFire(double distance){
+		return addEnergy(speedFromDistance(distance), velocity(distance));
 	}
 	
 }

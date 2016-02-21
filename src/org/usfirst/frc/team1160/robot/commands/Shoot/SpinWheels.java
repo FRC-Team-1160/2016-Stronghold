@@ -10,7 +10,7 @@ public class SpinWheels extends Command{
 	
 	public SpinWheels(double rpm){
 		requires(Robot.shoot);
-	rate = rpm;
+		rate = rpm;
 	}
 	@Override
 	protected void initialize() {

@@ -16,6 +16,10 @@ public interface RobotMap {
 	public static final double GRAVITY = -9.8;
 	public static final double SHOOT_ANGLE = 38;
 	public static final double Y_DISTANCE = 2;
+	public static final double IB = 0.0093;
+	public static final double IW = 0.0048;
+	public static final double RB = 0.18;
+	public static final double FT_TO_M= .3048;
 	//A Group
 	public static final int PORTCULLIS_A_DISTANCE = 0;
 	public static final int PORTCULLIS_B_DISTANCE = 0;
@@ -107,8 +111,6 @@ public interface RobotMap {
 	public static final int X_MIN = 0;
 	public static final int Y_MAX = 360;
 	public static final int Y_MIN = 0;
-	public static final int HEIGHT_ACTUAL = 12;
-	public static final int WIDTH_ACTUAL = 20;
 	public static final double FOCAL_X = 312.625;
 	public static final double FOCAL_Y = 247.7;
 	
@@ -129,6 +131,8 @@ public interface RobotMap {
 	public static final double ANGLE_FROM_GROUND_RADIANS = Math.toRadians(ANGLE_FROM_GROUND);
 	
 	// Actual Distances
+	public static final int HEIGHT_ACTUAL = 12; //Tape
+	public static final int WIDTH_ACTUAL = 20;  //Tape
 	public static final double TARGET_CENTER_HEIGHT_FEET = 8.08 - (32/12);
 	
 	//PID Variables

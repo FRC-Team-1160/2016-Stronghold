@@ -74,6 +74,8 @@ public interface RobotMap {
 	public static final int STOP = 6;
 	public static final int TEST = 1;
 	public static final int SEE = 2;
+	public static final int CRA_UP = 4;
+	public static final int CRA_DOWN = 5;
 	
 	
 	//Shooter

@@ -2,10 +2,8 @@ package org.usfirst.frc.team1160.robot.subsystems;
 
 import org.usfirst.frc.team1160.robot.OI;
 import org.usfirst.frc.team1160.robot.RobotMap;
-import org.usfirst.frc.team1160.robot.commands.Shoot.TestFire;
 
 import edu.wpi.first.wpilibj.CANTalon;
-import edu.wpi.first.wpilibj.CounterBase;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -16,8 +14,6 @@ public class Shooter extends Subsystem implements RobotMap{
 	public static Shooter instance;
 	
 	protected final CANTalon big, small;
-	//protected final Encoder enc_big, enc_small;
-	public PID bP, sP;
 	private double rpm, angleSec, finalRPM, smallCurrentRPM, largeCurrentRPM, logVel;
 	private Vision vision;
 	private Timer time;
@@ -32,18 +28,12 @@ public class Shooter extends Subsystem implements RobotMap{
 	private Shooter(){
 		big = new CANTalon(S_FLYWHEEL_LARGE);
 		small = new CANTalon(S_FLYWHEEL_SMALL);
-		//big.setFeedbackDevice(CANTalon.FeedbackDevice.EncRising);
-		//small.setFeedbackDevice(CANTalon.FeedbackDevice.EncRising);
-		//big.changeControlMode(CANTalon.TalonControlMode.Speed);
-		//small.changeControlMode(CANTalon.TalonControlMode.Speed);
-		/*enc_big = new Encoder(PID_S_BIG_A, PID_S_BIG_B, false, CounterBase.EncodingType.k1X);
-		enc_small = new Encoder(PID_S_SMALL_A, PID_S_SMALL_B, false, CounterBase.EncodingType.k1X);*/
 		big.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
 		small.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
+		big.changeControlMode(CANTalon.TalonControlMode.Speed);
+		small.changeControlMode(CANTalon.TalonControlMode.Speed);
 		vision = Vision.getInstance();
 		time = new Timer();
-		//bP = new PID("bigWheelPID",big,enc_big);
-		//sP = new PID("smallWheelPID",small,enc_small);
 	}
 	
 	public double distanceRPM(double distance){
@@ -77,17 +67,15 @@ public class Shooter extends Subsystem implements RobotMap{
 	} 
 	
 	public double addEnergy(){
-		finalRPM = speedFromDistance(vision.getDistance()) + 102.788*velocity(vision.getDistance());		finalRPM = speedFromDistance(vision.getDistance()) + 102.788*velocity(vision.getDistance());
+		finalRPM = speedFromDistance(vision.getDistance()) + 102.788*velocity(vision.getDistance());
 		//Test for bot w/o camera
-			//finalRPM = speedFromDistance(10);
-
+		//finalRPM = speedFromDistance(10);
 		return finalRPM;
 	}
 	
-	@SuppressWarnings("deprecation")
 	public void bangBang(double targetRPM){
-		//smallCurrentRPM = (1/small.getEncVelocity())*60;
-		//largeCurrentRPM = (1/big.getEncVelocity())*60;
+		smallCurrentRPM = small.getEncVelocity();
+		largeCurrentRPM = big.getEncVelocity();
 		SmartDashboard.putNumber("Bottom Wheel RPM: ", smallCurrentRPM);
 		SmartDashboard.putNumber("Top Wheel RPM: ", largeCurrentRPM);
 		SmartDashboard.putNumber("Goal RPM: ", targetRPM);
@@ -103,18 +91,7 @@ public class Shooter extends Subsystem implements RobotMap{
 		else{
 			big.set(0);
 		}
-		//System.out.println("BANG BANG BANG BANG!!! : " + targetRPM);
 	}
-	
-/*	@SuppressWarnings("deprecation")
-	public boolean isDone(double rpm){
-		if(rpm < 60/enc_small.getPeriod() && rpm > 60/enc_big.getPeriod()){
-			return true;
-		}
-		System.out.println("Current RPM (small wheel): " + 60/enc_small.getPeriod());
-		System.out.println("Current RPM (big wheel): " + 60/enc_big.getPeriod());
-		return false;
-	}*/
 	
 	protected void initDefaultCommand() {
 		

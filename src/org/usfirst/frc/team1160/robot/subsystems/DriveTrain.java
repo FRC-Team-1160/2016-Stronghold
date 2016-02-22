@@ -4,7 +4,6 @@ import org.usfirst.frc.team1160.robot.OI;
 import org.usfirst.frc.team1160.robot.RobotMap;
 import org.usfirst.frc.team1160.robot.commands.ManualDrive;
 
-import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -16,7 +15,6 @@ public class DriveTrain extends Subsystem implements RobotMap{
 	
 	public PID lPID, rPID;
 	protected final CANTalon fl, bl, fr, br;
-	//protected final Encoder enc_left, enc_right;
 	private final PowerDistributionPanel panel;
 	
     /******************************************************************
@@ -48,11 +46,7 @@ public class DriveTrain extends Subsystem implements RobotMap{
 		fr.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
 		bl.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
 		fl.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
-		/*enc_left = new Encoder(PID_DT_LEFT_A, PID_DT_LEFT_B);
-		enc_right = new Encoder(PID_DT_RIGHT_A, PID_DT_RIGHT_B);
-		lPID = new PID("Left",fl,bl,enc_left);
-		rPID = new PID("Right",fr,br,enc_right);
-		*/panel = new PowerDistributionPanel();
+		panel = new PowerDistributionPanel();
 	}
 	
 	

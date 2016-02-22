@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
  */
 public interface RobotMap {
 	//Constants
-	public static final double INTAKE_SPEED = 0.05;
+	public static final double INTAKE_SPEED = 0.2;
 	public static final int LOWBAR_DISTANCE = 0;
 	public static final double GRAVITY = -9.8;
 	public static final double SHOOT_ANGLE = 38;

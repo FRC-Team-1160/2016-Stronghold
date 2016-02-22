@@ -32,12 +32,14 @@ public class Shooter extends Subsystem implements RobotMap{
 	private Shooter(){
 		big = new CANTalon(S_FLYWHEEL_LARGE);
 		small = new CANTalon(S_FLYWHEEL_SMALL);
-		big.setFeedbackDevice(CANTalon.FeedbackDevice.EncRising);
-		small.setFeedbackDevice(CANTalon.FeedbackDevice.EncRising);
-		big.changeControlMode(CANTalon.TalonControlMode.Speed);
-		big.changeControlMode(CANTalon.TalonControlMode.Speed);
+		//big.setFeedbackDevice(CANTalon.FeedbackDevice.EncRising);
+		//small.setFeedbackDevice(CANTalon.FeedbackDevice.EncRising);
+		//big.changeControlMode(CANTalon.TalonControlMode.Speed);
+		//small.changeControlMode(CANTalon.TalonControlMode.Speed);
 		/*enc_big = new Encoder(PID_S_BIG_A, PID_S_BIG_B, false, CounterBase.EncodingType.k1X);
 		enc_small = new Encoder(PID_S_SMALL_A, PID_S_SMALL_B, false, CounterBase.EncodingType.k1X);*/
+		big.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
+		small.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
 		vision = Vision.getInstance();
 		time = new Timer();
 		//bP = new PID("bigWheelPID",big,enc_big);
@@ -56,7 +58,9 @@ public class Shooter extends Subsystem implements RobotMap{
 	
 	public void setFlywheel(double speed){
 		big.set(speed);
-		small.set(-speed);
+		small.set(speed);
+		SmartDashboard.putNumber("Top Shooter Wheel",big.getSpeed());
+		SmartDashboard.putNumber("Bottom Shooter Wheel",small.getSpeed());
 	}
 	public double speedFromDistance(double distance){
 		angleSec = 1/Math.cos(SHOOTER_ANGLE_RADIANS);

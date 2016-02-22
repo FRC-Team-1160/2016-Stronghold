@@ -55,7 +55,7 @@ public class OI implements RobotMap{
 		intake.whenPressed(new Intake(INTAKE_SPEED));
 		up.whenPressed(new ShootPosition());
 		down.whenPressed(new PickupPosition());
-		test.whenPressed(new FireSequence());
+		test.whenPressed(new Intake(-1));
 		see.whenPressed(new Distance(0));
 		System.out.println("WOY");
 	}

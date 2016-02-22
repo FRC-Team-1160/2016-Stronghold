@@ -97,8 +97,8 @@ public interface RobotMap {
 	//Pneumatics
 	public static final int COMPRESSOR = 0;
 	public static final int S_PIVOT_A = 0;
-	public static final int S_PIVOT_B = 1;
-	public static final int S_HOLD_A = 2;
+	public static final int S_PIVOT_B = 7;
+	public static final int S_HOLD_A = 4;
 	public static final int S_HOLD_B = 3;
 	public static final Value EXT = DoubleSolenoid.Value.kForward;
     public static final Value RET = DoubleSolenoid.Value.kReverse;

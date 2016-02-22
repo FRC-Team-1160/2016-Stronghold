@@ -16,7 +16,7 @@ public class DriveTrain extends Subsystem implements RobotMap{
 	
 	public PID lPID, rPID;
 	protected final CANTalon fl, bl, fr, br;
-	protected final Encoder enc_left, enc_right;
+	//protected final Encoder enc_left, enc_right;
 	private final PowerDistributionPanel panel;
 	
     /******************************************************************
@@ -44,11 +44,15 @@ public class DriveTrain extends Subsystem implements RobotMap{
 		bl = new CANTalon(DT_BACKLEFT);
 		fr = new CANTalon(DT_FRONTRIGHT);
 		br = new CANTalon(DT_BACKRIGHT);
-		enc_left = new Encoder(PID_DT_LEFT_A, PID_DT_LEFT_B);
+		br.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
+		fr.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
+		bl.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
+		fl.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
+		/*enc_left = new Encoder(PID_DT_LEFT_A, PID_DT_LEFT_B);
 		enc_right = new Encoder(PID_DT_RIGHT_A, PID_DT_RIGHT_B);
 		lPID = new PID("Left",fl,bl,enc_left);
 		rPID = new PID("Right",fr,br,enc_right);
-		panel = new PowerDistributionPanel();
+		*/panel = new PowerDistributionPanel();
 	}
 	
 	
@@ -57,15 +61,18 @@ public class DriveTrain extends Subsystem implements RobotMap{
      *  Some maths to make the motors go the right (or left) way
      ******************************************************************/
 	public void Drive(){
-		fl.set(OI.getInstance().getStick().getCubeZ() - OI.getInstance().getStick().getCubeY());
-		bl.set(OI.getInstance().getStick().getCubeZ() - OI.getInstance().getStick().getCubeY());
-		fr.set(OI.getInstance().getStick().getCubeZ() + OI.getInstance().getStick().getCubeY());
-		br.set(OI.getInstance().getStick().getCubeZ() + OI.getInstance().getStick().getCubeY());
+		fl.set((OI.getInstance().getStick().getCubeZ() - OI.getInstance().getStick().getCubeY())/2);
+		bl.set((OI.getInstance().getStick().getCubeZ() - OI.getInstance().getStick().getCubeY())/2);
+		fr.set((OI.getInstance().getStick().getCubeZ() + OI.getInstance().getStick().getCubeY())/2);
+		br.set((OI.getInstance().getStick().getCubeZ() + OI.getInstance().getStick().getCubeY())/2);
 		logPower();
 		/*fl.set(-OI.getInstance().getStick().getY());
 		bl.set(-OI.getInstance().getStick().getY());
 		fr.set(OI.getInstance().getStick().getCubeZ());
 		br.set(OI.getInstance().getStick().getCubeZ());*/
+		SmartDashboard.putNumber("Left Drive Encoder", fl.getPosition());
+		SmartDashboard.putNumber("Right Drive Encoder", fr.getPosition());
+
 	}
 	
 	

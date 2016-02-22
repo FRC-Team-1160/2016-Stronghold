@@ -18,7 +18,7 @@ public class Shooter extends Subsystem implements RobotMap{
 	protected final CANTalon big, small;
 	//protected final Encoder enc_big, enc_small;
 	public PID bP, sP;
-	private double rpm, angleSec, finalRPM, smallCurrentRPM, largeCurrentRPM, logVel, logDis;
+	private double rpm, angleSec, finalRPM, smallCurrentRPM, largeCurrentRPM, logVel;
 	private Vision vision;
 	private Timer time;
 	
@@ -117,10 +117,10 @@ public class Shooter extends Subsystem implements RobotMap{
 	}*/
 	
 	protected void initDefaultCommand() {
-		setDefaultCommand(new TestFire());
+		
 	}
 
-	public void testFire(double distance){
+	public void testFire(){
 		setFlywheel(OI.getInstance().getStick().getX ());
 		SmartDashboard.putNumber("CANTalon Big: ", big.getEncVelocity());
 		SmartDashboard.putNumber("CANTalon Small: ", small.getEncVelocity());

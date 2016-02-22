@@ -19,7 +19,7 @@ public class TestFire extends Command implements RobotMap{
 	@Override
 	protected void execute() {
 		//System.out.println("worksoers?");
-		Robot.shoot.testFire(8);
+		Robot.shoot.testFire();
 	}
 
 	@Override

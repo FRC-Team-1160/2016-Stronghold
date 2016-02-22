@@ -66,10 +66,6 @@ public class DriveTrain extends Subsystem implements RobotMap{
 		fr.set((OI.getInstance().getStick().getCubeZ() + OI.getInstance().getStick().getCubeY())/2);
 		br.set((OI.getInstance().getStick().getCubeZ() + OI.getInstance().getStick().getCubeY())/2);
 		logPower();
-		/*fl.set(-OI.getInstance().getStick().getY());
-		bl.set(-OI.getInstance().getStick().getY());
-		fr.set(OI.getInstance().getStick().getCubeZ());
-		br.set(OI.getInstance().getStick().getCubeZ());*/
 		SmartDashboard.putNumber("Left Drive Encoder", fl.getPosition());
 		SmartDashboard.putNumber("Right Drive Encoder", fr.getPosition());
 

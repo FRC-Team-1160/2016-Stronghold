@@ -18,7 +18,7 @@ public class OI implements RobotMap{
 	public static OI instance;
 	Joystick autoInput, fireTest;
 	ModifiedJoystick stick;
-	JoystickButton detect, fire, stop, intake, up, down, test, see;
+	JoystickButton detect, fire, stop, intake, up, down, test, see,cradleup,cradledown;
 	
 	public static OI getInstance(){
 		if(instance == null){
@@ -29,7 +29,6 @@ public class OI implements RobotMap{
 	
 	public OI(){
 		stick = new ModifiedJoystick(STICK);
-		fireTest = new Joystick(TEST_STICK);
 		autoInput = new Joystick(AUTO_INPUT_PORT);
 		
 		buttons();
@@ -44,6 +43,8 @@ public class OI implements RobotMap{
 		down = new JoystickButton(stick, PIVOT_DOWN);
 		test = new JoystickButton(stick, TEST);
 		see = new JoystickButton(stick,SEE);
+		cradleup = new JoystickButton(stick, CRA_UP);
+		cradledown = new JoystickButton(stick, CRA_DOWN);
 		
 		tieButtons();
 	}

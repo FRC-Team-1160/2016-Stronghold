@@ -69,7 +69,8 @@ public class Shooter extends Subsystem implements RobotMap{
 	public double addEnergy(){
 		//finalRPM = speedFromDistance(vision.getDistance()) + 102.788*velocity(vision.getDistance());
 		//Test for bot w/o camera
-		finalRPM = speedFromDistance(TEST_DISTANCE) + 102.788*velocity(TEST_DISTANCE);
+		SmartDashboard.putNumber("TEST_DISTANCE", TEST_DISTANCE);
+		finalRPM = speedFromDistance(SmartDashboard.getNumber("TEST_DISTANCE")) + 102.788*velocity(SmartDashboard.getNumber("TEST_DISTANCE"));
 		return finalRPM;
 	}
 	

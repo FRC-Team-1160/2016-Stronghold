@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
  * floating around.
  */
 public interface RobotMap {
+	public static final double TEST_DISTANCE = 5;
 	
 	//Joystick Buttons
 	public static final int TEST = 1;
@@ -38,8 +39,8 @@ public interface RobotMap {
 	
 	//Shooter Speeds
 	public static final double FIRE_BIG = 1;
-	public static final double INTAKE_SPEED = 0.3;
-	public static final double FIRING_TIME = 1;
+	public static final double INTAKE_SPEED = 0.2;
+	public static final double FIRING_TIME = 1.75;
 	
 	//Pneumatics
 	public static final int COMPRESSOR = 0;

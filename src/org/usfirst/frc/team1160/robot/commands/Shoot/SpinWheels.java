@@ -15,6 +15,7 @@ public class SpinWheels extends Command implements RobotMap{
 	@Override
 	protected void initialize() {
 		rpm = Robot.shoot.addEnergy();
+		//rpm = 4000;
 		Robot.shoot.startTime();
 	}
 

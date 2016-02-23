@@ -21,6 +21,7 @@ public class Robot extends IterativeRobot {
 	public static Shooter shoot;
 	public static Vision see;
 	public static Pneumatics air;
+	public static DeployConfirm dc;
 
     Command autonomousCommand;
     SendableChooser chooser;
@@ -32,6 +33,7 @@ public class Robot extends IterativeRobot {
    		see = Vision.getInstance();
 		air = Pneumatics.getInstance();
 		oi = OI.getInstance();
+		dc = new DeployConfirm();
     }
 
     public void disabledInit(){

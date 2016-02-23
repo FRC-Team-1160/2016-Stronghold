@@ -67,9 +67,9 @@ public class Shooter extends Subsystem implements RobotMap{
 	} 
 	
 	public double addEnergy(){
-		finalRPM = speedFromDistance(vision.getDistance()) + 102.788*velocity(vision.getDistance());
+		//finalRPM = speedFromDistance(vision.getDistance()) + 102.788*velocity(vision.getDistance());
 		//Test for bot w/o camera
-		//finalRPM = speedFromDistance(10);
+		finalRPM = speedFromDistance(TEST_DISTANCE) + 102.788*velocity(TEST_DISTANCE);
 		return finalRPM;
 	}
 	
@@ -91,6 +91,8 @@ public class Shooter extends Subsystem implements RobotMap{
 		else{
 			big.set(0);
 		}
+		//big.set(-1);
+		//small.set(-1);
 	}
 	
 	protected void initDefaultCommand() {
@@ -98,9 +100,8 @@ public class Shooter extends Subsystem implements RobotMap{
 	}
 
 	public void testFire(){
-		setFlywheel(OI.getInstance().getStick().getX ());
-		SmartDashboard.putNumber("CANTalon Big: ", big.getEncVelocity());
-		SmartDashboard.putNumber("CANTalon Small: ", small.getEncVelocity());
+		//SmartDashboard.putNumber("CANTalon Big: ", big.getEncVelocity());
+		//SmartDashboard.putNumber("CANTalon Small: ", small.getEncVelocity());
 	}
 	public void startTime(){
 		time.reset();

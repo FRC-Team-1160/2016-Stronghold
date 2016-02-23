@@ -35,14 +35,14 @@ public class OI implements RobotMap{
 	}
 	
 	public void buttons(){
-		detect = new JoystickButton(stick,SEE_BUTTON);
+		detect = new JoystickButton(stick, SEE_BUTTON);
 		fire = new JoystickButton(stick, FIRE);
 		stop = new JoystickButton(stick, STOP);
 		intake = new JoystickButton(stick, INTAKE);
 		up = new JoystickButton(stick, PIVOT_UP);
 		down = new JoystickButton(stick, PIVOT_DOWN);
 		test = new JoystickButton(stick, TEST);
-		see = new JoystickButton(stick,SEE);
+		see = new JoystickButton(stick, SEE);
 		cradleup = new JoystickButton(stick, CRA_UP);
 		cradledown = new JoystickButton(stick, CRA_DOWN);
 		

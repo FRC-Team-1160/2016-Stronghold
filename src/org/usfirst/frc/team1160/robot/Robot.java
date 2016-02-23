@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 
 public class Robot extends IterativeRobot {
@@ -54,8 +55,8 @@ public class Robot extends IterativeRobot {
         autonomousCommand = (Command) chooser.getSelected();
         
         
-        
-		/* String autoSelected = SmartDashboard.getString("Auto Selector", "Default");
+        /*
+		String autoSelected = SmartDashboard.getString("Auto Selector", "Default");
 		switch(autoSelected) {
 		case "My Auto":
 			autonomousCommand = new MyAutoCommand();
@@ -64,7 +65,7 @@ public class Robot extends IterativeRobot {
 		default:
 			autonomousCommand = new ExampleCommand();
 			break;
-		} */
+		}*/
     	
     	// schedule the autonomous command (example)
         if (autonomousCommand != null) autonomousCommand.start();

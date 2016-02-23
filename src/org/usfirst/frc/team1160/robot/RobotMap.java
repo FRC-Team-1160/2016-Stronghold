@@ -106,7 +106,7 @@ public interface RobotMap {
 	public static final double GRAVITATIONAL_ACCEL = -32.17;
 	public static final double BALL_VERTICAL_DISPLACEMENT = 6.56;
 	public static final double SHOOTER_WHEEL_CIRCUMFERENCE = Math.PI/3;
-	public static final double SHOOTER_ANGLE_DEGREES = 52;
+	public static final double SHOOTER_ANGLE_DEGREES = 68;
 	public static final double SHOOTER_ANGLE_RADIANS = Math.toRadians(SHOOTER_ANGLE_DEGREES);
 	public static final double TARGET_CENTER_HEIGHT_FEET = 8.08 - (32/12);
 

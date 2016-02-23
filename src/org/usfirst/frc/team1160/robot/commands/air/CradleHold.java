@@ -13,6 +13,7 @@ public class CradleHold extends Command{
 	@Override
 	protected void initialize() {
 		Robot.air.contain();
+		System.out.println("contained");
 	}
 
 	@Override

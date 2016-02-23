@@ -12,6 +12,7 @@ public class PickupPosition extends Command{
 	
 	@Override
 	protected void initialize() {
+		System.out.println("ehan wuz here");
 		Robot.air.pivotOut();
 	}
 

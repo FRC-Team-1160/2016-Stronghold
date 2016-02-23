@@ -3,9 +3,9 @@ package org.usfirst.frc.team1160.robot;
 import org.usfirst.frc.team1160.robot.commands.Distance;
 import org.usfirst.frc.team1160.robot.commands.Shoot.FireSequence;
 import org.usfirst.frc.team1160.robot.commands.Shoot.Intake;
-import org.usfirst.frc.team1160.robot.commands.Shoot.SpinWheels;
 import org.usfirst.frc.team1160.robot.commands.Shoot.StopWheels;
-import org.usfirst.frc.team1160.robot.commands.Shoot.TestFire;
+import org.usfirst.frc.team1160.robot.commands.air.CradleHold;
+import org.usfirst.frc.team1160.robot.commands.air.CradlePush;
 import org.usfirst.frc.team1160.robot.commands.air.PickupPosition;
 import org.usfirst.frc.team1160.robot.commands.air.ShootPosition;
 
@@ -58,6 +58,8 @@ public class OI implements RobotMap{
 		down.whenPressed(new PickupPosition());
 		test.whenPressed(new Intake(-1));
 		see.whenPressed(new Distance(0));
+		cradleup.whenPressed(new CradlePush());
+		cradledown.whenPressed(new CradleHold());
 		System.out.println("WOY");
 	}
 	

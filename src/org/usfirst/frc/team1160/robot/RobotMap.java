@@ -38,7 +38,7 @@ public interface RobotMap {
 	
 	//Shooter Speeds
 	public static final double FIRE_BIG = 1;
-	public static final double INTAKE_SPEED = 0.2;
+	public static final double INTAKE_SPEED = 0.3;
 	public static final double FIRING_TIME = 1;
 	
 	//Pneumatics

@@ -39,7 +39,7 @@ public interface RobotMap {
 	
 	//Shooter Speeds
 	public static final double FIRE_BIG = 1;
-	public static final double INTAKE_SPEED = 0.2;
+	public static final double INTAKE_SPEED = -1;
 	public static final double FIRING_TIME = 1.75;
 	
 	//Pneumatics
@@ -50,9 +50,9 @@ public interface RobotMap {
 	public static final int S_PIVOT_B = 7;
 	
     //Targeting Variables
-    public static final int X_MAX = 480;
+    public static final int X_MAX = 320;
 	public static final int X_MIN = 0;
-	public static final int Y_MAX = 360;
+	public static final int Y_MAX = 240;
 	public static final int Y_MIN = 0;
 	public static final double FOCAL_X = 360;
 		
@@ -67,11 +67,16 @@ public interface RobotMap {
 	public static final double L_180 = 1;
 	public static final double R_180 = 1;
 	
-	public static final int P_MOTOR_BL = 13;
-    public static final int P_MOTOR_BR = 14;
-    public static final int P_MOTOR_FL = 12;
-    public static final int P_MOTOR_FR = 15;
-
+	//Power
+	public static final int P_MOTOR_BL = 0;
+    public static final int P_MOTOR_BR = 15;
+    public static final int P_MOTOR_FL = 1;
+    public static final int P_MOTOR_FR = 14;
+    public static final int P_MOTOR_TOP = 12;
+    public static final int P_MOTOR_BOT = 3;
+    public static final int P_MOTOR_CLIMBLEFT = 2;
+    public static final int P_MOTOR_CLIMBRIGHT = 13;
+    
 	//Constants
 	public static final int LOWBAR_DISTANCE = 0;
 	public static final double GRAVITY = -9.8;

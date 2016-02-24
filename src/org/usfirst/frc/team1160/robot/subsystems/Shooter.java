@@ -14,7 +14,7 @@ public class Shooter extends Subsystem implements RobotMap{
 	public static Shooter instance;
 	
 	protected final CANTalon big, small;
-	private double rpm, angleSec, finalRPM, smallCurrentRPM, largeCurrentRPM, logVel;
+	private double rpm, angleSec, finalRPM, smallCurrentRPM, largeCurrentRPM, logVel, hold;
 	private Vision vision;
 	private Timer time;
 	
@@ -28,8 +28,9 @@ public class Shooter extends Subsystem implements RobotMap{
 	private Shooter(){
 		big = new CANTalon(S_FLYWHEEL_LARGE);
 		small = new CANTalon(S_FLYWHEEL_SMALL);
-		//big.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
-		//small.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
+		big.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
+		small.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
+		SmartDashboard.putNumber("TEST_DISTANCE", TEST_DISTANCE);
 		//big.changeControlMode(CANTalon.TalonControlMode.Speed);
 		//small.changeControlMode(CANTalon.TalonControlMode.Speed);
 		vision = Vision.getInstance();
@@ -69,14 +70,13 @@ public class Shooter extends Subsystem implements RobotMap{
 	public double addEnergy(){
 		//finalRPM = speedFromDistance(vision.getDistance()) + 102.788*velocity(vision.getDistance());
 		//Test for bot w/o camera
-		SmartDashboard.putNumber("TEST_DISTANCE", TEST_DISTANCE);
 		finalRPM = speedFromDistance(SmartDashboard.getNumber("TEST_DISTANCE")) + 102.788*velocity(SmartDashboard.getNumber("TEST_DISTANCE"));
 		return finalRPM;
 	}
 	
 	public void bangBang(double targetRPM){
-		smallCurrentRPM = small.getEncVelocity();
-		largeCurrentRPM = big.getEncVelocity();
+		smallCurrentRPM = small.getSpeed();
+		largeCurrentRPM = big.getSpeed();
 		SmartDashboard.putNumber("Bottom Wheel RPM: ", smallCurrentRPM);
 		SmartDashboard.putNumber("Top Wheel RPM: ", largeCurrentRPM);
 		SmartDashboard.putNumber("Goal RPM: ", targetRPM);
@@ -92,8 +92,8 @@ public class Shooter extends Subsystem implements RobotMap{
 		else{
 			big.set(0);
 		}
-		//big.set(-1);
-		//small.set(-1);
+		//big.set(-.8);
+		//small.set(-.6);
 	}
 	
 	protected void initDefaultCommand() {

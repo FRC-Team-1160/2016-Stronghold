@@ -28,8 +28,8 @@ public class Shooter extends Subsystem implements RobotMap{
 	private Shooter(){
 		big = new CANTalon(S_FLYWHEEL_LARGE);
 		small = new CANTalon(S_FLYWHEEL_SMALL);
-		big.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
-		small.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
+		big.setFeedbackDevice(CANTalon.FeedbackDevice.CtreMagEncoder_Relative);
+		small.setFeedbackDevice(CANTalon.FeedbackDevice.CtreMagEncoder_Relative);
 		SmartDashboard.putNumber("TEST_DISTANCE", TEST_DISTANCE);
 		//big.changeControlMode(CANTalon.TalonControlMode.Speed);
 		//small.changeControlMode(CANTalon.TalonControlMode.Speed);

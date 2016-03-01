@@ -15,7 +15,6 @@ public class Shooter extends Subsystem implements RobotMap{
 	
 	protected final CANTalon big, small;
 	private double rpm, angleSec, finalRPM, smallCurrentRPM, largeCurrentRPM, logVel, hold;
-	private Vision vision;
 	private Timer time;
 	
 	public static Shooter getInstance(){
@@ -31,10 +30,13 @@ public class Shooter extends Subsystem implements RobotMap{
 		big.setFeedbackDevice(CANTalon.FeedbackDevice.CtreMagEncoder_Relative);
 		small.setFeedbackDevice(CANTalon.FeedbackDevice.CtreMagEncoder_Relative);
 		big.reverseOutput(true);
+		big.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
+		small.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
+		big.reverseOutput(true);
+
 		SmartDashboard.putNumber("TEST_DISTANCE", TEST_DISTANCE);
 		//big.changeControlMode(CANTalon.TalonControlMode.Speed);
 		//small.changeControlMode(CANTalon.TalonControlMode.Speed);
-		vision = Vision.getInstance();
 		time = new Timer();
 	}
 	
@@ -75,32 +77,6 @@ public class Shooter extends Subsystem implements RobotMap{
 		return finalRPM;
 	}
 	
-	public void bangBang(double targetRPM){
-		big.set(targetRPM);
-		small.set(targetRPM);
-		SmartDashboard.putNumber("Bottom Wheel RPM: ", smallCurrentRPM);
-		SmartDashboard.putNumber("Top Wheel RPM: ", largeCurrentRPM);
-		SmartDashboard.putNumber("Goal RPM: ", targetRPM);
-		smallCurrentRPM = small.getSpeed();
-		largeCurrentRPM = big.getSpeed();
-		SmartDashboard.putNumber("Bottom Wheel RPM: ", smallCurrentRPM);
-		SmartDashboard.putNumber("Top Wheel RPM: ", largeCurrentRPM);
-		SmartDashboard.putNumber("Goal RPM: ", targetRPM);
-		if(smallCurrentRPM<targetRPM){
-			small.set(-1);
-		}
-		else{
-			small.set(0);
-		}
-		if(largeCurrentRPM<targetRPM){
-			big.set(-1);
-		}
-		else{
-			big.set(0);
-		}
-		//big.set(-.8);
-		//small.set(-.6);
-	}
 	
 	protected void initDefaultCommand() {
 		

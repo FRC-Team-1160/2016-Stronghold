@@ -14,7 +14,7 @@ public class Shooter extends Subsystem implements RobotMap{
 	public static Shooter instance;
 	
 	protected final CANTalon big, small;
-	private double rpm, set, angleSec, finalRPM, smallCurrentRPM, largeCurrentRPM, logVel, hold, smallRev, largeRev;
+	private double rpm, angleSec, finalRPM, smallCurrentRPM, largeCurrentRPM, logVel, hold;
 	private Vision vision;
 	private Timer time;
 	
@@ -30,10 +30,13 @@ public class Shooter extends Subsystem implements RobotMap{
 		small = new CANTalon(S_FLYWHEEL_SMALL);
 		big.setFeedbackDevice(CANTalon.FeedbackDevice.CtreMagEncoder_Relative);
 		small.setFeedbackDevice(CANTalon.FeedbackDevice.CtreMagEncoder_Relative);
+<<<<<<< HEAD
 		big.reverseOutput(true);
+=======
+>>>>>>> ad67ed18195b5afed979a52eeb5df1b3bbdd193c
 		SmartDashboard.putNumber("TEST_DISTANCE", TEST_DISTANCE);
-		big.changeControlMode(CANTalon.TalonControlMode.Speed);
-		small.changeControlMode(CANTalon.TalonControlMode.Speed);
+		//big.changeControlMode(CANTalon.TalonControlMode.Speed);
+		//small.changeControlMode(CANTalon.TalonControlMode.Speed);
 		vision = Vision.getInstance();
 		time = new Timer();
 	}
@@ -75,26 +78,34 @@ public class Shooter extends Subsystem implements RobotMap{
 		return finalRPM;
 	}
 	
-	public void reset(){
-		small.reset();
-		big.reset();
-	}
-	
-	public void getRevolutions(){
-		smallRev = small.get();
-		largeRev = big.getPosition() / 4096;
-		//System.out.println("Small: " + smallRev);
-		System.out.println("Large: " + largeRev);
-		System.out.println("LargeRPM: " + big.getSpeed() * 600 / 4096);
-
-	}
-	
 	public void bangBang(double targetRPM){
+<<<<<<< HEAD
 		big.set(targetRPM);
 		small.set(targetRPM);
 		SmartDashboard.putNumber("Bottom Wheel RPM: ", smallCurrentRPM);
 		SmartDashboard.putNumber("Top Wheel RPM: ", largeCurrentRPM);
 		SmartDashboard.putNumber("Goal RPM: ", targetRPM);
+=======
+		smallCurrentRPM = small.getSpeed();
+		largeCurrentRPM = big.getSpeed();
+		SmartDashboard.putNumber("Bottom Wheel RPM: ", smallCurrentRPM);
+		SmartDashboard.putNumber("Top Wheel RPM: ", largeCurrentRPM);
+		SmartDashboard.putNumber("Goal RPM: ", targetRPM);
+		if(smallCurrentRPM<targetRPM){
+			small.set(-1);
+		}
+		else{
+			small.set(0);
+		}
+		if(largeCurrentRPM<targetRPM){
+			big.set(-1);
+		}
+		else{
+			big.set(0);
+		}
+		//big.set(-.8);
+		//small.set(-.6);
+>>>>>>> ad67ed18195b5afed979a52eeb5df1b3bbdd193c
 	}
 	
 	protected void initDefaultCommand() {

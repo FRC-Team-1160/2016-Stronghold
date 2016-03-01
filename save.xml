@@ -1,0 +1,71 @@
+<xml version="1.0">
+<dashboard>
+	<widget field="Goal Velocity Set At: " type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="109"/>
+	</widget>
+	<widget field="TEST_DISTANCE" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="86"/>
+	</widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.ConnectionIndicator">
+		<location x="33" y="227"/>
+		<width>186</width>
+		<height>28</height>
+		<property name="Graphics" value="Simple"/>
+	</static-widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
+		<location x="93" y="14"/>
+		<property name="Text" value="Encoders:"/>
+	</static-widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
+		<location x="90" y="205"/>
+		<property name="Text" value="Connection:"/>
+	</static-widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
+		<location x="354" y="147"/>
+		<property name="Text" value="Power Information:"/>
+	</static-widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.VideoStreamViewerExtension">
+		<location x="177" y="366"/>
+		<width>254</width>
+		<height>211</height>
+	</static-widget>
+	<widget field="Goal RPM: " type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="338" y="18"/>
+	</widget>
+	<widget field="Top Wheel RPM: " type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="301" y="62"/>
+	</widget>
+	<widget field="Bottom Wheel RPM: " type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="283" y="106"/>
+	</widget>
+	<widget field="Bottom Shooter Wheel" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="272" y="84"/>
+	</widget>
+	<widget field="Top Shooter Wheel" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="290" y="40"/>
+	</widget>
+	<widget field="Right Drive Encoder" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="3" y="63"/>
+	</widget>
+	<widget field="Left Drive Encoder" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="11" y="41"/>
+	</widget>
+	<widget field="Total PDP Volts: " type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="305" y="172"/>
+	</widget>
+	<widget field="BackRight Power: " type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="297" y="260"/>
+	</widget>
+	<widget field="FrontRight Power: " type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="293" y="216"/>
+	</widget>
+	<widget field="BackLeft Power: " type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="305" y="238"/>
+	</widget>
+	<widget field="FrontLeft Power: " type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="301" y="194"/>
+	</widget>
+</dashboard>
+<live-window>
+</live-window>
+</xml>

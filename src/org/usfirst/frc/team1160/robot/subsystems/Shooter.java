@@ -30,10 +30,7 @@ public class Shooter extends Subsystem implements RobotMap{
 		small = new CANTalon(S_FLYWHEEL_SMALL);
 		big.setFeedbackDevice(CANTalon.FeedbackDevice.CtreMagEncoder_Relative);
 		small.setFeedbackDevice(CANTalon.FeedbackDevice.CtreMagEncoder_Relative);
-<<<<<<< HEAD
 		big.reverseOutput(true);
-=======
->>>>>>> ad67ed18195b5afed979a52eeb5df1b3bbdd193c
 		SmartDashboard.putNumber("TEST_DISTANCE", TEST_DISTANCE);
 		//big.changeControlMode(CANTalon.TalonControlMode.Speed);
 		//small.changeControlMode(CANTalon.TalonControlMode.Speed);
@@ -79,13 +76,11 @@ public class Shooter extends Subsystem implements RobotMap{
 	}
 	
 	public void bangBang(double targetRPM){
-<<<<<<< HEAD
 		big.set(targetRPM);
 		small.set(targetRPM);
 		SmartDashboard.putNumber("Bottom Wheel RPM: ", smallCurrentRPM);
 		SmartDashboard.putNumber("Top Wheel RPM: ", largeCurrentRPM);
 		SmartDashboard.putNumber("Goal RPM: ", targetRPM);
-=======
 		smallCurrentRPM = small.getSpeed();
 		largeCurrentRPM = big.getSpeed();
 		SmartDashboard.putNumber("Bottom Wheel RPM: ", smallCurrentRPM);
@@ -105,7 +100,6 @@ public class Shooter extends Subsystem implements RobotMap{
 		}
 		//big.set(-.8);
 		//small.set(-.6);
->>>>>>> ad67ed18195b5afed979a52eeb5df1b3bbdd193c
 	}
 	
 	protected void initDefaultCommand() {

@@ -28,8 +28,9 @@ public class Shooter extends Subsystem implements RobotMap{
 	private Shooter(){
 		big = new CANTalon(S_FLYWHEEL_LARGE);
 		small = new CANTalon(S_FLYWHEEL_SMALL);
-		big.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
-		small.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
+		big.setFeedbackDevice(CANTalon.FeedbackDevice.CtreMagEncoder_Relative);
+		small.setFeedbackDevice(CANTalon.FeedbackDevice.CtreMagEncoder_Relative);
+		big.reverseOutput(true);
 		SmartDashboard.putNumber("TEST_DISTANCE", TEST_DISTANCE);
 		big.changeControlMode(CANTalon.TalonControlMode.Speed);
 		small.changeControlMode(CANTalon.TalonControlMode.Speed);
@@ -89,38 +90,11 @@ public class Shooter extends Subsystem implements RobotMap{
 	}
 	
 	public void bangBang(double targetRPM){
-		targetRPM+=250;
-		big.set((-targetRPM/MAX_RPM));
-		small.set((-targetRPM/MAX_RPM));
-		smallCurrentRPM = small.getSpeed() * 600 / 4096;
-		largeCurrentRPM = big.getSpeed() * 600 / 4096;
+		big.set(targetRPM);
+		small.set(targetRPM);
 		SmartDashboard.putNumber("Bottom Wheel RPM: ", smallCurrentRPM);
 		SmartDashboard.putNumber("Top Wheel RPM: ", largeCurrentRPM);
 		SmartDashboard.putNumber("Goal RPM: ", targetRPM);
-		
-		
-		
-		/*if(smallCurrentRPM<targetRPM){
-			small.set(-1);
-			System.out.println("Bottom Running");
-
-		}
-		else{
-			small.set(0);
-			System.out.println("Bottom Stopped");
-		}
-		if(-1*largeCurrentRPM<targetRPM + 600){
-			big.set(-1);
-			System.out.println("top Running");
-
-		}
-		else{
-			big.set(0);
-			System.out.println("Top Stopped");
-
-		}
-*/		//big.set(-.8);
-		//small.set(-.6);
 	}
 	
 	protected void initDefaultCommand() {

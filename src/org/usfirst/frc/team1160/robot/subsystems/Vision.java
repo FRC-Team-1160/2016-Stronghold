@@ -16,7 +16,6 @@ public class Vision extends Subsystem implements RobotMap{
 	private double[] areas, centerY, centerX, height, width, defaultValue;
 	private double theta, yPixelDisplacement, dtt, distance;
 	public NetworkTable table;
-	private Servo camAngle;
 	
 	
 	public static Vision getInstance(){
@@ -29,7 +28,6 @@ public class Vision extends Subsystem implements RobotMap{
 	private Vision(){
 		table = NetworkTable.getTable("GRIP/myContoursReport");
 		defaultValue = new double[0];
-		camAngle = new Servo(SERVO);
 		centerX = new double[defaultValue.length];
 		centerY = new double [defaultValue.length];
 		height = new double[defaultValue.length];
@@ -63,11 +61,6 @@ public class Vision extends Subsystem implements RobotMap{
 		//System.out.println("Robot is: " + distance/12 + " feet away - BY WIDTH");
 		SmartDashboard.putNumber("Distance Recorded as: ", distance/12);
 		return distance/12;
-	}
-	
-	public void angleAdjust(){
-		System.out.println("set angle to: " + camAngle.get());
-		camAngle.set(OI.getInstance().getStick().getCubeZ());
 	}
 	
 	public void visualize(){

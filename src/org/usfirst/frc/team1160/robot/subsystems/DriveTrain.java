@@ -13,7 +13,6 @@ public class DriveTrain extends Subsystem implements RobotMap{
 	
 	private static DriveTrain instance;
 	
-	public PID lPID, rPID;
 	protected final CANTalon fl, bl, fr, br;
 	private final PowerDistributionPanel panel;
 	
@@ -70,8 +69,7 @@ public class DriveTrain extends Subsystem implements RobotMap{
      * Uses PID to move the wheels a set distance forward
      ******************************************************************/
 	public void DriveDistance(double distance){
-		lPID.setSetpoint(-distance);
-		rPID.setSetpoint(distance);
+		
 	}
 	
 	
@@ -79,8 +77,7 @@ public class DriveTrain extends Subsystem implements RobotMap{
      * Rotates the robot's frame left or right depending on the input
      ******************************************************************/
 	public void RotateLeft(double distance){
-		lPID.setSetpoint(distance);
-		rPID.setSetpoint(distance);
+		
 	}
 	
 	
@@ -88,8 +85,7 @@ public class DriveTrain extends Subsystem implements RobotMap{
      * Should probably just use one of these rotates and set both neg or something
      ******************************************************************/
 	public void RotateRight(double distance){
-		lPID.setSetpoint(distance);
-		rPID.setSetpoint(distance);
+		
 	}
 	
 	
@@ -110,7 +106,7 @@ public class DriveTrain extends Subsystem implements RobotMap{
      * Commands call this for PID to see if both sides are done
      ******************************************************************/
 	public boolean commandDone(){
-		return (lPID.finished() && rPID.finished());
+		return true;
 	}
 	
 	

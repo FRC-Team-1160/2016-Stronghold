@@ -55,9 +55,11 @@ public class Shooter extends Subsystem implements RobotMap{
 		big.set(speed);
 		small.set(speed);
 	}
+	
 	public void setBig(double speed){
 		big.set(speed);
 	}
+	
 	public void setSmall(double speed){
 		small.set(speed);
 	}
@@ -90,8 +92,8 @@ public class Shooter extends Subsystem implements RobotMap{
 		 	System.out.println("Small: " + smallRev);
 		 	*/
 		
-			smallRPM = small.getSpeed() * 600 / MAX_RPM;
-			largeRPM = big.getSpeed() * 600 / MAX_RPM;
+			smallRPM = small.getSpeed() * 600 / TICKS_PER_REV;
+			largeRPM = big.getSpeed() * 600 / TICKS_PER_REV;
 			
 			System.out.println("SmallRPM: " + smallRPM);
 			System.out.println("LargeRPM: " + largeRPM);

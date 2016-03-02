@@ -22,7 +22,7 @@ public class SpinWheels extends Command implements RobotMap{
 	@Override
 	protected void execute() {
 		//System.out.println("going at " + rpm);
-		Robot.shoot.bangBang(rpm);
+		//Robot.shoot.bangBang(rpm);
 		timeElapsed = Robot.shoot.getTime();
 	}
 

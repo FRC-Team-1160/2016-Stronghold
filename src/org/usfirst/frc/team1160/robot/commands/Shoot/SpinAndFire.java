@@ -5,7 +5,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class SpinAndFire extends CommandGroup{
 
 	public SpinAndFire(){
-		addParallel(new SpinWheels());
+		addParallel(new ProportionalSpinWheels());
 		addParallel(new ReadyAimFire());
 	}
 }

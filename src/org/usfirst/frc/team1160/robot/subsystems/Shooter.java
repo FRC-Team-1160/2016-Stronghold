@@ -14,7 +14,7 @@ public class Shooter extends Subsystem implements RobotMap{
 	public static Shooter instance;
 	
 	protected final CANTalon big, small;
-	private double rpm, angleSec, finalRPM, smallCurrentRPM, largeCurrentRPM, logVel, hold;
+	private double rpm, angleSec, finalRPM, smallRPM, largeRPM, logVel, hold,largeRev,smallRev;
 	private Timer time;
 	
 	public static Shooter getInstance(){
@@ -27,12 +27,13 @@ public class Shooter extends Subsystem implements RobotMap{
 	private Shooter(){
 		big = new CANTalon(S_FLYWHEEL_LARGE);
 		small = new CANTalon(S_FLYWHEEL_SMALL);
-		big.setFeedbackDevice(CANTalon.FeedbackDevice.CtreMagEncoder_Relative);
-		small.setFeedbackDevice(CANTalon.FeedbackDevice.CtreMagEncoder_Relative);
-		big.reverseOutput(true);
 		big.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
 		small.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
 		big.reverseOutput(true);
+		/*
+		small.setFeedbackDevice(CANTalon.FeedbackDevice.CtreMagEncoder_Relative);
+		big.reverseOutput(true);
+		*/
 
 		SmartDashboard.putNumber("TEST_DISTANCE", TEST_DISTANCE);
 		//big.changeControlMode(CANTalon.TalonControlMode.Speed);
@@ -53,9 +54,15 @@ public class Shooter extends Subsystem implements RobotMap{
 	public void setFlywheel(double speed){
 		big.set(speed);
 		small.set(speed);
-		SmartDashboard.putNumber("Top Shooter Wheel",big.getSpeed());
-		SmartDashboard.putNumber("Bottom Shooter Wheel",small.getSpeed());
 	}
+	public void setBig(double speed){
+		big.set(speed);
+	}
+	public void setSmall(double speed){
+		small.set(speed);
+	}
+	
+	
 	public double speedFromDistance(double distance){
 		angleSec = 1/Math.cos(SHOOTER_ANGLE_RADIANS);
 		rpm = ((distance*angleSec*Math.sqrt((GRAVITATIONAL_ACCEL)/(2*(BALL_VERTICAL_DISPLACEMENT - distance*Math.tan(SHOOTER_ANGLE_RADIANS)))))/SHOOTER_WHEEL_CIRCUMFERENCE)*60;
@@ -76,7 +83,23 @@ public class Shooter extends Subsystem implements RobotMap{
 		finalRPM = speedFromDistance(SmartDashboard.getNumber("TEST_DISTANCE")) + 102.788*velocity(SmartDashboard.getNumber("TEST_DISTANCE"));
 		return finalRPM;
 	}
-	
+	public void getRevolutions(){
+		 	/*
+		    smallRev = small.get();
+		 	largeRev = big.getPosition() / 4096;
+		 	System.out.println("Small: " + smallRev);
+		 	*/
+		
+			smallRPM = small.getSpeed() * 600 / MAX_RPM;
+			largeRPM = big.getSpeed() * 600 / MAX_RPM;
+			
+			System.out.println("SmallRPM: " + smallRPM);
+			System.out.println("LargeRPM: " + largeRPM);
+			
+			SmartDashboard.putNumber("SmallRPM: ", smallRPM);
+			SmartDashboard.putNumber("LargeRPM: ", largeRPM);
+
+		 	}
 	
 	protected void initDefaultCommand() {
 		

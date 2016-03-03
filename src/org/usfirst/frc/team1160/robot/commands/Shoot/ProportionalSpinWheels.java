@@ -30,8 +30,8 @@ public class ProportionalSpinWheels extends Command implements RobotMap{
 	protected void execute() {
 		// TODO Auto-generated method stub
 		Robot.shoot.getRevolutions();
-		bigCurrentRPM = SmartDashboard.getNumber("bigRPM");
-		smallCurrentRPM = SmartDashboard.getNumber("smallRPM");
+		bigCurrentRPM = SmartDashboard.getNumber("LargeRPM: ");
+		smallCurrentRPM = SmartDashboard.getNumber("SmallRPM: ");
 		
 		bigRPMError = targetRPM-bigCurrentRPM;
 		smallRPMError = targetRPM-smallCurrentRPM;

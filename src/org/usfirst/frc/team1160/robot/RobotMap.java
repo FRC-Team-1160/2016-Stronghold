@@ -25,12 +25,12 @@ public interface RobotMap {
 	public static final int SEE_BUTTON = 11;
 	
 	//Speed Controllers
-	public static final int DT_BACKRIGHT = 10;
-	public static final int DT_FRONTRIGHT = 11;
-	public static final int DT_BACKLEFT = 12;
-	public static final int DT_FRONTLEFT = 13;
+	public static final int DT_BACKRIGHT = 0;
+	public static final int DT_FRONTRIGHT = 1;
+	public static final int DT_BACKLEFT = 3;
+	public static final int DT_FRONTLEFT = 2;
 	public static final int S_FLYWHEEL_LARGE = 20;
-	public static final int S_FLYWHEEL_SMALL = 21;
+	public static final int S_FLYWHEEL_SMALL = 4;
 	public static final int SERVO = 1;
 	
 	//Joysticks
@@ -42,7 +42,7 @@ public interface RobotMap {
 	public static final double INTAKE_SPEED = -1;
 	public static final double FIRING_TIME = 1.75;
 	public static final double MAX_RPM = 3100;
-	public static final double TICKS_PER_REV = 4960;
+	public static final double TICKS_PER_REV = 4096;
 	
 	
 	//Shooter PID
@@ -50,10 +50,10 @@ public interface RobotMap {
 	
 	//Pneumatics
 	public static final int COMPRESSOR = 0;
-	public static final int S_PIVOT_A = 0;
-	public static final int S_HOLD_B = 3;
-	public static final int S_HOLD_A = 4;
-	public static final int S_PIVOT_B = 7;
+	public static final int S_PIVOT_A = 4;
+	public static final int S_HOLD_B = 0;
+	public static final int S_HOLD_A = 7;
+	public static final int S_PIVOT_B = 3;
 	
     //Targeting Variables
     public static final int X_MAX = 320;

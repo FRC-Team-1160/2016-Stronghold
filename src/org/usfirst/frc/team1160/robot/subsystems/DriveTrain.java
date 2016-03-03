@@ -5,6 +5,7 @@ import org.usfirst.frc.team1160.robot.RobotMap;
 import org.usfirst.frc.team1160.robot.commands.ManualDrive;
 
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
+import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -13,8 +14,8 @@ public class DriveTrain extends Subsystem implements RobotMap{
 	
 	private static DriveTrain instance;
 	
-	protected final CANTalon fl, bl, fr, br;
-	private final PowerDistributionPanel panel;
+	protected final Talon fl, bl, fr, br;
+	//private final PowerDistributionPanel panel;
 	
     /******************************************************************
      * Singleton for DriveTrain constructor
@@ -37,15 +38,17 @@ public class DriveTrain extends Subsystem implements RobotMap{
      * -Values for Proportional and Derivative are given to SmartDash
      ******************************************************************/
 	private DriveTrain(){
-		fl = new CANTalon(DT_FRONTLEFT);
-		bl = new CANTalon(DT_BACKLEFT);
-		fr = new CANTalon(DT_FRONTRIGHT);
-		br = new CANTalon(DT_BACKRIGHT);
-		br.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
+		fl = new Talon(DT_FRONTLEFT);
+		bl = new Talon(DT_BACKLEFT);
+		fr = new Talon(DT_FRONTRIGHT);
+		br = new Talon(DT_BACKRIGHT);
+	
+/*		br.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
 		fr.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
 		bl.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
 		fl.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
 		panel = new PowerDistributionPanel();
+*/
 	}
 	
 	
@@ -93,12 +96,15 @@ public class DriveTrain extends Subsystem implements RobotMap{
      * Logs power to the SmartDash for monitoring
      ******************************************************************/
 	public void logPower(){
-	    	SmartDashboard.putNumber("FrontLeft Power: ", panel.getCurrent(P_MOTOR_FL));
+	    /*	
+		SmartDashboard.putNumber("FrontLeft Power: ", panel.getCurrent(P_MOTOR_FL));
 	    	SmartDashboard.putNumber("BackLeft Power: ", panel.getCurrent(P_MOTOR_BL));
 	    	SmartDashboard.putNumber("FrontRight Power: ", panel.getCurrent(P_MOTOR_FR));
 	    	SmartDashboard.putNumber("BackRight Power: ", panel.getCurrent(P_MOTOR_BR));
 	    	SmartDashboard.putNumber("Total PDP Volts: ", panel.getVoltage());
 	    	//SmartDashboard.putNumber("Total PDP Watts: ", panel.getTotalPower());
+	    	 * 
+	    	 */
 	    }
 	 
 	

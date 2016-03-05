@@ -24,6 +24,22 @@ public interface RobotMap {
 	public static final int FIRE = 9;
 	public static final int SEE_BUTTON = 11;
 	
+	/************************************
+	 * -----------PRACTICE------------
+	 * DT_BACKRIGHT = 10;
+	 * DT_FRONTRIGHT = 11;
+	 * DT_BACKLEFT = 12;
+	 * DT_FRONTLEFT = 13;
+	 * S_FLYWHEEL_LARGE = 20;
+	 * S_FLYWHEEL_SMALL = 21; 
+	 * ------------FINAL---------------
+	 * DT_BACKRIGHT = 10;
+	 * DT_FRONTRIGHT = 11;
+	 * DT_BACKLEFT = 12;
+	 * DT_FRONTLEFT = 13;
+	 * S_FLYWHEEL_LARGE = 20;
+	 * S_FLYWHEEL_SMALL = 21;
+	 ***********************************/
 	//Speed Controllers
 	public static final int DT_BACKRIGHT = 0;
 	public static final int DT_FRONTRIGHT = 1;

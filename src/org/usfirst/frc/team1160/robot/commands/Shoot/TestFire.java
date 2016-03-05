@@ -13,18 +13,16 @@ public class TestFire extends Command implements RobotMap{
 	
 	@Override
 	protected void initialize() {
-		//System.out.println("worksoers!!!!?");
+		Robot.shoot.setShootSpeed(Robot.shoot.addEnergy());
 	}
 
 	@Override
 	protected void execute() {
-		//System.out.println("worksoers?");
-		Robot.shoot.testFire();
 	}
 
 	@Override
 	protected boolean isFinished() {
-		return false;
+		return Robot.shoot.isDone(Robot.shoot.addEnergy());
 	}
 
 	@Override

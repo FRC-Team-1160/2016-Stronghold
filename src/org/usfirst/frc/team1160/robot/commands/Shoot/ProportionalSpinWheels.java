@@ -44,6 +44,9 @@ public class ProportionalSpinWheels extends Command implements RobotMap{
 		Robot.shoot.setBig(targetSpeed+bigScaledError*P_CONSTANT);
 		Robot.shoot.setSmall(targetSpeed+smallScaledError*P_CONSTANT);
 		
+		System.out.println("set big scaled: " + targetSpeed+bigScaledError*P_CONSTANT);
+		System.out.println("set small scaled: " + targetSpeed+smallScaledError*P_CONSTANT);
+		
 		timeElapsed = Robot.shoot.getTime();
 		
 	}

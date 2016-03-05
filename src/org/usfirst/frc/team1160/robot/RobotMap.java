@@ -55,21 +55,21 @@ public interface RobotMap {
 	
 	//Shooter Speeds
 	public static final double FIRE_BIG = 1;
-	public static final double INTAKE_SPEED = -1;
+	public static final double INTAKE_SPEED = -.3;
 	public static final double FIRING_TIME = 1.75;
 	public static final double MAX_RPM = 3100;
 	public static final double TICKS_PER_REV = 4096;
 	
 	
 	//Shooter PID
-	public static final double P_CONSTANT = 0.2;
+	public static final double P_CONSTANT = 0.01;
 	
 	//Pneumatics
 	public static final int COMPRESSOR = 0;
-	public static final int S_PIVOT_A = 4;
+	public static final int S_PIVOT_A = 3;
 	public static final int S_HOLD_B = 0;
 	public static final int S_HOLD_A = 7;
-	public static final int S_PIVOT_B = 3;
+	public static final int S_PIVOT_B = 4;
 	
     //Targeting Variables
     public static final int X_MAX = 320;

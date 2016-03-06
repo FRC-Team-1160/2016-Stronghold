@@ -62,7 +62,7 @@ public interface RobotMap {
 	
 	
 	//Shooter PID
-	public static final double P_CONSTANT = 0.2;
+	public static final double P_CONSTANT = .0000035;
 	
 	//Pneumatics
 	public static final int COMPRESSOR = 0;

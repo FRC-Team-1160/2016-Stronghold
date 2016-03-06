@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class ProportionalSpinWheels extends Command implements RobotMap{
 
-	double timeElapsed, targetRPM, targetSpeed, bigRPMError, smallRPMError, bigCurrentRPM, smallCurrentRPM,bigCorrectedSpeed,smallCorrectedSpeed;
+	double  initialSpeed, timeElapsed, targetRPM, targetSpeed, bigRPMError, smallRPMError, bigError, smallError, bigCurrentRPM, smallCurrentRPM,bigCurrentSpeed,smallCurrentSpeed,bigCorrectedSpeed,smallCorrectedSpeed;
 	
 	public ProportionalSpinWheels(){
 		requires(Robot.shoot);
@@ -18,10 +18,13 @@ public class ProportionalSpinWheels extends Command implements RobotMap{
 	protected void initialize() {
 		// TODO Auto-generated method stub
 		targetRPM = Robot.shoot.addEnergy();
-		targetSpeed = targetRPM/MAX_RPM;
+		initialSpeed = targetRPM/MAX_RPM;
 		
+		smallCurrentSpeed = -initialSpeed;
+		bigCurrentSpeed = -initialSpeed;
+		SmartDashboard.putNumber("Initial Speed:", -initialSpeed);
 		
-		Robot.shoot.setFlywheel(targetSpeed);
+		Robot.shoot.setFlywheel(initialSpeed);
 		Robot.shoot.startTime();
 
 	}
@@ -31,15 +34,21 @@ public class ProportionalSpinWheels extends Command implements RobotMap{
 		// TODO Auto-generated method stub
 		Robot.shoot.getRevolutions();
 		bigCurrentRPM = SmartDashboard.getNumber("LargeRPM: ");
-		smallCurrentRPM = -SmartDashboard.getNumber("SmallRPM: ");
+		smallCurrentRPM = SmartDashboard.getNumber("SmallRPM: ");
 		
-		bigRPMError = targetRPM-bigCurrentRPM;
-		smallRPMError = targetRPM-smallCurrentRPM;
+		bigRPMError = bigCurrentRPM-targetRPM;
+		smallRPMError = smallCurrentRPM-targetRPM;
+		bigError = bigRPMError*P_CONSTANT;
+		smallError = smallRPMError*P_CONSTANT;
 		SmartDashboard.putNumber("Top RPM Error: ", bigRPMError);
 		SmartDashboard.putNumber("Bottom RPM Error: ", smallRPMError);
 		
-		bigCorrectedSpeed = (bigCurrentRPM + (bigRPMError*P_CONSTANT))/MAX_RPM;
-		smallCorrectedSpeed = -(smallCurrentRPM + (smallRPMError*P_CONSTANT))/MAX_RPM;
+		
+		bigCorrectedSpeed = (bigCurrentSpeed -bigError);
+		smallCorrectedSpeed = (smallCurrentSpeed - smallError);
+		
+		bigCurrentSpeed = bigCorrectedSpeed;
+		smallCurrentSpeed = smallCorrectedSpeed;
 
 		
 		
@@ -64,6 +73,10 @@ public class ProportionalSpinWheels extends Command implements RobotMap{
 	@Override
 	protected void end() {
 		Robot.shoot.setFlywheel(0);
+		bigCurrentSpeed = 0;
+		smallCurrentSpeed = 0;
+		
+
 	}
 
 	@Override

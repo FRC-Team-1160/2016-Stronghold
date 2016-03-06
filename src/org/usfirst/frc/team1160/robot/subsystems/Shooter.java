@@ -29,7 +29,7 @@ public class Shooter extends Subsystem implements RobotMap{
 		small = new CANTalon(S_FLYWHEEL_SMALL);
 		big.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
 		small.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
-		big.reverseOutput(true);
+		//big.reverseOutput(true);
 		/*
 		small.setFeedbackDevice(CANTalon.FeedbackDevice.CtreMagEncoder_Relative);
 		big.reverseOutput(true);
@@ -52,7 +52,7 @@ public class Shooter extends Subsystem implements RobotMap{
 	}
 	
 	public void setFlywheel(double speed){
-		big.set(speed);
+		big.set(-speed);
 		small.set(-speed);
 	}
 	
@@ -86,6 +86,7 @@ public class Shooter extends Subsystem implements RobotMap{
 		SmartDashboard.putNumber("Goal RPM: ", finalRPM);
 		return finalRPM;
 	}
+	
 	public void getRevolutions(){
 		 	/*
 		    smallRev = small.get();
@@ -98,7 +99,7 @@ public class Shooter extends Subsystem implements RobotMap{
 			
 			System.out.println("SmallRPM: " + smallRPM);
 			System.out.println("LargeRPM: " + largeRPM);
-			System.out.println("he");
+			//System.out.println("he");
 			
 			SmartDashboard.putNumber("SmallRPM: ", smallRPM);
 			SmartDashboard.putNumber("LargeRPM: ", largeRPM);

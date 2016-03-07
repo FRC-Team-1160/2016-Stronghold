@@ -13,13 +13,13 @@ public class TestFire extends Command implements RobotMap{
 	
 	@Override
 	protected void initialize() {
-		//System.out.println("worksoers!!!!?");
+		Robot.shoot.testFire();
+		Robot.shoot.enabler();
 	}
 
 	@Override
 	protected void execute() {
-		//System.out.println("worksoers?");
-		Robot.shoot.testFire();
+		
 	}
 
 	@Override
@@ -30,7 +30,7 @@ public class TestFire extends Command implements RobotMap{
 	@Override
 	protected void end() {
 		// TODO Auto-generated method stub
-		
+		Robot.shoot.disabler();
 	}
 
 	@Override

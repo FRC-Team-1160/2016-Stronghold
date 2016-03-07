@@ -29,6 +29,7 @@ public class Shooter extends Subsystem implements RobotMap{
 		small = new CANTalon(S_FLYWHEEL_SMALL);
 		big.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
 		small.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
+<<<<<<< HEAD
 		small.reverseSensor(true);
 		big.configEncoderCodesPerRev(4096);
 		small.configEncoderCodesPerRev(4096);
@@ -37,6 +38,9 @@ public class Shooter extends Subsystem implements RobotMap{
 		small.setP(P);
 		small.setI(I);
 		
+=======
+		//big.reverseOutput(true);
+>>>>>>> 4f01322b881aa3f02bb2a22ae3b758a055885abe
 		/*
 		small.setFeedbackDevice(CANTalon.FeedbackDevice.CtreMagEncoder_Relative);
 		big.reverseOutput(true);
@@ -73,8 +77,8 @@ public class Shooter extends Subsystem implements RobotMap{
 	}
 	
 	public void setFlywheel(double speed){
-		big.set(speed);
-		small.set(speed);
+		big.set(-speed);
+		small.set(-speed);
 	}
 	
 	public void setBig(double speed){
@@ -104,8 +108,10 @@ public class Shooter extends Subsystem implements RobotMap{
 		//finalRPM = speedFromDistance(vision.getDistance()) + 102.788*velocity(vision.getDistance());
 		//Test for bot w/o camera
 		finalRPM = speedFromDistance(SmartDashboard.getNumber("TEST_DISTANCE")) + 102.788*velocity(SmartDashboard.getNumber("TEST_DISTANCE"));
+		SmartDashboard.putNumber("Goal RPM: ", finalRPM);
 		return finalRPM;
 	}
+	
 	public void getRevolutions(){
 		 	/*
 		    smallRev = small.get();
@@ -116,13 +122,37 @@ public class Shooter extends Subsystem implements RobotMap{
 			smallRPM = small.getSpeed() * 600 / TICKS_PER_REV;
 			largeRPM = big.getSpeed() * 600 / TICKS_PER_REV;
 			
+<<<<<<< HEAD
 			System.out.println("SmallRPM: " + small.getSpeed());
 			System.out.println("LargeRPM: " + big.getSpeed());
+=======
+			System.out.println("SmallRPM: " + smallRPM);
+			System.out.println("LargeRPM: " + largeRPM);
+			//System.out.println("he");
+>>>>>>> 4f01322b881aa3f02bb2a22ae3b758a055885abe
 			
 			SmartDashboard.putNumber("SmallRPM: ", smallRPM);
 			SmartDashboard.putNumber("LargeRPM: ", largeRPM);
 
 		 	}
+	
+	public void setShootSpeed(double speedRPM){
+		small.changeControlMode(CANTalon.TalonControlMode.Speed);
+		big.changeControlMode(CANTalon.TalonControlMode.Speed);
+		small.setProfile(0);
+		big.setProfile(0);
+		small.set(speedRPM * 4096 / 600);
+		big.set(speedRPM * 4096 / 600);
+		small.enable();
+		big.enable();
+	}
+	
+	public boolean isDone(double setSpeed){
+		double goal = setSpeed * 4096 / 600;
+		getRevolutions();
+		SmartDashboard.putNumber("Bottom Wheel RPM: ", small.getSpeed() * 600 / 4096);
+		return small.getSpeed() >= goal;
+	}
 	
 	protected void initDefaultCommand() {
 		

@@ -13,18 +13,25 @@ public class TestFire extends Command implements RobotMap{
 	
 	@Override
 	protected void initialize() {
+<<<<<<< HEAD
 		Robot.shoot.testFire();
 		Robot.shoot.enabler();
+=======
+		Robot.shoot.setShootSpeed(Robot.shoot.addEnergy());
+>>>>>>> 4f01322b881aa3f02bb2a22ae3b758a055885abe
 	}
 
 	@Override
 	protected void execute() {
+<<<<<<< HEAD
 		
+=======
+>>>>>>> 4f01322b881aa3f02bb2a22ae3b758a055885abe
 	}
 
 	@Override
 	protected boolean isFinished() {
-		return false;
+		return Robot.shoot.isDone(Robot.shoot.addEnergy());
 	}
 
 	@Override

@@ -8,7 +8,12 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class ProportionalSpinWheels extends Command implements RobotMap{
 
-	double  initialSpeed, timeElapsed, targetRPM, targetSpeed, bigRPMError, smallRPMError, bigError, smallError, bigCurrentRPM, smallCurrentRPM,bigCurrentSpeed,smallCurrentSpeed,bigCorrectedSpeed,smallCorrectedSpeed;
+	double  timeElapsed, 
+            targetRPM, 
+            bigError, 
+            smallError, 
+            bigCurrentRPM, 
+            smallCurrentRPM;
 	
 	public ProportionalSpinWheels(){
 		requires(Robot.shoot);
@@ -18,45 +23,40 @@ public class ProportionalSpinWheels extends Command implements RobotMap{
 	protected void initialize() {
 		// TODO Auto-generated method stub
 		targetRPM = Robot.shoot.addEnergy();
-		initialSpeed = targetRPM/MAX_RPM;
+		initialPWM = 0;
+    
+	    //I don't know what this negative is about	
+		smallCurrentPWM = -initialPWM;
+		bigCurrentPWM = -initialPWM;
+
+		SmartDashboard.putNumber("Initial PWM:", -initialPWM);
 		
-		smallCurrentSpeed = -initialSpeed;
-		bigCurrentSpeed = -initialSpeed;
-		SmartDashboard.putNumber("Initial Speed:", -initialSpeed);
-		
-		Robot.shoot.setFlywheel(initialSpeed);
+		Robot.shoot.setFlywheel(initialPWM);
 		Robot.shoot.startTime();
 
 	}
 
 	@Override
 	protected void execute() {
-		// TODO Auto-generated method stub
 		Robot.shoot.getRevolutions();
-		bigCurrentRPM = SmartDashboard.getNumber("LargeRPM: ");
-		smallCurrentRPM = SmartDashboard.getNumber("SmallRPM: ");
-		
-		bigRPMError = bigCurrentRPM-targetRPM;
-		smallRPMError = smallCurrentRPM-targetRPM;
-		bigError = bigRPMError*P_CONSTANT;
-		smallError = smallRPMError*P_CONSTANT;
-		SmartDashboard.putNumber("Top RPM Error: ", bigRPMError);
-		SmartDashboard.putNumber("Bottom RPM Error: ", smallRPMError);
-		
-		
-		bigCorrectedSpeed = (bigCurrentSpeed -bigError);
-		smallCorrectedSpeed = (smallCurrentSpeed - smallError);
-		
-		bigCurrentSpeed = bigCorrectedSpeed;
-		smallCurrentSpeed = smallCorrectedSpeed;
 
+		bigCurrentRPM = Robot.shoot.getBigRevolutions();
+		smallCurrentRPM = Robot.shoot.getSmallRevolutions();
 		
+		bigError = bigCurrentRPM-targetRPM;
+		smallError = smallCurrentRPM-targetRPM;
+
+	    bigCurrentPWM += bigError*P_CONSTANT;
+		smallCurrentPWM += smallError*P_CONSTANT;
+
+		Robot.shoot.setBig(bigCurrentPWM);
+		Robot.shoot.setSmall(smallCurrentPWM);
 		
-		Robot.shoot.setBig(bigCorrectedSpeed);
-		Robot.shoot.setSmall(smallCorrectedSpeed);
-		
-		System.out.println("set big scaled: " + bigCorrectedSpeed);
-		System.out.println("set small scaled: " + smallCorrectedSpeed);
+		SmartDashboard.putNumber("Top RPM Error: ", bigError);
+		SmartDashboard.putNumber("Bottom RPM Error: ", smallError);
+
+		System.out.println("set big: " + bigCurrentPWM);
+		System.out.println("set small: " + smallCurrentPWM);
 		
 		timeElapsed = Robot.shoot.getTime();
 		
@@ -73,10 +73,8 @@ public class ProportionalSpinWheels extends Command implements RobotMap{
 	@Override
 	protected void end() {
 		Robot.shoot.setFlywheel(0);
-		bigCurrentSpeed = 0;
-		smallCurrentSpeed = 0;
-		
-
+		bigCurrentPWM = 0;
+		smallCurrentPWM = 0;
 	}
 
 	@Override

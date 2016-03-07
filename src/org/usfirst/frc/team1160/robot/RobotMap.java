@@ -55,13 +55,8 @@ public interface RobotMap {
 	
 	//Shooter Speeds
 	public static final double FIRE_BIG = 1;
-<<<<<<< HEAD
-	public static final double INTAKE_SPEED = -1;
-	public static final double FIRING_TIME = 2.75;
-=======
 	public static final double INTAKE_SPEED = -.3;
 	public static final double FIRING_TIME = 3;
->>>>>>> 4f01322b881aa3f02bb2a22ae3b758a055885abe
 	public static final double MAX_RPM = 3100;
 	public static final double TICKS_PER_REV = 4096;
 	

@@ -18,11 +18,12 @@ public class TestFire extends Command implements RobotMap{
 
 	@Override
 	protected void execute() {
+		Robot.shoot.testFire();
 	}
 
 	@Override
 	protected boolean isFinished() {
-		return Robot.shoot.isDone(Robot.shoot.addEnergy());
+		return false;
 	}
 
 	@Override

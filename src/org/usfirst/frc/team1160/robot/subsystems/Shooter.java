@@ -16,6 +16,7 @@ public class Shooter extends Subsystem implements RobotMap{
 	protected final CANTalon big, small;
 	private double rpm, angleSec, finalRPM, smallRPM, largeRPM, logVel, hold,largeRev,smallRev;
 	private Timer time;
+	private Vision vision;
 	
 	public static Shooter getInstance(){
 		if(instance == null){
@@ -29,6 +30,8 @@ public class Shooter extends Subsystem implements RobotMap{
 		small = new CANTalon(S_FLYWHEEL_SMALL);
 		big.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
 		small.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
+		small.configEncoderCodesPerRev(1024);
+		big.configEncoderCodesPerRev(4096);
 		//big.reverseOutput(true);
 		/*
 		small.setFeedbackDevice(CANTalon.FeedbackDevice.CtreMagEncoder_Relative);
@@ -36,9 +39,14 @@ public class Shooter extends Subsystem implements RobotMap{
 		*/
 
 		SmartDashboard.putNumber("TEST_DISTANCE", TEST_DISTANCE);
+		
+		//big.setFeedbackDevice(CANTalon.FeedbackDevice.CtreMagEncoder_Relative);
+		//small.setFeedbackDevice(CANTalon.FeedbackDevice.CtreMagEncoder_Relative);
+		
 		//big.changeControlMode(CANTalon.TalonControlMode.Speed);
 		//small.changeControlMode(CANTalon.TalonControlMode.Speed);
 		time = new Timer();
+		vision = Vision.getInstance();
 	}
 	
 	public void enabler(){
@@ -58,6 +66,11 @@ public class Shooter extends Subsystem implements RobotMap{
 	public double distanceRPM(double distance){
 		
 		return 0;
+	}
+	
+	public void setFollowing(){
+		big.changeControlMode(CANTalon.TalonControlMode.Follower);
+		big.set(small.get());
 	}
 	
 	@SuppressWarnings("deprecation")
@@ -94,11 +107,20 @@ public class Shooter extends Subsystem implements RobotMap{
 	} 
 	
 	public double addEnergy(){
-		//finalRPM = speedFromDistance(vision.getDistance()) + 102.788*velocity(vision.getDistance());
+		finalRPM = speedFromDistance(vision.getDistance()) + 102.788*velocity(vision.getDistance());
+		SmartDashboard.putNumber("Distance: ", vision.getDistance());
 		//Test for bot w/o camera
-		finalRPM = speedFromDistance(SmartDashboard.getNumber("TEST_DISTANCE")) + 102.788*velocity(SmartDashboard.getNumber("TEST_DISTANCE"));
+		//finalRPM = speedFromDistance(SmartDashboard.getNumber("TEST_DISTANCE")) + 102.788*velocity(SmartDashboard.getNumber("TEST_DISTANCE"));
 		SmartDashboard.putNumber("Goal RPM: ", finalRPM);
 		return finalRPM;
+	}
+	
+	public void testRPMS(){
+		small.changeControlMode(CANTalon.TalonControlMode.Speed);
+		big.changeControlMode(CANTalon.TalonControlMode.Speed);
+		small.set(1/6);
+		big.set(1/6);
+		enabler();
 	}
 	
 	public void getRevolutions(){
@@ -108,9 +130,10 @@ public class Shooter extends Subsystem implements RobotMap{
 		 	System.out.println("Small: " + smallRev);
 		 	*/
 		
-			smallRPM = small.getSpeed() * 600 / TICKS_PER_REV;
-			largeRPM = big.getSpeed() * 600 / TICKS_PER_REV;
-			
+			smallRPM = small.getSpeed();
+					//* 600 / TICKS_PER_REV;
+			largeRPM = big.getSpeed() ;
+					//* 600 / TICKS_PER_REV;
 			System.out.println("SmallRPM: " + smallRPM);
 			System.out.println("LargeRPM: " + largeRPM);
 			//System.out.println("he");
@@ -143,8 +166,8 @@ public class Shooter extends Subsystem implements RobotMap{
 	}
 
 	public void testFire(){
-		small.set(addEnergy());
-		big.set(addEnergy());
+		System.out.println("Top rev: " + big.getPosition());
+		System.out.println("Bot rev: " + small.getPosition());
 	}
 	public void startTime(){
 		time.reset();
@@ -153,6 +176,10 @@ public class Shooter extends Subsystem implements RobotMap{
 	
 	public double getTime(){
 		return time.get();
+	}
+	
+	public double getSmall(){
+		return small.get();
 	}
 	
 }

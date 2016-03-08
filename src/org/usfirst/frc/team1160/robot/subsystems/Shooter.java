@@ -31,14 +31,14 @@ public class Shooter extends Subsystem implements RobotMap{
 		big.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
 		small.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
 		small.configEncoderCodesPerRev(1024);
-		big.configEncoderCodesPerRev(4096);
+		big.configEncoderCodesPerRev(1024);
 		//big.reverseOutput(true);
 		/*
 		small.setFeedbackDevice(CANTalon.FeedbackDevice.CtreMagEncoder_Relative);
 		big.reverseOutput(true);
 		*/
 
-		SmartDashboard.putNumber("TEST_DISTANCE", TEST_DISTANCE);
+		//SmartDashboard.putNumber("TEST_DISTANCE", TEST_DISTANCE);
 		
 		//big.setFeedbackDevice(CANTalon.FeedbackDevice.CtreMagEncoder_Relative);
 		//small.setFeedbackDevice(CANTalon.FeedbackDevice.CtreMagEncoder_Relative);
@@ -108,7 +108,7 @@ public class Shooter extends Subsystem implements RobotMap{
 	
 	public double addEnergy(){
 		finalRPM = speedFromDistance(vision.getDistance()) + 102.788*velocity(vision.getDistance());
-		SmartDashboard.putNumber("Distance: ", vision.getDistance());
+		//SmartDashboard.putNumber("Distance: ", vision.getDistance());
 		//Test for bot w/o camera
 		//finalRPM = speedFromDistance(SmartDashboard.getNumber("TEST_DISTANCE")) + 102.788*velocity(SmartDashboard.getNumber("TEST_DISTANCE"));
 		SmartDashboard.putNumber("Goal RPM: ", finalRPM);

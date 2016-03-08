@@ -40,8 +40,8 @@ public class ProportionalSpinWheels extends Command implements RobotMap{
 		smallRPMError = targetRPM -smallCurrentRPM;
 		bigError = bigRPMError*P_CONSTANT;
 		smallError = smallRPMError*P_CONSTANT;
-		SmartDashboard.putNumber("Top RPM Error: ", bigRPMError);
-		SmartDashboard.putNumber("Bottom RPM Error: ", smallRPMError);
+		//SmartDashboard.putNumber("Top RPM Error: ", bigRPMError);
+		//SmartDashboard.putNumber("Bottom RPM Error: ", smallRPMError);
 		
 		
 		bigCorrectedSpeed = (bigCurrentSpeed - bigError);

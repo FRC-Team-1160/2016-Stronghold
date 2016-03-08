@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class ProportionalSpinWheels extends Command implements RobotMap{
 
-	double  initialSpeed, timeElapsed, targetRPM, targetSpeed, bigRPMError, smallRPMError, bigError, smallError, bigCurrentRPM, smallCurrentRPM,bigCurrentSpeed,smallCurrentSpeed,bigCorrectedSpeed,smallCorrectedSpeed;
+	double  initialSpeedBIG, initialSpeedSMALL, timeElapsed, targetRPMBig, targetRPMSmall, targetSpeed, bigRPMError, smallRPMError, bigError, smallError, bigCurrentRPM, smallCurrentRPM,bigCurrentSpeed,smallCurrentSpeed,bigCorrectedSpeed,smallCorrectedSpeed;
 	
 	public ProportionalSpinWheels(){
 		requires(Robot.shoot);
@@ -17,14 +17,16 @@ public class ProportionalSpinWheels extends Command implements RobotMap{
 	@Override
 	protected void initialize() {
 		// TODO Auto-generated method stub
-		targetRPM = Robot.shoot.addEnergy();
-		initialSpeed = targetRPM/MAX_RPM;
+		targetRPMSmall = Robot.shoot.addEnergy();
+		targetRPMBig = -Robot.shoot.addEnergy();
+		initialSpeedBIG = -1;
+		initialSpeedSMALL = 1;
 		
-		smallCurrentSpeed = -initialSpeed;
-		bigCurrentSpeed = -initialSpeed;
-		SmartDashboard.putNumber("Initial Speed:", -initialSpeed);
+		smallCurrentSpeed = initialSpeedSMALL;
+		bigCurrentSpeed = initialSpeedBIG;
+		//SmartDashboard.putNumber("Initial Speed:", -initialSpeed);
 		
-		Robot.shoot.setFlywheel(initialSpeed);
+		//Robot.shoot.setFlywheel(-initialSpeed);
 		Robot.shoot.startTime();
 
 	}
@@ -36,19 +38,28 @@ public class ProportionalSpinWheels extends Command implements RobotMap{
 		bigCurrentRPM = SmartDashboard.getNumber("LargeRPM: ");
 		smallCurrentRPM = SmartDashboard.getNumber("SmallRPM: ");
 		
-		bigRPMError = targetRPM - bigCurrentRPM;
-		smallRPMError = targetRPM -smallCurrentRPM;
+		bigRPMError = targetRPMBig - bigCurrentRPM;
+		smallRPMError = targetRPMSmall -smallCurrentRPM;
 		bigError = bigRPMError*P_CONSTANT;
 		smallError = smallRPMError*P_CONSTANT;
 		//SmartDashboard.putNumber("Top RPM Error: ", bigRPMError);
 		//SmartDashboard.putNumber("Bottom RPM Error: ", smallRPMError);
 		
 		
-		bigCorrectedSpeed = (bigCurrentSpeed - bigError);
-		smallCorrectedSpeed = (smallCurrentSpeed - smallError);
+		bigCorrectedSpeed = (bigCurrentSpeed + bigError);
+		smallCorrectedSpeed = (smallCurrentSpeed + smallError);
 		
 		bigCurrentSpeed = bigCorrectedSpeed;
 		smallCurrentSpeed = smallCorrectedSpeed;
+		
+		/*big -> -1000
+		 * small -> 1000
+		 * bigErrorRPM -> -500
+		 * smallErrorRPM -> 500
+		 * bigE = -500*.00007
+		 * smallE = 500*.00007
+		 * 
+		 */
 
 		
 		//The Test robot is Batshit Crazy

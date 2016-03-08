@@ -13,7 +13,8 @@ public class Shooter extends Subsystem implements RobotMap{
 	
 	public static Shooter instance;
 	
-	protected final CANTalon big, small;
+	protected final CANTalon big;
+	protected final ModTal small;
 	private double rpm, angleSec, finalRPM, smallRPM, largeRPM, logVel, hold,largeRev,smallRev;
 	private Timer time;
 	private Vision vision;
@@ -27,7 +28,7 @@ public class Shooter extends Subsystem implements RobotMap{
 	
 	private Shooter(){
 		big = new CANTalon(S_FLYWHEEL_LARGE);
-		small = new CANTalon(S_FLYWHEEL_SMALL);
+		small = new ModTal(S_FLYWHEEL_SMALL);
 		big.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
 		small.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
 		small.configEncoderCodesPerRev(1024);
@@ -79,7 +80,7 @@ public class Shooter extends Subsystem implements RobotMap{
 	}
 	
 	public void setFlywheel(double speed){
-		big.set(-speed);
+		big.set(speed);
 		small.set(-speed);
 	}
 	
@@ -112,7 +113,7 @@ public class Shooter extends Subsystem implements RobotMap{
 		//Test for bot w/o camera
 		//finalRPM = speedFromDistance(SmartDashboard.getNumber("TEST_DISTANCE")) + 102.788*velocity(SmartDashboard.getNumber("TEST_DISTANCE"));
 		SmartDashboard.putNumber("Goal RPM: ", finalRPM);
-		return finalRPM;
+		return finalRPM+500;
 	}
 	
 	public void testRPMS(){

@@ -8,7 +8,8 @@ import edu.wpi.first.wpilibj.command.Command;
 public class TestFire extends Command implements RobotMap{
 
 	public TestFire(){
-		requires(Robot.shoot);
+		//requires(Robot.shoot);
+		requires(Robot.see);
 	}
 	
 	@Override
@@ -18,7 +19,8 @@ public class TestFire extends Command implements RobotMap{
 
 	@Override
 	protected void execute() {
-		Robot.shoot.testFire();
+		Robot.see.visualize();
+		//Robot.shoot.testFire();
 	}
 
 	@Override
@@ -29,7 +31,7 @@ public class TestFire extends Command implements RobotMap{
 	@Override
 	protected void end() {
 		// TODO Auto-generated method stub
-		Robot.shoot.disabler();
+		//Robot.shoot.disabler();
 	}
 
 	@Override

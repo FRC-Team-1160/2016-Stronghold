@@ -56,13 +56,13 @@ public interface RobotMap {
 	//Shooter Speeds
 	public static final double FIRE_BIG = 1;
 	public static final double INTAKE_SPEED = .3;
-	public static final double FIRING_TIME = 5;
+	public static final double FIRING_TIME = 3;
 	public static final double MAX_RPM = 3100;
 	public static final double TICKS_PER_REV = 4096;
 	
 	
 	//Shooter PID
-	public static final double P_CONSTANT = .000007;
+	public static final double P_CONSTANT = .000001;
 	
 	//Pneumatics
 	public static final int COMPRESSOR = 0;
@@ -78,6 +78,7 @@ public interface RobotMap {
 	public static final int Y_MIN = 0;
 	public static final double px = 58;
 	public static final double px_dis = 103;
+	public static final double px_margin_error = 20;
 	
 		
 	//PID Variables

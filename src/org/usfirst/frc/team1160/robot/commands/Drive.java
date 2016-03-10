@@ -1,12 +1,13 @@
 package org.usfirst.frc.team1160.robot.commands;
 
 import org.usfirst.frc.team1160.robot.Robot;
+import org.usfirst.frc.team1160.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class Drive extends Command {
+public class Drive extends Command implements RobotMap{
 
-	double distance;
+	double distance, timeElapsed;
 	
     public Drive(double distance) {
     	requires(Robot.dt);
@@ -15,16 +16,21 @@ public class Drive extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	Robot.dt.startTime();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	Robot.dt.DriveDistance(distance);
+    	timeElapsed = Robot.dt.getTime();
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return Robot.dt.commandDone();
+        if(timeElapsed>AUTO_TIMEOUT){
+        	return true;
+        }
+    	return false;
     }
 
     // Called once after isFinished returns true

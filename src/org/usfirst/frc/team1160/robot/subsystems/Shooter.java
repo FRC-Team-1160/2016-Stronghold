@@ -5,6 +5,7 @@ import org.usfirst.frc.team1160.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.Joystick.AxisType;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -48,6 +49,11 @@ public class Shooter extends Subsystem implements RobotMap {
 		// small.changeControlMode(CANTalon.TalonControlMode.Speed);
 		time = new Timer();
 		vision = Vision.getInstance();
+	}
+	
+	public void potBoy(){
+		//??
+		OI.getInstance().getAutoInput().getAxis(AxisType.kThrottle);
 	}
 
 	public void enabler() {

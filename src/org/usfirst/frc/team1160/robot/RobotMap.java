@@ -41,18 +41,20 @@ public interface RobotMap {
 	 * S_FLYWHEEL_SMALL = 21;
 	 ***********************************/
 	//Speed Controllers
-	public static final int DT_BACKRIGHT = 0;
-	public static final int DT_FRONTRIGHT = 1;
-	public static final int DT_BACKLEFT = 3;
-	public static final int DT_FRONTLEFT = 2;
+	public static final int DT_BACKRIGHT = 10;
+	public static final int DT_FRONTRIGHT = 11;
+	public static final int DT_BACKLEFT = 12;
+	public static final int DT_FRONTLEFT = 13;
 	public static final int S_FLYWHEEL_LARGE = 20;
-	public static final int S_FLYWHEEL_SMALL = 4;
+	public static final int S_FLYWHEEL_SMALL = 21;
 	public static final int SERVO = 1;
 	
 	//Joysticks
 	public static final int AUTO_INPUT_PORT = 0;
 	public static final int STICK = 1;
 	
+	//Gyro
+	public static final int GYRO = 0;
 	//Shooter Speeds
 	public static final double FIRE_BIG = 1;
 	public static final double INTAKE_SPEED = .3;
@@ -72,13 +74,13 @@ public interface RobotMap {
 	public static final int S_PIVOT_B = 4;
 	
     //Targeting Variables
-    public static final int X_MAX = 170;
-	public static final int X_MIN = 150;
+    public static final int X_MAX = 165;
+	public static final int X_MIN = 155;
 	public static final int Y_MAX = 240;
 	public static final int Y_MIN = 0;
 	public static final double px = 58;
 	public static final double px_dis = 103;
-	public static final double px_margin_error = 20;
+	public static final double px_margin_error = 3;
 	
 		
 	//PID Variables
@@ -115,35 +117,40 @@ public interface RobotMap {
     public static final Value RET = DoubleSolenoid.Value.kReverse;
  	public static final int HEIGHT_ACTUAL = 12; //Tape
  	public static final int WIDTH_ACTUAL = 20;  //Tape
- 	public static final int DT_GEAR_RATIO = 2147483647;
+ 	public static final int DT_GEAR_RATIO = 2147483647;//TEST AND FIND
  	
 	public static final double FOCAL_X = (px*px_dis)/WIDTH_ACTUAL;
 
  	
- 	
+ 	//FIND THESE ALL
+		//Note:  B distances may not be needed
+	
 	//A Group
-	public static final int PORTCULLIS_A_DISTANCE = 0;
-	public static final int PORTCULLIS_B_DISTANCE = 0;
-	public static final int CHEVAL_A_DISTANCE = 0;
-	public static final int CHEVAL_B_DISTANCE = 0;
+	public static final double WHEEL_DIAMETER = 8*Math.PI;
+	public static final double PORTCULLIS_A_DISTANCE = 0/WHEEL_DIAMETER;
+	public static final double PORTCULLIS_B_DISTANCE = 0/WHEEL_DIAMETER;
+	public static final double CHEVAL_A_DISTANCE = 0/WHEEL_DIAMETER;
+	public static final double CHEVAL_B_DISTANCE = 0/WHEEL_DIAMETER;
 	//B Group
-	public static final int MOAT_DISTANCE = 0;
-	public static final int RAMPART_DISTANCE = 0;
+	public static final double MOAT_DISTANCE = 0/WHEEL_DIAMETER;
+	public static final double RAMPART_DISTANCE = 0/WHEEL_DIAMETER;
 	//C Group
-	public static final int DRAWBRIDGE_A_DISTANCE = 0;
-	public static final int DRAWBRIDGE_B_DISTANCE = 0;
-	public static final int SALLYPORT_A_DISTANCE = 0;
-	public static final int SALLYPORT_B_DISTANCE = 0;
+	public static final double DRAWBRIDGE_A_DISTANCE = 0/WHEEL_DIAMETER;
+	public static final double DRAWBRIDGE_B_DISTANCE = 0/WHEEL_DIAMETER;
+	public static final double SALLYPORT_A_DISTANCE = 0/WHEEL_DIAMETER;
+	public static final double SALLYPORT_B_DISTANCE = 0/WHEEL_DIAMETER;
 	//D Group
-	public static final int ROUGH_DISTANCE = 0;
-	public static final int ROCK_DISTANCE = 0;
+	public static final double ROUGH_DISTANCE = 0/WHEEL_DIAMETER;
+	public static final double ROCK_DISTANCE = 0/WHEEL_DIAMETER;
 
-	//Autonomous Rotation times
+	//Autonomous Rotation times 
+		// FIND THESE
 	public static final double A_TIME = 1;
 	public static final double B_TIME = 1;
 	public static final double C_TIME = 0;
 	public static final double D_TIME = 1;
 	public static final double E_TIME = 1;
+	public static final double AUTO_TIMEOUT = 4;//This should be good enough, but check
 
 	
 	//Shooting Equation Variables

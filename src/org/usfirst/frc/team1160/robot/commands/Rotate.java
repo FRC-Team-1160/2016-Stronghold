@@ -9,7 +9,7 @@ public class Rotate extends Command implements RobotMap{
 
 	private double duration, timeElapsed;
 	private boolean direction;
-	public Rotate(double time, Boolean Direction){
+	public Rotate(double time, boolean Direction){
 		duration = time;
 		direction = Direction;		
 		requires(Robot.dt);

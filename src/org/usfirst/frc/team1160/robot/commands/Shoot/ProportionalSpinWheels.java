@@ -24,7 +24,8 @@ public class ProportionalSpinWheels extends Command implements RobotMap{
 		bigCurrentSpeed = -initialSpeed;
 		SmartDashboard.putNumber("Initial Speed:", -initialSpeed);
 		
-		Robot.shoot.setFlywheel(initialSpeed);
+		//Robot.shoot.setFlywheel(initialSpeed);
+		Robot.shoot.setFlywheel(0);
 		Robot.shoot.startTime();
 
 	}

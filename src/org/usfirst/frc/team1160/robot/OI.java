@@ -1,5 +1,6 @@
 package org.usfirst.frc.team1160.robot;
 
+import org.usfirst.frc.team1160.robot.commands.Aim;
 import org.usfirst.frc.team1160.robot.commands.Distance;
 import org.usfirst.frc.team1160.robot.commands.Shoot.FireSequence;
 import org.usfirst.frc.team1160.robot.commands.Shoot.Intake;
@@ -57,7 +58,7 @@ public class OI implements RobotMap{
 		intake.whenPressed(new Intake(INTAKE_SPEED));
 		up.whenPressed(new ShootPosition());
 		down.whenPressed(new PickupPosition());
-		test.whenPressed(new TestFire());
+		test.whenPressed(new Aim());
 		see.whenPressed(new Distance(0));
 		cradleup.whenPressed(new CradlePush());
 		cradledown.whenPressed(new CradleHold());

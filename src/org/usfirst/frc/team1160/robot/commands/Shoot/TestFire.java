@@ -8,27 +8,30 @@ import edu.wpi.first.wpilibj.command.Command;
 public class TestFire extends Command implements RobotMap{
 
 	public TestFire(){
-		requires(Robot.shoot);
+		//requires(Robot.shoot);
+		requires(Robot.see);
 	}
 	
 	@Override
 	protected void initialize() {
-		Robot.shoot.setShootSpeed(Robot.shoot.addEnergy());
+
 	}
 
 	@Override
 	protected void execute() {
+		Robot.see.visualize();
+		//Robot.shoot.testFire();
 	}
 
 	@Override
 	protected boolean isFinished() {
-		return Robot.shoot.isDone(Robot.shoot.addEnergy());
+		return false;
 	}
 
 	@Override
 	protected void end() {
 		// TODO Auto-generated method stub
-		
+		//Robot.shoot.disabler();
 	}
 
 	@Override

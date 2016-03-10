@@ -14,7 +14,7 @@ public class StopWheels extends Command{
 	protected void initialize() {
 		Robot.shoot.setFlywheel(0);
 		System.out.println("Wheels Stopped");
-
+		//Robot.shoot.disabler();
 	}
 
 	@Override

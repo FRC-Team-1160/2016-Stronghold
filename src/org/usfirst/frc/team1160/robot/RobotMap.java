@@ -55,14 +55,14 @@ public interface RobotMap {
 	
 	//Shooter Speeds
 	public static final double FIRE_BIG = 1;
-	public static final double INTAKE_SPEED = -.3;
+	public static final double INTAKE_SPEED = .3;
 	public static final double FIRING_TIME = 3;
 	public static final double MAX_RPM = 3100;
 	public static final double TICKS_PER_REV = 4096;
 	
 	
 	//Shooter PID
-	public static final double P_CONSTANT = .0000035;
+	public static final double P_CONSTANT = .000001;
 	
 	//Pneumatics
 	public static final int COMPRESSOR = 0;
@@ -72,11 +72,14 @@ public interface RobotMap {
 	public static final int S_PIVOT_B = 4;
 	
     //Targeting Variables
-    public static final int X_MAX = 320;
-	public static final int X_MIN = 0;
+    public static final int X_MAX = 170;
+	public static final int X_MIN = 150;
 	public static final int Y_MAX = 240;
 	public static final int Y_MIN = 0;
-	public static final double FOCAL_X = 360;
+	public static final double px = 58;
+	public static final double px_dis = 103;
+	public static final double px_margin_error = 20;
+	
 		
 	//PID Variables
 	public static final double ENC_DISTANCE_PER_PULSE = 0.005;
@@ -112,6 +115,11 @@ public interface RobotMap {
     public static final Value RET = DoubleSolenoid.Value.kReverse;
  	public static final int HEIGHT_ACTUAL = 12; //Tape
  	public static final int WIDTH_ACTUAL = 20;  //Tape
+ 	
+ 	
+	public static final double FOCAL_X = (px*px_dis)/WIDTH_ACTUAL;
+
+ 	
  	
 	//A Group
 	public static final int PORTCULLIS_A_DISTANCE = 0;

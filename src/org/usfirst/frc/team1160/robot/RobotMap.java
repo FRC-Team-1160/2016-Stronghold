@@ -141,7 +141,7 @@ public interface RobotMap {
 	//Autonomous Rotation times
 	public static final double A_TIME = 1;
 	public static final double B_TIME = 1;
-	public static final double C_TIME = 1;
+	public static final double C_TIME = 0;
 	public static final double D_TIME = 1;
 	public static final double E_TIME = 1;
 

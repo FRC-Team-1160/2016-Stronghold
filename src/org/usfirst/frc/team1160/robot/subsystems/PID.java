@@ -18,8 +18,7 @@ public class PID extends Subsystem implements RobotMap{
 
 	}
 
-	public void set(double distance){
-		
+	public void set(double distance){		
 		Motor.set(distance);
 	}
 	

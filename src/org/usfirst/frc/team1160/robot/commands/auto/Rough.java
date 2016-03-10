@@ -4,7 +4,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 
 public class Rough extends CommandGroup {
     
-    public  Rough() {
+    public  Rough(int position, Boolean turnDirection) {
     	
     }
 }

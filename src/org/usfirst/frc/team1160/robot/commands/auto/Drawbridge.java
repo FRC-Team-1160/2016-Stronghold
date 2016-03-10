@@ -4,7 +4,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 
 public class Drawbridge extends CommandGroup {
     
-    public  Drawbridge() {
+    public  Drawbridge(int position, Boolean turnDirection) {
     	
     }
 }

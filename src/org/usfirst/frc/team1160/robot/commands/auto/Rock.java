@@ -4,7 +4,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 
 public class Rock extends CommandGroup {
     
-    public  Rock() {
+    public  Rock(int position, Boolean turnDirection) {
     	
     }
 }

@@ -4,7 +4,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 
 public class Ramparts extends CommandGroup {
     
-    public  Ramparts() {
+    public  Ramparts(int position, Boolean turnDirection) {
     	
     }
 }

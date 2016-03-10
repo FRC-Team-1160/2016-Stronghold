@@ -4,7 +4,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 
 public class Sallyport extends CommandGroup {
     
-    public  Sallyport() {
+    public  Sallyport(int position, Boolean turnDirection) {
     	
     }
 }

@@ -17,7 +17,9 @@ public class AutoSelection implements RobotMap {
 
 	boolean[] on;
 	int[] flipped = { 0, 0 };
+	boolean turnDirection;
 	int position;
+	
 	
 	public AutoSelection(Joystick input) {
 		on = new boolean[input.getButtonCount()];
@@ -46,32 +48,41 @@ public class AutoSelection implements RobotMap {
 			default:
 				position = 2;
 			}
+			
+		//If the robot is on the right side of the field, the robot will turn left
+		//If it is on the left, it will turn right.
+		if(position>=3){
+			turnDirection = true;
+		}
+		else{
+			turnDirection = false;
+		}
 		
 		if (on[s9]) {
 			switch (flipped[0]) {
 			case s0:
 				new LowBar();
 			case s1: 
-				new Portcullis();
+				new Portcullis(position, turnDirection);
 			case s2:
-				new Ramparts();
+				new Ramparts(position, turnDirection);
 			case s3:
-				new Drawbridge();
+				new Drawbridge(position, turnDirection);
 			case s4:
-				new Rock();
+				new Rock(position, turnDirection);
 			}
 		} else {
 			switch (flipped[0]) {
 			case s0:
 				new LowBar();
 			case s1:
-				new Cheval();
+				new Cheval(position, turnDirection);
 			case s2:
-				new Moat();
+				new Moat(position, turnDirection);
 			case s3:
-				new Sallyport();
+				new Sallyport(position, turnDirection);
 			case s4:
-				new Rough();
+				new Rough(position, turnDirection);
 			}
 		}
 	}

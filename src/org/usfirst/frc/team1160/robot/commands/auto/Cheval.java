@@ -4,7 +4,8 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 
 public class Cheval extends CommandGroup {
     
-    public  Cheval() {
+   
+	public  Cheval(int position, Boolean turnDirection) {
     	
     }
 }

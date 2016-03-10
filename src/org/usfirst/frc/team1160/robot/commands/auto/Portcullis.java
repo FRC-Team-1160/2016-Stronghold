@@ -4,7 +4,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 
 public class Portcullis extends CommandGroup {
     
-    public  Portcullis() {
+    public  Portcullis(int position, Boolean turnDirection) {
     	
     }
 }

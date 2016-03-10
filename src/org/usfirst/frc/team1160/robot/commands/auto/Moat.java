@@ -4,7 +4,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 
 public class Moat extends CommandGroup {
     
-    public  Moat() {
+    public  Moat(int position, Boolean turnDirection) {
   
     }
 }

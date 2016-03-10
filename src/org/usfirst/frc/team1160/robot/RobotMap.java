@@ -138,6 +138,14 @@ public interface RobotMap {
 	public static final int ROUGH_DISTANCE = 0;
 	public static final int ROCK_DISTANCE = 0;
 
+	//Autonomous Rotation times
+	public static final double A_TIME = 1;
+	public static final double B_TIME = 1;
+	public static final double C_TIME = 1;
+	public static final double D_TIME = 1;
+	public static final double E_TIME = 1;
+
+	
 	//Shooting Equation Variables
 	public static final double GRAVITATIONAL_ACCEL = -32.17;
 	public static final double BALL_VERTICAL_DISPLACEMENT = 6.56;
@@ -161,4 +169,19 @@ public interface RobotMap {
 	public static final int Y_MAX_BOUND = 240;
 	public static final int Y_MIN_BOUND = 0;
 	public static final int HALF_Y_MAX_BOUND = Y_MAX_BOUND/2;
+	
+	//AUTO SELECTION
+	public static final int s0 = 0;
+	public static final int s1 = 4;
+	public static final int s2 = 3;
+	public static final int s3 = 2;
+	public static final int s4 = 1;
+	public static final int s5 = 1000;
+	public static final int s6 = 5;
+	public static final int s7 = 7;
+	public static final int s8 = 8;
+	public static final int s9 = 12;
+	public static final int s10 = 11;
+	
+	
 }

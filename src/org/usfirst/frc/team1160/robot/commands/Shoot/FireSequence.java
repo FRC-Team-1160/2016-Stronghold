@@ -1,6 +1,7 @@
 package org.usfirst.frc.team1160.robot.commands.Shoot;
 
 import org.usfirst.frc.team1160.robot.RobotMap;
+import org.usfirst.frc.team1160.robot.commands.Aim;
 import org.usfirst.frc.team1160.robot.commands.air.CradleHold;
 import org.usfirst.frc.team1160.robot.commands.air.ShootPosition;
 
@@ -11,6 +12,7 @@ public class FireSequence extends CommandGroup implements RobotMap{
 
 	public FireSequence(){
 		addSequential(new ShootPosition());
+		addSequential(new Aim());
 		addSequential(new SpinAndFire());
 		addSequential(new StopWheels());
 		addSequential(new CradleHold());	

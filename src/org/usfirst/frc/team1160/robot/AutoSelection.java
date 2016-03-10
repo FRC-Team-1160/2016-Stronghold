@@ -35,7 +35,7 @@ public class AutoSelection implements RobotMap {
 	public void picker() {
 		
 		
-			switch(flipped[0]){
+			switch(flipped[1]){
 			
 			case s6:
 				position = 3;

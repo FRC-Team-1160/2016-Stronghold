@@ -15,12 +15,14 @@ public class PID extends Subsystem implements RobotMap{
 		motor.setPID(P, I, D);
 		//Check This
 		motor.configEncoderCodesPerRev(DT_GEAR_RATIO);
-
 	}
 
 	public void set(double distance){
-		
 		Motor.set(distance);
+	}
+	
+	public void disableAuto(){
+		Motor.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
 	}
 	
 	@Override

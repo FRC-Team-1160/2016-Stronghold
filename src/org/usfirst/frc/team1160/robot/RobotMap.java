@@ -115,7 +115,7 @@ public interface RobotMap {
     public static final Value RET = DoubleSolenoid.Value.kReverse;
  	public static final int HEIGHT_ACTUAL = 12; //Tape
  	public static final int WIDTH_ACTUAL = 20;  //Tape
- 	
+ 	public static final int DT_GEAR_RATIO = 2147483647;
  	
 	public static final double FOCAL_X = (px*px_dis)/WIDTH_ACTUAL;
 

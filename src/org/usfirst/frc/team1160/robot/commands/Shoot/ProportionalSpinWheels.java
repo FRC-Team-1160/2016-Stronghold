@@ -17,6 +17,7 @@ public class ProportionalSpinWheels extends Command implements RobotMap{
 	@Override
 	protected void initialize() {
 		// TODO Auto-generated method stub
+		Robot.shoot.addEnergy();
 		targetRPMSmall = Robot.shoot.addEnergy()*1.0194;
 		targetRPMBig = -Robot.shoot.addEnergy();
 		initialSpeedBIG = -.6;

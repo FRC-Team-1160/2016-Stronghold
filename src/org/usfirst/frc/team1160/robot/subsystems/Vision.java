@@ -14,6 +14,7 @@ public class Vision extends Subsystem implements RobotMap {
 
 	private double[] areas, centerY, centerX, height, width, defaultValue;
 	private double theta, yPixelDisplacement, dtt, distance, alignmentCenterX;
+	private int index;
 	public NetworkTable table;
 
 	public static Vision getInstance() {
@@ -44,6 +45,7 @@ public class Vision extends Subsystem implements RobotMap {
 	}
 
 	public boolean alignCheck() {
+		table = NetworkTable.getTable("GRIP/myContoursReport");
 		centerX = table.getNumberArray("centerX", defaultValue);
 		centerY = table.getNumberArray("centerY", defaultValue);
 		alignmentCenterX = (X_MAX + X_MIN) / 2;
@@ -55,17 +57,20 @@ public class Vision extends Subsystem implements RobotMap {
 				}
 			}
 		}
-		
-			if (centerX[0] <= X_MAX && centerX[0] >= X_MIN) {
-				return true;		
+
+		System.out.println(centerX[0]);
+		if (centerX[0] <= X_MAX && centerX[0] >= X_MIN) {
+			System.out.println("Aligned");
+			return true;
 		}
 		return false;
 	}
-	
-	public int getAlign(){
+
+	public int getAlign() {
+		table = NetworkTable.getTable("GRIP/myContoursReport");
 		centerX = table.getNumberArray("centerX", defaultValue);
 		alignmentCenterX = (X_MAX + X_MIN) / 2;
-		
+
 		if (centerX.length > 1) {
 			for (int i = 0; i < centerX.length; i++) {
 				if (Math.abs(centerX[i] - alignmentCenterX) < Math.abs(centerX[0] - alignmentCenterX)) {
@@ -73,17 +78,16 @@ public class Vision extends Subsystem implements RobotMap {
 				}
 			}
 		}
-		
-			if (centerX[0] < alignmentCenterX-px_margin_error) {
-				return 1;		
+
+		if (centerX[0] < alignmentCenterX - px_margin_error) {
+			return 1;
 		}
 
-			else if (centerX[0] > alignmentCenterX+px_margin_error) {
-				return 2;		
+		else if (centerX[0] > alignmentCenterX + px_margin_error) {
+			return 2;
+		} else {
+			return 0;
 		}
-			else{
-				return 0;
-			}
 	}
 
 	/**************************************************************************************************
@@ -95,13 +99,23 @@ public class Vision extends Subsystem implements RobotMap {
 	public double getDistance() {
 		table = NetworkTable.getTable("GRIP/myContoursReport");
 		width = table.getNumberArray("width", defaultValue);
-		System.out.println(width[0]);
+		centerX = table.getNumberArray("centerX", defaultValue);
+		alignmentCenterX = (X_MAX + X_MIN) / 2;
+
+		for (int i = 0; i < centerX.length; i++) {
+			if (Math.abs(centerX[i] - alignmentCenterX) < Math.abs(centerX[0] - alignmentCenterX)) {
+				index = i;
+			}
+		}
+
+		System.out.println(width[index]);
 		distance = FOCAL_X * WIDTH_ACTUAL / width[0];
 		// System.out.println("Width is reported as: " + width[0] + " pixels");
 		// System.out.println("Robot is: " + distance/12 + " feet away - BY
 		// WIDTH");
 		SmartDashboard.putNumber("Distance Recorded as: ", distance / 12);
 		return distance / 12;
+
 	}
 
 	public void visualize() {

@@ -72,8 +72,8 @@ public interface RobotMap {
 	public static final int S_PIVOT_B = 4;
 	
     //Targeting Variables
-    public static final int X_MAX = 320;
-	public static final int X_MIN = 0;
+    public static final int X_MAX = 170;
+	public static final int X_MIN = 150;
 	public static final int Y_MAX = 240;
 	public static final int Y_MIN = 0;
 	public static final double px = 58;

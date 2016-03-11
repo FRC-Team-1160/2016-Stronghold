@@ -11,8 +11,8 @@ public class Rock extends CommandGroup implements RobotMap{
     
     public  Rock(double rotationTime, boolean turnDirection) {
     	addSequential(new Drive(ROCK_DISTANCE));
-    	addSequential(new Rotate(rotationTime,turnDirection));
-    	addSequential(new FireSequence());
+    	//addSequential(new Rotate(rotationTime,turnDirection));
+    	//addSequential(new FireSequence());
 
 
     }

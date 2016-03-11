@@ -59,10 +59,12 @@ public class DriveTrain extends Subsystem implements RobotMap {
 	 * make the motors go the right (or left) way
 	 ******************************************************************/
 	public void Drive() {
-		fl.set(OI.getInstance().getStick().getCubeZ() - OI.getInstance().getStick().getCubeY());
-		bl.set(OI.getInstance().getStick().getCubeZ() - OI.getInstance().getStick().getCubeY());
-		fr.set(OI.getInstance().getStick().getCubeZ() + OI.getInstance().getStick().getCubeY());
-		br.set(OI.getInstance().getStick().getCubeZ() + OI.getInstance().getStick().getCubeY());
+		fl.set(OI.getInstance().getStick().getHalfQuintZ() - OI.getInstance().getStick().getCubeY());
+		bl.set(OI.getInstance().getStick().getHalfQuintZ() - OI.getInstance().getStick().getCubeY());
+		fr.set(OI.getInstance().getStick().getHalfQuintZ() + OI.getInstance().getStick().getCubeY());
+		br.set(OI.getInstance().getStick().getHalfQuintZ() + OI.getInstance().getStick().getCubeY());
+		//System.out.println("left " + lP.getWheel());
+	//	System.out.println("right " + rP.getWheel());
 		logPower();
 		// SmartDashboard.putNumber("Left Drive Encoder", bl.getPosition());
 		// SmartDashboard.putNumber("Right Drive Encoder", br.getPosition());
@@ -93,6 +95,10 @@ public class DriveTrain extends Subsystem implements RobotMap {
 		rP.setD(-distance);
 		System.out.println(lP.getPosition());
 		System.out.println(rP.getPosition());
+		SmartDashboard.putNumber("Left Auto Position", lP.getPosition());
+		SmartDashboard.putNumber("Right Auto Position", rP.getPosition());
+		SmartDashboard.putNumber("Left Auto Position in Feet", lP.getPosition()*WHEEL_DIAMETER);
+		SmartDashboard.putNumber("Right Auto Position in Feet", rP.getPosition()*WHEEL_DIAMETER);
 
 	}
 

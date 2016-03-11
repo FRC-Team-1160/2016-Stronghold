@@ -11,8 +11,8 @@ public class Ramparts extends CommandGroup implements RobotMap{
     
     public  Ramparts(double rotationTime, boolean turnDirection) {
     	addSequential(new Drive(RAMPART_DISTANCE));
-    	addSequential(new Rotate(rotationTime,turnDirection));
-    	addSequential(new FireSequence());
+    	//addSequential(new Rotate(rotationTime,turnDirection));
+    	//addSequential(new FireSequence());
 
 
     }

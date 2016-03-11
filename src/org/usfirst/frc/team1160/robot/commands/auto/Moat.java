@@ -11,8 +11,8 @@ public class Moat extends CommandGroup implements RobotMap{
     
     public  Moat(double rotationTime, boolean turnDirection) {
     	addSequential(new Drive(MOAT_DISTANCE));
-    	addSequential(new Rotate(rotationTime,turnDirection));
-    	addSequential(new FireSequence());
+    	//addSequential(new Rotate(rotationTime,turnDirection));
+    	//addSequential(new FireSequence());
 
 
     }

@@ -4,14 +4,16 @@ import org.usfirst.frc.team1160.robot.Robot;
 import org.usfirst.frc.team1160.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Drive extends Command implements RobotMap{
 
-	double distance, timeElapsed;
+	private double targetDistance, timeElapsed,leftPosition,rightPosition;
 	
     public Drive(double distance) {
     	requires(Robot.dt);
-    	this.distance = distance;
+    	this.targetDistance = distance;
+    	
     }
 
     // Called just before this Command runs the first time
@@ -21,13 +23,19 @@ public class Drive extends Command implements RobotMap{
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.dt.DriveDistance(distance);
+    	Robot.dt.DriveDistance(targetDistance);
     	timeElapsed = Robot.dt.getTime();
+    	leftPosition = SmartDashboard.getNumber("Left Auto Position");
+    	rightPosition = SmartDashboard.getNumber("Right Auto Position");
+		
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
         if(timeElapsed>AUTO_TIMEOUT){
+        	return true;
+        }
+        else if(leftPosition>=targetDistance && rightPosition<=-targetDistance){
         	return true;
         }
     	return false;

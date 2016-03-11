@@ -1,6 +1,7 @@
 
 package org.usfirst.frc.team1160.robot;
 
+import org.usfirst.frc.team1160.robot.commands.auto.Cheval;
 import org.usfirst.frc.team1160.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team1160.robot.subsystems.PID;
 import org.usfirst.frc.team1160.robot.subsystems.Pneumatics;
@@ -23,6 +24,7 @@ public class Robot extends IterativeRobot {
 	public static Vision see;
 	public static Pneumatics air;
 	public static DeployConfirm dc;
+	public static AutoSelection autochoose;
 
     Command autonomousCommand;
     SendableChooser chooser;
@@ -35,6 +37,7 @@ public class Robot extends IterativeRobot {
 		air = Pneumatics.getInstance();
 		oi = OI.getInstance();
 		dc = new DeployConfirm();
+		
     }
 
     public void disabledInit(){
@@ -55,9 +58,9 @@ public class Robot extends IterativeRobot {
 	 * or additional comparisons to the switch structure below with additional strings & commands.
 	 */
     public void autonomousInit() {
-       // autonomousCommand = (Command) chooser.getSelected();
-        
-        
+    //    autonomousCommand = (Command) chooser.getSelected();
+        //autonomousCommand = new Cheval(1,true);
+        //autonomousCommand.start();
         /*
 		String autoSelected = SmartDashboard.getString("Auto Selector", "Default");
 		switch(autoSelected) {
@@ -78,7 +81,7 @@ public class Robot extends IterativeRobot {
      * This function is called periodically during autonomous
      */
     public void autonomousPeriodic() {
-      //  Scheduler.getInstance().run();
+      Scheduler.getInstance().run();
     }
 
     public void teleopInit() {

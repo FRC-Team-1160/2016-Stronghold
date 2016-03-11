@@ -24,8 +24,11 @@ public class ModifiedJoystick extends Joystick{
 	public double getQuintY(){
 		return Math.pow(super.getY(), 5);
 	}
-	public double getQuintZ(){
-		return Math.pow(super.getZ(), 5);
+	public double getHalfQuintZ(){
+		return (Math.pow(super.getZ(), 5)/3);
+	}
+	public double getModZ(){
+		return Math.pow(super.getZ(), 4.2);
 	}
 	
 	

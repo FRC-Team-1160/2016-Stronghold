@@ -104,7 +104,7 @@ public interface RobotMap {
     public static final Value RET = DoubleSolenoid.Value.kReverse;
  	public static final int HEIGHT_ACTUAL = 12; //Tape
  	public static final int WIDTH_ACTUAL = 20;  //Tape
- 	public static final int DT_GEAR_RATIO = 4096 / 50 * 12;//TEST AND FIND
+ 	public static final int DT_GEAR_RATIO = 126;//TEST AND FIND
  	
 	public static final double FOCAL_X = (px*px_dis)/WIDTH_ACTUAL;
 
@@ -113,22 +113,22 @@ public interface RobotMap {
 		//Note:  B distances may not be needed
 	
 	//A Group
-	public static final double WHEEL_DIAMETER = 8*Math.PI;
-	public static final double PORTCULLIS_A_DISTANCE = 0/WHEEL_DIAMETER;
-	public static final double PORTCULLIS_B_DISTANCE = 0/WHEEL_DIAMETER;
-	public static final double CHEVAL_A_DISTANCE = 0/WHEEL_DIAMETER;
-	public static final double CHEVAL_B_DISTANCE = 0/WHEEL_DIAMETER;
+	public static final double WHEEL_DIAMETER = (8*Math.PI)/12;
+	public static final double PORTCULLIS_A_DISTANCE = 2/WHEEL_DIAMETER;
+	public static final double PORTCULLIS_B_DISTANCE = 3/WHEEL_DIAMETER;
+	public static final double CHEVAL_A_DISTANCE = 3/WHEEL_DIAMETER;
+	public static final double CHEVAL_B_DISTANCE = 3/WHEEL_DIAMETER;
 	//B Group
-	public static final double MOAT_DISTANCE = 10/WHEEL_DIAMETER;
-	public static final double RAMPART_DISTANCE = 0/WHEEL_DIAMETER;
+	public static final double MOAT_DISTANCE = 6/WHEEL_DIAMETER;
+	public static final double RAMPART_DISTANCE = 6/WHEEL_DIAMETER;
 	//C Group
 	public static final double DRAWBRIDGE_A_DISTANCE = 0/WHEEL_DIAMETER;
 	public static final double DRAWBRIDGE_B_DISTANCE = 0/WHEEL_DIAMETER;
 	public static final double SALLYPORT_A_DISTANCE = 0/WHEEL_DIAMETER;
 	public static final double SALLYPORT_B_DISTANCE = 0/WHEEL_DIAMETER;
 	//D Group
-	public static final double ROUGH_DISTANCE = 0/WHEEL_DIAMETER;
-	public static final double ROCK_DISTANCE = 0/WHEEL_DIAMETER;
+	public static final double ROUGH_DISTANCE = 6/WHEEL_DIAMETER;
+	public static final double ROCK_DISTANCE = 6/WHEEL_DIAMETER;
 
 	//Autonomous Rotation times 
 		// FIND THESE

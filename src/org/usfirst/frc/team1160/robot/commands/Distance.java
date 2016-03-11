@@ -8,9 +8,8 @@ import edu.wpi.first.wpilibj.command.Command;
 public class Distance extends Command{
 
 	int index;
-	public Distance(int index){
+	public Distance(){
 		requires(Robot.see);
-		this.index = index;
 	}
 	
 	@Override

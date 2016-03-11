@@ -14,18 +14,18 @@ public class TestFire extends Command implements RobotMap{
 	
 	@Override
 	protected void initialize() {
-
+		Robot.see.getDistance();
 	}
 
 	@Override
 	protected void execute() {
-		Robot.see.visualize();
+		//Robot.see.visualize();
 		//Robot.shoot.testFire();
 	}
 
 	@Override
 	protected boolean isFinished() {
-		return false;
+		return true;
 	}
 
 	@Override

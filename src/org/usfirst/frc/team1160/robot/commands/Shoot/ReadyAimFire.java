@@ -3,6 +3,7 @@ package org.usfirst.frc.team1160.robot.commands.Shoot;
 import org.usfirst.frc.team1160.robot.RobotMap;
 import org.usfirst.frc.team1160.robot.commands.Wait;
 import org.usfirst.frc.team1160.robot.commands.air.CradlePush;
+import org.usfirst.frc.team1160.robot.commands.air.PickupPosition;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 

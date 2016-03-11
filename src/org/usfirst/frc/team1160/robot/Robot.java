@@ -55,7 +55,7 @@ public class Robot extends IterativeRobot {
 	 * or additional comparisons to the switch structure below with additional strings & commands.
 	 */
     public void autonomousInit() {
-        autonomousCommand = (Command) chooser.getSelected();
+       // autonomousCommand = (Command) chooser.getSelected();
         
         
         /*
@@ -71,14 +71,14 @@ public class Robot extends IterativeRobot {
 		}*/
     	
     	// schedule the autonomous command (example)
-        if (autonomousCommand != null) autonomousCommand.start();
+   //     if (autonomousCommand != null) autonomousCommand.start();
     }
 
     /**
      * This function is called periodically during autonomous
      */
     public void autonomousPeriodic() {
-        Scheduler.getInstance().run();
+      //  Scheduler.getInstance().run();
     }
 
     public void teleopInit() {

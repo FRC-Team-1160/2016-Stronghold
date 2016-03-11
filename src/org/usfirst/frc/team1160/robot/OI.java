@@ -10,6 +10,7 @@ import org.usfirst.frc.team1160.robot.commands.air.CradleHold;
 import org.usfirst.frc.team1160.robot.commands.air.CradlePush;
 import org.usfirst.frc.team1160.robot.commands.air.PickupPosition;
 import org.usfirst.frc.team1160.robot.commands.air.ShootPosition;
+import org.usfirst.frc.team1160.robot.commands.auto.Moat;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -59,7 +60,7 @@ public class OI implements RobotMap{
 		up.whenPressed(new ShootPosition());
 		down.whenPressed(new PickupPosition());
 		test.whenPressed(new Aim());
-		see.whenPressed(new Distance(0));
+		see.whenPressed(new Distance());
 		cradleup.whenPressed(new CradlePush());
 		cradledown.whenPressed(new CradleHold());
 		System.out.println("WOY");

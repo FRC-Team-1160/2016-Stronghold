@@ -49,6 +49,9 @@ public class DriveTrain extends Subsystem implements RobotMap {
 		rP = new PID(br,fr);
 		time = new Timer();
 		
+		SmartDashboard.putNumber("lP pos: ", lP.getPosition());
+		SmartDashboard.putNumber("rP pos: ", rP.getPosition());
+		
 	}
 
 	/******************************************************************
@@ -56,10 +59,10 @@ public class DriveTrain extends Subsystem implements RobotMap {
 	 * make the motors go the right (or left) way
 	 ******************************************************************/
 	public void Drive() {
-		fl.set((OI.getInstance().getStick().getCubeZ() - OI.getInstance().getStick().getCubeY()) / 2);
-		bl.set((OI.getInstance().getStick().getCubeZ() - OI.getInstance().getStick().getCubeY()) / 2);
-		fr.set((OI.getInstance().getStick().getCubeZ() + OI.getInstance().getStick().getCubeY()) / 2);
-		br.set((OI.getInstance().getStick().getCubeZ() + OI.getInstance().getStick().getCubeY()) / 2);
+		fl.set(OI.getInstance().getStick().getCubeZ() - OI.getInstance().getStick().getCubeY());
+		bl.set(OI.getInstance().getStick().getCubeZ() - OI.getInstance().getStick().getCubeY());
+		fr.set(OI.getInstance().getStick().getCubeZ() + OI.getInstance().getStick().getCubeY());
+		br.set(OI.getInstance().getStick().getCubeZ() + OI.getInstance().getStick().getCubeY());
 		logPower();
 		// SmartDashboard.putNumber("Left Drive Encoder", bl.getPosition());
 		// SmartDashboard.putNumber("Right Drive Encoder", br.getPosition());
@@ -88,6 +91,9 @@ public class DriveTrain extends Subsystem implements RobotMap {
 	public void DriveDistance(double distance) {
 		lP.setD(distance);
 		rP.setD(-distance);
+		System.out.println(lP.getPosition());
+		System.out.println(rP.getPosition());
+
 	}
 
 	/******************************************************************

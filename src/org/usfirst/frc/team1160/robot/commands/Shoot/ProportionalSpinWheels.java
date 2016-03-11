@@ -78,7 +78,7 @@ public class ProportionalSpinWheels extends Command implements RobotMap{
 
 	@Override
 	protected boolean isFinished() {
-		if(timeElapsed>FIRING_TIME){
+		if(timeElapsed>FIRING_TIME+0.1){
 			return(true);
 		}
 		return false;
@@ -89,8 +89,6 @@ public class ProportionalSpinWheels extends Command implements RobotMap{
 		Robot.shoot.setFlywheel(0);
 		bigCurrentSpeed = 0;
 		smallCurrentSpeed = 0;
-		
-
 	}
 
 	@Override

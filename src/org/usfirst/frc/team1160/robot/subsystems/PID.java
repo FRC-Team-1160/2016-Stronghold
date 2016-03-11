@@ -3,7 +3,6 @@ package org.usfirst.frc.team1160.robot.subsystems;
 import org.usfirst.frc.team1160.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.CANTalon;
-import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class PID extends Subsystem implements RobotMap {
@@ -26,11 +25,12 @@ public class PID extends Subsystem implements RobotMap {
 		motor.set(distance);
 	}
 
-
-	@Override
+	public double getPosition(){
+		return motor.getPosition();
+	}
+	
 	protected void initDefaultCommand() {
-		// TODO Auto-generated method stub
-
+		
 	}
 
 }

@@ -10,24 +10,25 @@ public class PID extends Subsystem implements RobotMap {
 	private CANTalon motor, fMotor;
 
 	public PID(CANTalon lMotor, CANTalon fmotor) {
-		motor =lMotor;
+		motor = lMotor;
 		fMotor = fmotor;
-			motor.setPID(P, I, D);
-			motor.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
-			// Check This
-			motor.configEncoderCodesPerRev(DT_GEAR_RATIO);	
+		motor.changeControlMode(CANTalon.TalonControlMode.Position);
+		fMotor.changeControlMode(CANTalon.TalonControlMode.Follower);
+		motor.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
+		motor.setPID(P, I, D);
+		motor.configEncoderCodesPerRev(DT_GEAR_RATIO);
 	}
 
 	public void setD(double distance) {
-		motor.configEncoderCodesPerRev(DT_GEAR_RATIO);	
-		motor.changeControlMode(CANTalon.TalonControlMode.Position);
-		fMotor.changeControlMode(CANTalon.TalonControlMode.Follower);
 		fMotor.set(motor.getDeviceID());
 		motor.set(distance);
 	}
 	
-	public double getWheel(){
-		return motor.getPosition();
+	public void deAuto(){
+		motor.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
+		fMotor.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
+		motor.set(0);
+		fMotor.set(0);
 	}
 
 	public double getPosition(){

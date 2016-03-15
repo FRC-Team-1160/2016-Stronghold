@@ -78,12 +78,12 @@ public interface RobotMap {
 	public static final int X_MIN = 155;
 	public static final int Y_MAX = 240;
 	public static final int Y_MIN = 0;
-	public static final double px = 47;
-	public static final double px_dis = 148;
+	public static final double px = 86;
+	public static final double px_dis = 110;
 	public static final double px_margin_error = 3;
 		
 	//PID Variables
-	public static int P = 1;
+	public static double P = 1;
 	public static int I = 0;
 	public static int D = 0;
 	
@@ -98,7 +98,6 @@ public interface RobotMap {
     public static final int P_MOTOR_CLIMBRIGHT = 13;
     
 	//Constants
-	public static final int LOWBAR_DISTANCE = 0;
 	public static final double FT_TO_M= .3048;
 	public static final Value EXT = DoubleSolenoid.Value.kForward;
     public static final Value RET = DoubleSolenoid.Value.kReverse;
@@ -114,30 +113,31 @@ public interface RobotMap {
 	
 	//A Group
 	public static final double WHEEL_DIAMETER = (8*Math.PI)/12;
+	public static final double LOWBAR_DISTANCE = 4/WHEEL_DIAMETER;
 	public static final double PORTCULLIS_A_DISTANCE = 2/WHEEL_DIAMETER;
 	public static final double PORTCULLIS_B_DISTANCE = 3/WHEEL_DIAMETER;
 	public static final double CHEVAL_A_DISTANCE = 3/WHEEL_DIAMETER;
 	public static final double CHEVAL_B_DISTANCE = 3/WHEEL_DIAMETER;
 	//B Group
-	public static final double MOAT_DISTANCE = 6/WHEEL_DIAMETER;
-	public static final double RAMPART_DISTANCE = 6/WHEEL_DIAMETER;
+	public static final double MOAT_DISTANCE = 4/WHEEL_DIAMETER;
+	public static final double RAMPART_DISTANCE = 4/WHEEL_DIAMETER;
 	//C Group
 	public static final double DRAWBRIDGE_A_DISTANCE = 0/WHEEL_DIAMETER;
 	public static final double DRAWBRIDGE_B_DISTANCE = 0/WHEEL_DIAMETER;
 	public static final double SALLYPORT_A_DISTANCE = 0/WHEEL_DIAMETER;
 	public static final double SALLYPORT_B_DISTANCE = 0/WHEEL_DIAMETER;
 	//D Group
-	public static final double ROUGH_DISTANCE = 6/WHEEL_DIAMETER;
-	public static final double ROCK_DISTANCE = 6/WHEEL_DIAMETER;
+	public static final double ROUGH_DISTANCE = 4/WHEEL_DIAMETER;
+	public static final double ROCK_DISTANCE = 4/WHEEL_DIAMETER;
 
 	//Autonomous Rotation times 
 		// FIND THESE
-	public static final double A_TIME = 1;
-	public static final double B_TIME = 1;
+	public static final double A_TIME = 1.5;
+	public static final double B_TIME = 0.75;
 	public static final double C_TIME = 0;
-	public static final double D_TIME = 1;
-	public static final double E_TIME = 1;
-	public static final double AUTO_TIMEOUT = 2.5;//This should be good enough, but check
+	public static final double D_TIME = 0.75;
+	public static final double E_TIME = 1.5;
+	public static final double AUTO_TIMEOUT = 2;//This should be good enough, but check
 	
 	//Shooting Equation Variables
 	public static final double GRAVITATIONAL_ACCEL = -32.17;

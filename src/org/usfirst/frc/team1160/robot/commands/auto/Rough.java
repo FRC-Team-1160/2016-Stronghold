@@ -11,8 +11,8 @@ public class Rough extends CommandGroup implements RobotMap{
     
     public  Rough(double rotationTime, boolean turnDirection) {
     	addSequential(new Drive(ROUGH_DISTANCE));
-    	//addSequential(new Rotate(rotationTime,turnDirection));
-    	//addSequential(new FireSequence());
+    	addSequential(new Rotate(rotationTime,turnDirection));
+    	addSequential(new FireSequence());
 
 
     }

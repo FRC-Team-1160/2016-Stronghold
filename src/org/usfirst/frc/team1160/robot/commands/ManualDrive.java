@@ -11,7 +11,7 @@ public class ManualDrive extends Command{
 	}
 	
 	protected void initialize() {
-		
+		Robot.dt.noMoreAuto();
 	}
 
 	protected void execute() {

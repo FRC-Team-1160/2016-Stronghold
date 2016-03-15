@@ -63,16 +63,14 @@ public class DriveTrain extends Subsystem implements RobotMap {
 		bl.set(OI.getInstance().getStick().getHalfQuintZ() - OI.getInstance().getStick().getCubeY());
 		fr.set(OI.getInstance().getStick().getHalfQuintZ() + OI.getInstance().getStick().getCubeY());
 		br.set(OI.getInstance().getStick().getHalfQuintZ() + OI.getInstance().getStick().getCubeY());
-		//System.out.println("left " + lP.getWheel());
-	//	System.out.println("right " + rP.getWheel());
 		logPower();
-		// SmartDashboard.putNumber("Left Drive Encoder", bl.getPosition());
-		// SmartDashboard.putNumber("Right Drive Encoder", br.getPosition());
+		SmartDashboard.putNumber("Left Drive Encoder", bl.getPosition());
+		SmartDashboard.putNumber("Right Drive Encoder", br.getPosition());
 
 	}
 
 	public void slowRight() {
-		double speed = .2;
+		double speed = 0.2;
 		fl.set(speed);
 		bl.set(speed);
 		fr.set(speed);
@@ -80,11 +78,11 @@ public class DriveTrain extends Subsystem implements RobotMap {
 	}
 
 	public void slowLeft() {
-		double speed = .2;
-		fl.set(-speed);
-		bl.set(-speed);
-		fr.set(-speed);
-		br.set(-speed);
+		double speed = -0.2;
+		fl.set(speed);
+		bl.set(speed);
+		fr.set(speed);
+		br.set(speed);
 	}
 
 	/******************************************************************
@@ -144,6 +142,12 @@ public class DriveTrain extends Subsystem implements RobotMap {
 
 	public double getTime() {
 		return time.get();
+	}
+	
+	public void noMoreAuto(){
+		System.out.println("Success! The function \"noMoreAuto\" has been called. If you believe you are seeing this message in error, please contact your network administrator.");
+		lP.deAuto();
+		rP.deAuto();
 	}
 
 	/******************************************************************

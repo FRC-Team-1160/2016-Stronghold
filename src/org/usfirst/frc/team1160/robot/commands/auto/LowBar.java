@@ -11,12 +11,12 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 
 public class LowBar extends CommandGroup implements RobotMap{
     
-    public  LowBar() {
+    public LowBar() {
     	addSequential(new PickupPosition());
-    	addSequential(new Wait(1));
+    	addSequential(new Wait(2));
     	addSequential(new Drive(LOWBAR_DISTANCE));
-    	//addSequential(new Rotate(A_TIME, false));
-    	//addSequential(new FireSequence());
+    	addSequential(new Rotate(A_TIME, false));
+    	addSequential(new FireSequence());
 
     }
 }

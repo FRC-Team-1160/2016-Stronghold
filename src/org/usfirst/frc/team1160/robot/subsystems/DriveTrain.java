@@ -16,8 +16,8 @@ public class DriveTrain extends Subsystem implements RobotMap {
 
 	private static DriveTrain instance;
 
-	protected final Talon fl, bl, fr, br;
-	//protected final PID lP,rP;
+	protected final CANTalon fl, bl, fr, br;
+	protected final PID lP,rP;
 	Timer time;
 	// private final PowerDistributionPanel panel;
 
@@ -40,13 +40,13 @@ public class DriveTrain extends Subsystem implements RobotMap {
 	 * for Proportional and Derivative are given to SmartDash
 	 ******************************************************************/
 	private DriveTrain() {
-		fl = new Talon(DT_FRONTLEFT);
-		bl = new Talon(DT_BACKLEFT);
-		fr = new Talon(DT_FRONTRIGHT);
-		br = new Talon(DT_BACKRIGHT);
+		fl = new CANTalon(DT_FRONTLEFT);
+		bl = new CANTalon(DT_BACKLEFT);
+		fr = new CANTalon(DT_FRONTRIGHT);
+		br = new CANTalon(DT_BACKRIGHT);
 		
-		//lP = new PID(bl,fl);
-		//rP = new PID(br,fr);
+		lP = new PID(bl,fl);
+		rP = new PID(br,fr);
 		time = new Timer();
 		
 		//SmartDashboard.putNumber("lP pos: ", lP.getPosition());
@@ -90,23 +90,22 @@ public class DriveTrain extends Subsystem implements RobotMap {
 	 * Uses PID to move the wheels a set distance forward
 	 ******************************************************************/
 	public void DriveDistance(double distance) {
-/*		lP.setD(distance);
+		//lP.setD(distance);
 		rP.setD(-distance);
-		System.out.println(lP.getPosition());
-		System.out.println(rP.getPosition());
+/*		System.out.println(lP.getPosition());
+		System.out.println(rP.getPosition());*/
 		SmartDashboard.putNumber("Left Auto Position", lP.getPosition());
 		SmartDashboard.putNumber("Right Auto Position", rP.getPosition());
 		SmartDashboard.putNumber("Left Auto Position in Feet", lP.getPosition()*WHEEL_DIAMETER);
 		SmartDashboard.putNumber("Right Auto Position in Feet", rP.getPosition()*WHEEL_DIAMETER);
-*/
 	}
 
 	/******************************************************************
 	 * Rotates the robot's frame left or right depending on the input
 	 ******************************************************************/
 	public void RotateLeft(double distance) {
-/*		lP.setD(distance);
-		rP.setD(distance);*/
+		lP.setD(distance);
+		rP.setD(distance);
 	}
 
 	/******************************************************************
@@ -114,9 +113,9 @@ public class DriveTrain extends Subsystem implements RobotMap {
 	 * something
 	 ******************************************************************/
 	public void RotateRight(double distance) {
-/*		lP.setD(distance);
+		lP.setD(distance);
 		rP.setD(distance);
-*/	}
+	}
 
 	/******************************************************************
 	 * Logs power to the SmartDash for monitoring
@@ -147,9 +146,9 @@ public class DriveTrain extends Subsystem implements RobotMap {
 	
 	public void noMoreAuto(){
 		System.out.println("Success! The function \"noMoreAuto\" has been called. If you believe you are seeing this message in error, please contact your network administrator.");
-/*		lP.deAuto();
+		lP.deAuto();
 		rP.deAuto();
-*/	}
+	}
 
 	/******************************************************************
 	 * Sets the default command for the subsystem This command is returned to

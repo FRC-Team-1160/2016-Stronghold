@@ -13,7 +13,7 @@ public class Shooter extends Subsystem implements RobotMap {
 
 	public static Shooter instance;
 
-	protected final CANTalon big, small;
+	protected final CANTalon top, bottom;
 	private double rpm, angleSec, finalRPM, smallRPM, largeRPM, logVel;
 	private Timer time;
 	private Vision vision;
@@ -26,12 +26,12 @@ public class Shooter extends Subsystem implements RobotMap {
 	}
 
 	private Shooter() {
-		big = new CANTalon(S_FLYWHEEL_LARGE);
-		small = new CANTalon(S_FLYWHEEL_SMALL);
-		big.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
-		small.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
-		small.configEncoderCodesPerRev(1024);
-		big.configEncoderCodesPerRev(1024);
+		top = new CANTalon(S_FLYWHEEL_TOP);
+		bottom = new CANTalon(S_FLYWHEEL_BOTTOM);
+		top.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
+		bottom.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
+		bottom.configEncoderCodesPerRev(1024);
+		top.configEncoderCodesPerRev(1024);
 		SmartDashboard.putNumber("TEST_DISTANCE", TEST_DISTANCE);
 		time = new Timer();
 		vision = Vision.getInstance();
@@ -47,16 +47,16 @@ public class Shooter extends Subsystem implements RobotMap {
 	}
 	
 	public void setBig(double speed) {
-		big.set(speed);
+		top.set(speed);
 	}
 
 	public void setSmall(double speed) {
-		small.set(speed);
+		bottom.set(speed);
 	}
 
 	public void setFlywheel(double speed) {
-		big.set(speed);
-		small.set(-speed);
+		top.set(speed);
+		bottom.set(-speed);
 	}
 
 	public double speedFromDistance(double distance) {
@@ -84,8 +84,8 @@ public class Shooter extends Subsystem implements RobotMap {
 	}
 
 	public void getRevolutions() {
-		smallRPM = small.getSpeed();
-		largeRPM = big.getSpeed();
+		smallRPM = bottom.getSpeed();
+		largeRPM = top.getSpeed();
 		System.out.println("SmallRPM: " + smallRPM);
 		System.out.println("LargeRPM: " + largeRPM);
 
@@ -95,8 +95,8 @@ public class Shooter extends Subsystem implements RobotMap {
 	}
 
 	public void testFire() {
-		System.out.println("Top rev: " + big.getPosition());
-		System.out.println("Bot rev: " + small.getPosition());
+		System.out.println("Top rev: " + top.getPosition());
+		System.out.println("Bot rev: " + bottom.getPosition());
 	}
 
 	public void startTime() {
@@ -109,7 +109,7 @@ public class Shooter extends Subsystem implements RobotMap {
 	}
 
 	public double getSmall() {
-		return small.get();
+		return bottom.get();
 	}
 
 }

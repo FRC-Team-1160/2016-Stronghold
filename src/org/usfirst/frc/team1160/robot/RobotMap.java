@@ -36,8 +36,8 @@ public interface RobotMap {
 	public static final int DT_FRONTRIGHT = 20;
 	public static final int DT_BACKLEFT = 6;
 	public static final int DT_FRONTLEFT = 5;
-	public static final int S_FLYWHEEL_LARGE = 20;
-	public static final int S_FLYWHEEL_SMALL = 21;
+	public static final int S_FLYWHEEL_TOP = 20;
+	public static final int S_FLYWHEEL_BOTTOM = 21;
 	public static final int SERVO = 1;
 	
 	//Joysticks

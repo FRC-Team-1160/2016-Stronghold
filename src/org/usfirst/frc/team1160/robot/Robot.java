@@ -1,9 +1,6 @@
 
 package org.usfirst.frc.team1160.robot;
 
-import org.usfirst.frc.team1160.robot.commands.auto.Moat;
-import org.usfirst.frc.team1160.robot.subsystems.DriveTrain;
-import org.usfirst.frc.team1160.robot.subsystems.Pneumatics;
 import org.usfirst.frc.team1160.robot.subsystems.Shooter;
 import org.usfirst.frc.team1160.robot.subsystems.Vision;
 
@@ -17,15 +14,12 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 public class Robot extends IterativeRobot implements RobotMap{
 
 	public static OI oi;
-	public static DriveTrain dt;
 	public static Shooter shoot;
 	public static Vision see;
-	public static Pneumatics air;
 	public static DeployConfirm dc;
 	public static AutoSelection autochoose;
 
     Command autonomousCommand;
-    SendableChooser chooser;
 
 
     public void robotInit() {
@@ -56,6 +50,7 @@ public class Robot extends IterativeRobot implements RobotMap{
 	 * or additional comparisons to the switch structure below with additional strings & commands.
 	 */
     public void autonomousInit() {
+    	dt.resetPos();
         autonomousCommand = new Moat(0, false);
         autonomousCommand.start();
     }
@@ -64,12 +59,11 @@ public class Robot extends IterativeRobot implements RobotMap{
      * This function is called periodically during autonomous
      */
     public void autonomousPeriodic() {
-      //Scheduler.getInstance().run();
+      Scheduler.getInstance().run();
     }
 
     public void teleopInit() {
         if (autonomousCommand != null) autonomousCommand.cancel();
-        dt.noMoreAuto();
     }
 
     /**

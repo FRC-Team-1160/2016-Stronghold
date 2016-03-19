@@ -13,8 +13,7 @@ public class Shooter extends Subsystem implements RobotMap {
 
 	public static Shooter instance;
 
-	protected final CANTalon big;
-	protected final ModTal small;
+	protected final CANTalon big, small;
 	private double rpm, angleSec, finalRPM, smallRPM, largeRPM, logVel;
 	private Timer time;
 	private Vision vision;
@@ -28,7 +27,7 @@ public class Shooter extends Subsystem implements RobotMap {
 
 	private Shooter() {
 		big = new CANTalon(S_FLYWHEEL_LARGE);
-		small = new ModTal(S_FLYWHEEL_SMALL);
+		small = new CANTalon(S_FLYWHEEL_SMALL);
 		big.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
 		small.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
 		small.configEncoderCodesPerRev(1024);

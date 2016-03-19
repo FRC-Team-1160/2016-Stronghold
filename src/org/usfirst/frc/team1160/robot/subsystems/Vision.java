@@ -3,7 +3,6 @@ package org.usfirst.frc.team1160.robot.subsystems;
 import java.io.IOException;
 
 import org.usfirst.frc.team1160.robot.RobotMap;
-import org.usfirst.frc.team1160.robot.commands.Distance;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
@@ -97,11 +96,11 @@ public class Vision extends Subsystem implements RobotMap {
 
 	    public void runGrip() {
 	        /* Run GRIP in a new process */
-	        try {
+	        /*try {
 	            new ProcessBuilder("/home/lvuser/grip").inheritIO().start();
 	        } catch (IOException e) {
 	            e.printStackTrace();
-	        }
+	        }*/
 	    }
 	
 	/**************************************************************************************************
@@ -117,14 +116,14 @@ public class Vision extends Subsystem implements RobotMap {
 		table.putNumber("borked? ", 8732);
 		
 		for (double area : NetworkTable.getTable("GRIP").getNumberArray("targets/width", new double[0])) {
-		    System.out.println("Got contour with width=" + area);
+		    //System.out.println("Got contour with width=" + area);
 		}
-		System.out.println("size of networktable array: " + NetworkTable.getTable("GRIP").getNumberArray("targets/width", new double[0]).length);
+		//System.out.println("size of networktable array: " + NetworkTable.getTable("GRIP").getNumberArray("targets/width", new double[0]).length);
 		
 		alignmentCenterX = (X_MAX + X_MIN) / 2;
 		
 		if(width.length == 0){
-			System.out.println("HAH BORKED");
+			//System.out.println("HAH BORKED");
 			return 7;
 		}
 
@@ -142,7 +141,7 @@ public class Vision extends Subsystem implements RobotMap {
 		System.out.println(width[0]);
 		distance = FOCAL_X * WIDTH_ACTUAL / width[0];
 		SmartDashboard.putNumber("Distance Recorded as: ", distance / 12);
-		System.out.println("distance: " + distance / 12);
+		//System.out.println("distance: " + distance / 12);
 		return distance / 12;
 	}
 

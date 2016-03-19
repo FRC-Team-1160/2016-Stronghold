@@ -59,10 +59,11 @@ public class DriveTrain extends Subsystem implements RobotMap {
 	 * make the motors go the right (or left) way
 	 ******************************************************************/
 	public void Drive() {
-		fl.set(OI.getInstance().getStick().getHalfQuintZ() - OI.getInstance().getStick().getCubeY());
+		/*fl.set(OI.getInstance().getStick().getHalfQuintZ() - OI.getInstance().getStick().getCubeY());
 		bl.set(OI.getInstance().getStick().getHalfQuintZ() - OI.getInstance().getStick().getCubeY());
 		fr.set(OI.getInstance().getStick().getHalfQuintZ() + OI.getInstance().getStick().getCubeY());
 		br.set(OI.getInstance().getStick().getHalfQuintZ() + OI.getInstance().getStick().getCubeY());
+		*/
 		logPower();
 		SmartDashboard.putNumber("Left Drive Encoder", bl.getPosition());
 		SmartDashboard.putNumber("Right Drive Encoder", br.getPosition());

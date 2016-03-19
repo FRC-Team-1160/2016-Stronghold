@@ -1,6 +1,7 @@
 package org.usfirst.frc.team1160.robot.subsystems;
 
 import org.usfirst.frc.team1160.robot.RobotMap;
+import org.usfirst.frc.team1160.robot.commands.Distance;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
@@ -99,24 +100,33 @@ public class Vision extends Subsystem implements RobotMap {
 	 **************************************************************************************************/
 	public double getDistance() {
 		table = NetworkTable.getTable("GRIP/myContoursReport");
+		defaultValue = new double[1];
+
 		width = table.getNumberArray("width", defaultValue);
 		centerX = table.getNumberArray("centerX", defaultValue);
-		alignmentCenterX = (X_MAX + X_MIN) / 2;
 
-		for (int i = 0; i < centerX.length; i++) {
+		alignmentCenterX = (X_MAX + X_MIN) / 2;
+		
+		if(width.length == 0){
+			System.out.println("HAH BORKED");
+			return 7;
+		}
+
+		/*for (int i = 0; i < centerX.length; i++) {
 			if (Math.abs(centerX[i] - alignmentCenterX) < Math.abs(centerX[0] - alignmentCenterX)) {
 				index = i;
 			}
-		}
+		}*/
 
-		System.out.println(width[index]);
+		System.out.println(width[0]);
 		distance = FOCAL_X * WIDTH_ACTUAL / width[0];
 		SmartDashboard.putNumber("Distance Recorded as: ", distance / 12);
+		System.out.println(distance/12);
 		return distance / 12;
 	}
 
 	protected void initDefaultCommand() {
-
+		setDefaultCommand(new Distance());
 	}
 
 }

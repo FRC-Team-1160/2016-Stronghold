@@ -38,30 +38,35 @@ public class OI implements RobotMap{
 	}
 	
 	public void buttons(){
+		/*
 		fire = new JoystickButton(stick, FIRE);
 		stop = new JoystickButton(stick, STOP);
 		intake = new JoystickButton(stick, INTAKE);
 		up = new JoystickButton(stick, PIVOT_UP);
 		down = new JoystickButton(stick, PIVOT_DOWN);
 		test = new JoystickButton(stick, TEST);
-		see = new JoystickButton(stick, SEE);
+		*/see = new JoystickButton(stick, SEE);/*
 		cradleup = new JoystickButton(stick, CRA_UP);
 		cradledown = new JoystickButton(stick, CRA_DOWN);
+		*/
 		
 		tieButtons();
 	}
 	
 	public void tieButtons(){
+	/*
 		fire.whenPressed(new FireSequence());
 		stop.whenPressed(new StopWheels());
 		intake.whenPressed(new Intake(INTAKE_SPEED));
 		up.whenPressed(new ShootPosition());
 		down.whenPressed(new PickupPosition());
-		test.whenPressed(new Aim());
+		test.whenPressed(new Aim());*/
 		see.whenPressed(new Distance());
+		/*
 		cradleup.whenPressed(new CradlePush());
 		cradledown.whenPressed(new CradleHold());
 		System.out.println("WOY");
+		*/
 	}
 	
 	public ModifiedJoystick getStick(){

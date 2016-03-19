@@ -54,8 +54,7 @@ public class OI implements RobotMap{
 	}
 	
 	public void tieButtons(){
-	/*
-		fire.whenPressed(new FireSequence());
+		/*fire.whenPressed(new FireSequence());
 		stop.whenPressed(new StopWheels());
 		intake.whenPressed(new Intake(INTAKE_SPEED));
 		up.whenPressed(new ShootPosition());

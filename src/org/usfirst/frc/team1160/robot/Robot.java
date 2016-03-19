@@ -1,6 +1,7 @@
 
 package org.usfirst.frc.team1160.robot;
 
+import org.usfirst.frc.team1160.robot.commands.auto.Moat;
 import org.usfirst.frc.team1160.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team1160.robot.subsystems.Pneumatics;
 import org.usfirst.frc.team1160.robot.subsystems.Shooter;
@@ -55,8 +56,8 @@ public class Robot extends IterativeRobot implements RobotMap{
 	 * or additional comparisons to the switch structure below with additional strings & commands.
 	 */
     public void autonomousInit() {
-        //autonomousCommand = new LowBar();
-        //autonomousCommand.start();
+        autonomousCommand = new Moat(0, false);
+        autonomousCommand.start();
     }
 
     /**
@@ -68,7 +69,7 @@ public class Robot extends IterativeRobot implements RobotMap{
 
     public void teleopInit() {
         if (autonomousCommand != null) autonomousCommand.cancel();
-        //dt.noMoreAuto();
+        dt.noMoreAuto();
     }
 
     /**

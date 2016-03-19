@@ -10,8 +10,10 @@ public class PID extends Subsystem implements RobotMap {
 	private CANTalon motor, fMotor;
 
 	public PID(CANTalon lMotor, CANTalon fmotor) {
-		motor = lMotor;
-		fMotor = fmotor;
+		//CHANGE FOR FINAL VV
+		fMotor = lMotor;
+		motor = fmotor;
+		//CHANGE FOR FINAL ^^
 		motor.changeControlMode(CANTalon.TalonControlMode.Position);
 		fMotor.changeControlMode(CANTalon.TalonControlMode.Follower);
 		motor.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);

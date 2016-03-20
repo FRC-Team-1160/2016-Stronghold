@@ -35,6 +35,8 @@ public class DriveTrain extends Subsystem implements RobotMap{
 	}
 	
 	public void setAuto(){
+		frontLeft.setPID(P, I, D);
+		frontRight.setPID(P, I, D);
 		System.out.println("Talons set to autonomous mode.");
 		frontLeft.changeControlMode(CANTalon.TalonControlMode.Position);
 		frontRight.changeControlMode(CANTalon.TalonControlMode.Position);

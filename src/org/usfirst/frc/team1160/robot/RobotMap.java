@@ -81,8 +81,7 @@ public interface RobotMap {
 	//A Group
 	public static final double WHEEL_DIAMETER = (8*Math.PI)/12;
 	public static final double LOWBAR_DISTANCE = 4/WHEEL_DIAMETER;
-	public static final double PORTCULLIS_A_DISTANCE = 2/WHEEL_DIAMETER;
-	public static final double PORTCULLIS_B_DISTANCE = 3/WHEEL_DIAMETER;
+	public static final double PORTCULLIS_DISTANCE = 2/WHEEL_DIAMETER;
 	public static final double CHEVAL_A_DISTANCE = 3/WHEEL_DIAMETER;
 	public static final double CHEVAL_B_DISTANCE = 3/WHEEL_DIAMETER;
 	//B Group

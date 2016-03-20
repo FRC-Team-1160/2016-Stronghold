@@ -6,6 +6,13 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class DriveDistance extends Command{
 
+	double distance;
+	
+	public DriveDistance(double distance){
+		this.distance = distance;
+		requires(Robot.dt);
+	}
+	
 	@Override
 	protected void initialize() {
 		
@@ -13,7 +20,6 @@ public class DriveDistance extends Command{
 
 	@Override
 	protected void execute() {
-		// TODO Auto-generated method stub
 		
 	}
 

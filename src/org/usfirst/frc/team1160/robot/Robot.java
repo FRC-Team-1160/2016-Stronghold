@@ -1,6 +1,7 @@
 
 package org.usfirst.frc.team1160.robot;
 
+import org.usfirst.frc.team1160.robot.commands.auto.UnevenTerrain;
 import org.usfirst.frc.team1160.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team1160.robot.subsystems.Shooter;
 import org.usfirst.frc.team1160.robot.subsystems.Vision;
@@ -53,7 +54,7 @@ public class Robot extends IterativeRobot implements RobotMap{
 	 */
     public void autonomousInit() {
     	dt.resetPos();
-        autonomousCommand = new Moat(0, false);
+        autonomousCommand = new UnevenTerrain();
         autonomousCommand.start();
     }
 
@@ -66,6 +67,7 @@ public class Robot extends IterativeRobot implements RobotMap{
 
     public void teleopInit() {
         if (autonomousCommand != null) autonomousCommand.cancel();
+        dt.setManual();
     }
 
     /**

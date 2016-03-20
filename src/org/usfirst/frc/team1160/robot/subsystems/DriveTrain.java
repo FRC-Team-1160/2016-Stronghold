@@ -34,6 +34,12 @@ public class DriveTrain extends Subsystem implements RobotMap{
 		backRight.set(OI.getInstance().getStick().getHalfQuintZ() + OI.getInstance().getStick().getCubeY());
 	}
 	
+	public void resetPos(){
+		System.out.println("Talon positions set to 0.");
+		frontLeft.setPosition(0);
+		frontRight.setPosition(0);
+	}
+	
 	public void setAuto(){
 		frontLeft.setPID(P, I, D);
 		frontRight.setPID(P, I, D);
@@ -53,6 +59,13 @@ public class DriveTrain extends Subsystem implements RobotMap{
 	}
 	
 	public void driveDistance(double distance){
+		frontLeft.set(distance);
+		frontRight.set(-distance);
+		backLeft.set(frontLeft.getDeviceID());
+		backRight.set(frontRight.getDeviceID());
+	}
+	
+	public void rotate(double distance){
 		frontLeft.set(distance);
 		frontRight.set(distance);
 		backLeft.set(frontLeft.getDeviceID());

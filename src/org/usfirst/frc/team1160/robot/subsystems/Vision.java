@@ -94,7 +94,7 @@ public class Vision extends Subsystem implements RobotMap {
 			return 0;
 		}
 
-	    public void runGrip() {
+	public void runGrip() {
 	        /* Run GRIP in a new process */
 	        /*try {
 	            new ProcessBuilder("/home/lvuser/grip").inheritIO().start();
@@ -145,6 +145,35 @@ public class Vision extends Subsystem implements RobotMap {
 		return distance / 12;
 	}
 
+	// Calculates the needed velocity for the ball
+	private double velocity(double distance) {
+		double angleSec = 1 / Math.cos(SHOOTER_ANGLE_RADIANS);
+		double velocity = FT_TO_M * (distance * angleSec * Math.sqrt((GRAVITATIONAL_ACCEL)
+				/ (2 * (BALL_VERTICAL_DISPLACEMENT - distance * Math.tan(SHOOTER_ANGLE_RADIANS)))));
+		return velocity;
+	}
+
+	// Calculates rpm needed to achieve said speed
+	private double speedFromDistance(double distance) {
+		return this.velocity(distance)*60/SHOOTER_WHEEL_CIRCUMFERENCE;
+	}
+	
+	// Accounts for loss of energy from ball contacting fly wheels
+	private double addEnergy(double distance) {
+		// Calculated on wolfram alpha
+		// Update when shoot angle changes
+		double wolframConstant = 102.788;
+		
+		return speedFromDistance(distance) 
+				+ wolframConstant 
+				* velocity(distance)
+				* 1.25;
+	}
+	
+	public double neededRpm(){
+		return addEnergy(getDistance());
+	}
+	
 	protected void initDefaultCommand() {
 		//setDefaultCommand(new Distance());
 	}

@@ -67,33 +67,10 @@ public class Shooter extends Subsystem implements RobotMap {
 		bottom.set(-speed);
 	}
 
-	public double speedFromDistance(double distance) {
-		angleSec = 1 / Math.cos(SHOOTER_ANGLE_RADIANS);
-		rpm = ((distance * angleSec
-				* Math.sqrt((GRAVITATIONAL_ACCEL)
-						/ (2 * (BALL_VERTICAL_DISPLACEMENT - distance * Math.tan(SHOOTER_ANGLE_RADIANS)))))
-				/ SHOOTER_WHEEL_CIRCUMFERENCE) * 60;
-		return rpm;
-	}
-
-	public double velocity(double distance) {
-		angleSec = 1 / Math.cos(SHOOTER_ANGLE_RADIANS);
-		logVel = FT_TO_M * (distance * angleSec * Math.sqrt((GRAVITATIONAL_ACCEL)
-				/ (2 * (BALL_VERTICAL_DISPLACEMENT - distance * Math.tan(SHOOTER_ANGLE_RADIANS)))));
-		SmartDashboard.putNumber("Goal Velocity Set At: ", logVel);
-		return logVel;
-	}
-
-	public double addEnergy() {
-		//finalRPM = speedFromDistance(vision.getDistance()) + 102.788 * velocity(vision.getDistance());
-		finalRPM = speedFromDistance(SmartDashboard.getNumber("TEST_DISTANCE")) + 102.788 * velocity(SmartDashboard.getNumber("TEST_DISTANCE"));
-		SmartDashboard.putNumber("Goal RPM: ", finalRPM * 1.25);
-		return finalRPM * 1.25;
-	}
-
-	public void getRevolutions() {
+	public void logRevolutions() {
 		smallRPM = bottom.getSpeed();
 		largeRPM = top.getSpeed();
+		
 		System.out.println("SmallRPM: " + smallRPM);
 		System.out.println("LargeRPM: " + largeRPM);
 
@@ -102,16 +79,15 @@ public class Shooter extends Subsystem implements RobotMap {
 
 	}
 
-	public void testFire() {
-		System.out.println("Top rev: " + top.getPosition());
-		System.out.println("Bot rev: " + bottom.getPosition());
-	}
-
 	public void startTime() {
 		time.reset();
 		time.start();
 	}
 
+	public double getTime() {
+		return time.get();
+	}
+	
 	public int getTopRpm(){
 		return top.getEncVelocity();
 	}
@@ -120,14 +96,6 @@ public class Shooter extends Subsystem implements RobotMap {
 		return bottom.getEncVelocity();
 	}
 	
-	public double getTime() {
-		return time.get();
-	}
-
-	public double getSmall() {
-		return bottom.get();
-	}
-
 	//Pnuematic stuff beyond this point
 	public void lowerShooter(){
 		pivot.set(EXT);
@@ -144,5 +112,4 @@ public class Shooter extends Subsystem implements RobotMap {
 	public void holdCradle(){
 		cradle.set(RET);
 	}
-	
 }

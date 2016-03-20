@@ -49,11 +49,6 @@ public class Shooter extends Subsystem implements RobotMap {
 		
 	}
 
-	public void potBoy() {
-		// ??
-		OI.getInstance().getAutoInput().getAxis(AxisType.kThrottle);
-	}
-	
 	public void setTop(double speed) {
 		top.set(speed);
 	}
@@ -88,15 +83,15 @@ public class Shooter extends Subsystem implements RobotMap {
 		return time.get();
 	}
 	
-	public int getTopRpm(){
-		return top.getEncVelocity();
+	public double getTopRpm(){
+		return top.getSpeed();
 	}
 	
-	public int getBottomRpm(){
-		return bottom.getEncVelocity();
+	public double getBottomRpm(){
+		return bottom.getSpeed();
 	}
 	
-	//Pnuematic stuff beyond this point
+	//Pneumatic stuff beyond this point
 	public void lowerShooter(){
 		pivot.set(EXT);
 	}

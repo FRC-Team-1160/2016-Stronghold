@@ -33,7 +33,7 @@ public class SpinWheels extends Command implements RobotMap {
 			inRange(Robot.shoot.getBottomRpm());
 	}
 	
-	private boolean inRange(int rpm){
+	private boolean inRange(double rpm){
 		return Math.abs(this.rpm - rpm) < error;
 	}
 

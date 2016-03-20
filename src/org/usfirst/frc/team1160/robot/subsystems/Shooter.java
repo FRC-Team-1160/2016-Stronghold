@@ -46,15 +46,15 @@ public class Shooter extends Subsystem implements RobotMap {
 		OI.getInstance().getAutoInput().getAxis(AxisType.kThrottle);
 	}
 	
-	public void setBig(double speed) {
+	public void setTop(double speed) {
 		top.set(speed);
 	}
 
-	public void setSmall(double speed) {
+	public void setBottom(double speed) {
 		bottom.set(speed);
 	}
 
-	public void setFlywheel(double speed) {
+	public void setBoth(double speed) {
 		top.set(speed);
 		bottom.set(-speed);
 	}
@@ -104,6 +104,14 @@ public class Shooter extends Subsystem implements RobotMap {
 		time.start();
 	}
 
+	public int getTopRpm(){
+		return top.getEncVelocity();
+	}
+	
+	public int getBottomRpm(){
+		return bottom.getEncVelocity();
+	}
+	
 	public double getTime() {
 		return time.get();
 	}

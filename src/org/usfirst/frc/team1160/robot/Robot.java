@@ -1,6 +1,7 @@
 
 package org.usfirst.frc.team1160.robot;
 
+import org.usfirst.frc.team1160.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team1160.robot.subsystems.Shooter;
 import org.usfirst.frc.team1160.robot.subsystems.Vision;
 
@@ -14,6 +15,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 public class Robot extends IterativeRobot implements RobotMap{
 
 	public static OI oi;
+	public static DriveTrain dt;
 	public static Shooter shoot;
 	public static Vision see;
 	public static DeployConfirm dc;

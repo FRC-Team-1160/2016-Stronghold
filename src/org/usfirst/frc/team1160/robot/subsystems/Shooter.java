@@ -1,12 +1,11 @@
 package org.usfirst.frc.team1160.robot.subsystems;
 
-import org.usfirst.frc.team1160.robot.OI;
 import org.usfirst.frc.team1160.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.CANTalon;
+import edu.wpi.first.wpilibj.CANTalon.TalonControlMode;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
-import edu.wpi.first.wpilibj.Joystick.AxisType;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -16,7 +15,7 @@ public class Shooter extends Subsystem implements RobotMap {
 	private static Shooter instance;
 
 	protected final CANTalon top, bottom;
-	private double rpm, angleSec, finalRPM, smallRPM, largeRPM, logVel;
+	private double smallRPM, largeRPM;
 	private Timer time;
 	protected final Compressor comp;
 	protected final DoubleSolenoid pivot, cradle;
@@ -31,10 +30,10 @@ public class Shooter extends Subsystem implements RobotMap {
 	private Shooter() {
 		top = new CANTalon(S_FLYWHEEL_TOP);
 		bottom = new CANTalon(S_FLYWHEEL_BOTTOM);
-		top.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
-		bottom.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
-		bottom.configEncoderCodesPerRev(1024);
-		top.configEncoderCodesPerRev(1024);
+		
+		configureTalon(top);
+		configureTalon(bottom);
+		
 		SmartDashboard.putNumber("TEST_DISTANCE", TEST_DISTANCE);
 		time = new Timer();
 	
@@ -43,6 +42,12 @@ public class Shooter extends Subsystem implements RobotMap {
 		
 		pivot = new DoubleSolenoid(S_PIVOT_A, S_PIVOT_B);
 		cradle = new DoubleSolenoid(S_HOLD_A, S_HOLD_B);
+	}
+
+	private void configureTalon(CANTalon talon){
+		talon.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
+		talon.configEncoderCodesPerRev(1024);
+		talon.changeControlMode(TalonControlMode.Speed);
 	}
 	
 	protected void initDefaultCommand() {

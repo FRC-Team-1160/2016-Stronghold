@@ -7,13 +7,13 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class SpinWheels extends Command implements RobotMap {
 
-	private int rpm, error;
+	private double rpm, error;
 	
 	// Rpm is target rpm for top and bottom
 	// Error is the acceptable error for triggering a stop
-	public SpinWheels(int rpm, int error){
+	public SpinWheels(double targetRpm, int error){
 		requires(Robot.shoot);
-		this.rpm = rpm;
+		this.rpm = targetRpm;
 		this.error = error;
 	}
 	

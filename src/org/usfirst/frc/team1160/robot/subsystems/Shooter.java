@@ -13,14 +13,13 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Shooter extends Subsystem implements RobotMap {
 
-	public static Shooter instance;
+	private static Shooter instance;
 
 	protected final CANTalon top, bottom;
 	private double rpm, angleSec, finalRPM, smallRPM, largeRPM, logVel;
 	private Timer time;
 	protected final Compressor comp;
 	protected final DoubleSolenoid pivot, cradle;
-	private Vision vision;
 
 	public static Shooter getInstance() {
 		if (instance == null) {
@@ -38,7 +37,6 @@ public class Shooter extends Subsystem implements RobotMap {
 		top.configEncoderCodesPerRev(1024);
 		SmartDashboard.putNumber("TEST_DISTANCE", TEST_DISTANCE);
 		time = new Timer();
-		vision = Vision.getInstance();
 	
 		comp = new Compressor(COMPRESSOR);
 		comp.start();

@@ -9,6 +9,8 @@ public class SpinWheels extends Command implements RobotMap {
 
 	private int rpm, error;
 	
+	// Rpm is target rpm for top and bottom
+	// Error is the acceptable error for triggering a stop
 	public SpinWheels(int rpm, int error){
 		requires(Robot.shoot);
 		this.rpm = rpm;
@@ -27,8 +29,8 @@ public class SpinWheels extends Command implements RobotMap {
 
 	@Override
 	protected boolean isFinished() {
-		return inRange(Robot.shoot.getTopRpm()) &&
-			   inRange(Robot.shoot.getBottomRpm());
+		return inRange(Robot.shoot.getTopRpm()) && 
+			inRange(Robot.shoot.getBottomRpm());
 	}
 	
 	private boolean inRange(int rpm){
@@ -38,7 +40,9 @@ public class SpinWheels extends Command implements RobotMap {
 	
 	@Override
 	protected void end() {
-		
+		// We don't do anything here so the wheels maintain speed 
+		// after command ends but still triggers the next sequential 
+		// command when speed is hit
 	}
 
 	@Override

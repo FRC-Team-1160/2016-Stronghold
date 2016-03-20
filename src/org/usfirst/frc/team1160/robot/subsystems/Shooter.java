@@ -4,6 +4,8 @@ import org.usfirst.frc.team1160.robot.OI;
 import org.usfirst.frc.team1160.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.CANTalon;
+import edu.wpi.first.wpilibj.Compressor;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Joystick.AxisType;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -16,6 +18,8 @@ public class Shooter extends Subsystem implements RobotMap {
 	protected final CANTalon top, bottom;
 	private double rpm, angleSec, finalRPM, smallRPM, largeRPM, logVel;
 	private Timer time;
+	protected final Compressor comp;
+	protected final DoubleSolenoid pivot, cradle;
 	private Vision vision;
 
 	public static Shooter getInstance() {
@@ -35,6 +39,12 @@ public class Shooter extends Subsystem implements RobotMap {
 		SmartDashboard.putNumber("TEST_DISTANCE", TEST_DISTANCE);
 		time = new Timer();
 		vision = Vision.getInstance();
+	
+		comp = new Compressor(COMPRESSOR);
+		comp.start();
+		
+		pivot = new DoubleSolenoid(S_PIVOT_A, S_PIVOT_B);
+		cradle = new DoubleSolenoid(S_HOLD_A, S_HOLD_B);
 	}
 	
 	protected void initDefaultCommand() {
@@ -120,4 +130,21 @@ public class Shooter extends Subsystem implements RobotMap {
 		return bottom.get();
 	}
 
+	//Pnuematic stuff beyond this point
+	public void lowerShooter(){
+		pivot.set(EXT);
+	}
+	
+	public void raiseShooter(){
+		pivot.set(RET);
+	}
+	
+	public void shootCradle(){
+		cradle.set(EXT);
+	}
+	
+	public void holdCradle(){
+		cradle.set(RET);
+	}
+	
 }

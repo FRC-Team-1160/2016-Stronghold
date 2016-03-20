@@ -15,12 +15,12 @@ public class DriveDistance extends Command{
 	
 	@Override
 	protected void initialize() {
-		
+		Robot.dt.setAuto();
 	}
 
 	@Override
 	protected void execute() {
-		
+		Robot.dt.driveDistance(distance);
 	}
 
 	@Override

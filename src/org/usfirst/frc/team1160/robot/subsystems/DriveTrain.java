@@ -2,7 +2,7 @@ package org.usfirst.frc.team1160.robot.subsystems;
 
 import org.usfirst.frc.team1160.robot.OI;
 import org.usfirst.frc.team1160.robot.RobotMap;
-import org.usfirst.frc.team1160.robot.commands.drive.ManualDrive;
+import org.usfirst.frc.team1160.robot.commands.drive.HumanDrive;
 
 import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -11,13 +11,16 @@ public class DriveTrain extends Subsystem implements RobotMap{
 	
 	public static DriveTrain instance;
 	
-	protected final CANTalon frontLeft, backLeft, frontRight, backRight;
+	protected CANTalon frontLeft, backLeft, frontRight, backRight;
 	
 	private DriveTrain(){
+		System.out.println("Drive train created and stuff.");
 		frontLeft = new CANTalon(DT_FRONTLEFT);
 		frontRight = new CANTalon(DT_FRONTRIGHT);
 		backLeft = new CANTalon(DT_BACKLEFT);
 		backRight = new CANTalon(DT_BACKRIGHT);
+		frontLeft.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
+		frontRight.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
 	}
 	
 	public static DriveTrain getInstance(){
@@ -59,6 +62,7 @@ public class DriveTrain extends Subsystem implements RobotMap{
 	}
 	
 	public void driveDistance(double distance){
+		System.out.println(frontRight.getPosition());
 		frontLeft.set(distance);
 		frontRight.set(-distance);
 		backLeft.set(frontLeft.getDeviceID());
@@ -73,11 +77,11 @@ public class DriveTrain extends Subsystem implements RobotMap{
 	}
 	
 	public boolean isDone(){
-		return (frontLeft.getError() < 0.5) && (frontRight.getError() < 0.5);
+		return (frontRight.getError() < 0.5);
 	}
 	
 	protected void initDefaultCommand() {
-		setDefaultCommand(new ManualDrive());
+		setDefaultCommand(new HumanDrive());
 	}
 
 }

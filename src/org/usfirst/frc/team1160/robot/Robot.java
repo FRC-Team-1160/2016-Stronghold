@@ -27,10 +27,12 @@ public class Robot extends IterativeRobot implements RobotMap{
 
     public void robotInit() {
     	dt = DriveTrain.getInstance();
+    	System.out.println("dt thing called here");
 //    	shoot = Shooter.getInstance();
-   		see = Vision.getInstance();
+//   	see = Vision.getInstance();
 //		air = Pneumatics.getInstance();
-		oi = OI.getInstance();
+    	System.out.println("oi finna be called right here");
+   		oi = OI.getInstance();
 		dc = new DeployConfirm();
 		
     }

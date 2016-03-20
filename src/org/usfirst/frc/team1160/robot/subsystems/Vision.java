@@ -120,7 +120,7 @@ public class Vision extends Subsystem implements RobotMap {
 		}
 		//System.out.println("size of networktable array: " + NetworkTable.getTable("GRIP").getNumberArray("targets/width", new double[0]).length);
 		
-		alignmentCenterX = (X_MAX + X_MIN) / 2;
+		//alignmentCenterX = (X_MAX + X_MIN) / 2;
 		
 		if(width.length == 0){
 			//System.out.println("HAH BORKED");
@@ -146,7 +146,7 @@ public class Vision extends Subsystem implements RobotMap {
 	}
 
 	protected void initDefaultCommand() {
-		setDefaultCommand(new Distance());
+		//setDefaultCommand(new Distance());
 	}
 
 }

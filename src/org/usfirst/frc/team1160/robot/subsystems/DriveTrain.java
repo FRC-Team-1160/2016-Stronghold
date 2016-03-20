@@ -2,6 +2,7 @@ package org.usfirst.frc.team1160.robot.subsystems;
 
 import org.usfirst.frc.team1160.robot.OI;
 import org.usfirst.frc.team1160.robot.RobotMap;
+import org.usfirst.frc.team1160.robot.commands.drive.ManualDrive;
 
 import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -35,10 +36,10 @@ public class DriveTrain extends Subsystem implements RobotMap{
 	
 	public void setAuto(){
 		System.out.println("Talons set to autonomous mode.");
-		frontLeft.changeControlMode(CANTalon.TalonControlMode.Follower);
+		frontLeft.changeControlMode(CANTalon.TalonControlMode.Position);
 		frontRight.changeControlMode(CANTalon.TalonControlMode.Position);
 		backLeft.changeControlMode(CANTalon.TalonControlMode.Follower);
-		backRight.changeControlMode(CANTalon.TalonControlMode.Position);
+		backRight.changeControlMode(CANTalon.TalonControlMode.Follower);
 	}
 	
 	public void setManual(){
@@ -49,12 +50,19 @@ public class DriveTrain extends Subsystem implements RobotMap{
 		backRight.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
 	}
 	
-	public void driveDistance(){
-		
+	public void driveDistance(double distance){
+		frontLeft.set(distance);
+		frontRight.set(distance);
+		backLeft.set(frontLeft.getDeviceID());
+		backRight.set(frontRight.getDeviceID());
+	}
+	
+	public boolean isDone(){
+		return (frontLeft.getError() < 0.5) && (frontRight.getError() < 0.5);
 	}
 	
 	protected void initDefaultCommand() {
-		
+		setDefaultCommand(new ManualDrive());
 	}
 
 }

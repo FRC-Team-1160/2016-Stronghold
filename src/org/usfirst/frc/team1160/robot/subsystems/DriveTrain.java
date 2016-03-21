@@ -11,12 +11,12 @@ public class DriveTrain extends Subsystem implements RobotMap{
 	
 	public static DriveTrain instance;
 	
-	protected final CANTalon frontLeft, backLeft, frontRight, backRight;
+	protected CANTalon frontLeft, backLeft, frontRight, backRight;
 	
 	private DriveTrain(){
-		frontLeft = new CANTalon(DT_FRONTLEFT);
+		//frontLeft = new CANTalon(DT_//frontLeft);
 		frontRight = new CANTalon(DT_FRONTRIGHT);
-		backLeft = new CANTalon(DT_BACKLEFT);
+		//backLeft = new CANTalon(DT_//backLeft);
 		backRight = new CANTalon(DT_BACKRIGHT);
 	}
 	
@@ -28,52 +28,52 @@ public class DriveTrain extends Subsystem implements RobotMap{
 	}
 	
 	public void manualDrive(){
-		frontLeft.set(OI.getInstance().getStick().getHalfQuintZ() - OI.getInstance().getStick().getCubeY());
-		backLeft.set(OI.getInstance().getStick().getHalfQuintZ() - OI.getInstance().getStick().getCubeY());
+		//frontLeft.set(OI.getInstance().getStick().getHalfQuintZ() - OI.getInstance().getStick().getCubeY());
+		//backLeft.set(OI.getInstance().getStick().getHalfQuintZ() - OI.getInstance().getStick().getCubeY());
 		frontRight.set(OI.getInstance().getStick().getHalfQuintZ() + OI.getInstance().getStick().getCubeY());
 		backRight.set(OI.getInstance().getStick().getHalfQuintZ() + OI.getInstance().getStick().getCubeY());
 	}
 	
 	public void resetPos(){
 		System.out.println("Talon positions set to 0.");
-		frontLeft.setPosition(0);
+		//frontLeft.setPosition(0);
 		frontRight.setPosition(0);
 	}
 	
 	public void setAuto(){
-		frontLeft.setPID(P, I, D);
+		//frontLeft.setPID(P, I, D);
 		frontRight.setPID(P, I, D);
 		System.out.println("Talons set to autonomous mode.");
-		frontLeft.changeControlMode(CANTalon.TalonControlMode.Position);
+		//frontLeft.changeControlMode(CANTalon.TalonControlMode.Position);
 		frontRight.changeControlMode(CANTalon.TalonControlMode.Position);
-		backLeft.changeControlMode(CANTalon.TalonControlMode.Follower);
+		//backLeft.changeControlMode(CANTalon.TalonControlMode.Follower);
 		backRight.changeControlMode(CANTalon.TalonControlMode.Follower);
 	}
 	
 	public void setManual(){
 		System.out.println("Talons set to manual mode.");
-		frontLeft.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
+		//frontLeft.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
 		frontRight.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
-		backLeft.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
+		//backLeft.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
 		backRight.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
 	}
 	
 	public void driveDistance(double distance){
-		frontLeft.set(distance);
+		//frontLeft.set(distance);
 		frontRight.set(-distance);
-		backLeft.set(frontLeft.getDeviceID());
+		//backLeft.set(//frontLeft.getDeviceID());
 		backRight.set(frontRight.getDeviceID());
 	}
 	
 	public void rotate(double distance){
-		frontLeft.set(distance);
+		//frontLeft.set(distance);
 		frontRight.set(distance);
-		backLeft.set(frontLeft.getDeviceID());
+		//backLeft.set(//frontLeft.getDeviceID());
 		backRight.set(frontRight.getDeviceID());
 	}
 	
 	public boolean isDone(){
-		return (frontLeft.getError() < 0.5) && (frontRight.getError() < 0.5);
+		return (frontRight.getError() < 0.5);
 	}
 	
 	protected void initDefaultCommand() {

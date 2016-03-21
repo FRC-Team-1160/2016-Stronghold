@@ -24,6 +24,13 @@ public class Vision implements RobotMap {
 		return instance;
 	}
 
+	private Vision() {
+		table = NetworkTable.getTable("GRIP/myContoursReport");
+		defaultValue = new double[0];
+		centerX = new double[defaultValue.length];
+		runGrip();
+	}
+
 	public boolean aligned() {
 		table = NetworkTable.getTable("GRIP/myContoursReport");
 		centerX = table.getNumberArray("centerX", defaultValue);
@@ -33,13 +40,6 @@ public class Vision implements RobotMap {
 		}
 
 		return false;
-	}
-
-	private Vision() {
-		table = NetworkTable.getTable("GRIP/myContoursReport");
-		defaultValue = new double[0];
-		centerX = new double[defaultValue.length];
-		runGrip();
 	}
 
 	public boolean alignCheck() {

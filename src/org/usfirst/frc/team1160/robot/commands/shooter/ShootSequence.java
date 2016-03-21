@@ -18,7 +18,8 @@ public class ShootSequence extends CommandGroup {
 		addSequential(new ShootPosition());
 		addSequential(new SpinWheels(this.targetRpm, 10));
 		addSequential(new CradleShoot());
-		addSequential(new WaitCommand(2)); // I think this is in seconds, it doesn't actually say
+		addSequential(new WaitCommand(1));
 		addSequential(new SpinWheels(0, 100));
+		addSequential(new CradleHold());
 	}
 }

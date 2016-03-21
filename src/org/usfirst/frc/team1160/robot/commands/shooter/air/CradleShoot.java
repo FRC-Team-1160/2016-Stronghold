@@ -7,11 +7,11 @@ import edu.wpi.first.wpilibj.command.Command;
 public class CradleShoot extends Command {
 
 	public CradleShoot(){
-		requires(Robot.shoot);
+		requires(Robot.shooter);
 	}
 	@Override
 	protected void initialize() {
-		Robot.shoot.shootCradle();
+		Robot.shooter.shootCradle();
 	}
 
 	@Override

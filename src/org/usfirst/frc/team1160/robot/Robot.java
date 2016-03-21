@@ -17,7 +17,7 @@ public class Robot extends IterativeRobot implements RobotMap{
 
 	public static OI oi;
 	public static DriveTrain dt;
-	public static Shooter shoot;
+	public static Shooter shooter;
 	public static Vision see;
 	public static DeployConfirm dc;
 	public static AutoSelection autochoose;
@@ -27,10 +27,9 @@ public class Robot extends IterativeRobot implements RobotMap{
 
     public void robotInit() {
     	dt = DriveTrain.getInstance();
-//    	shoot = Shooter.getInstance();
+    	shooter = Shooter.getInstance();
 //   	see = Vision.getInstance();
-//		air = Pneumatics.getInstance();
-   		oi = OI.getInstance();
+    	oi = OI.getInstance();
 		dc = new DeployConfirm();
 		
     }

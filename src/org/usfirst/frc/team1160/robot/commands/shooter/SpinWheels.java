@@ -12,14 +12,14 @@ public class SpinWheels extends Command implements RobotMap {
 	// Rpm is target rpm for top and bottom
 	// Error is the acceptable error for triggering a stop
 	public SpinWheels(double targetRpm, int error){
-		requires(Robot.shoot);
+		requires(Robot.shooter);
 		this.rpm = targetRpm;
 		this.error = error;
 	}
 	
 	@Override
 	protected void initialize() {
-		Robot.shoot.setBoth(rpm);
+		Robot.shooter.setBoth(rpm);
 	}
 
 	@Override
@@ -29,8 +29,8 @@ public class SpinWheels extends Command implements RobotMap {
 
 	@Override
 	protected boolean isFinished() {
-		return inRange(Robot.shoot.getTopRpm()) && 
-			inRange(Robot.shoot.getBottomRpm());
+		return inRange(Robot.shooter.getTopRpm()) && 
+			inRange(Robot.shooter.getBottomRpm());
 	}
 	
 	private boolean inRange(double rpm){

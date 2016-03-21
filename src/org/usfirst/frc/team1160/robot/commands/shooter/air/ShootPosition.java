@@ -7,11 +7,11 @@ import edu.wpi.first.wpilibj.command.Command;
 public class ShootPosition extends Command {
 
 	public ShootPosition(){
-		requires(Robot.shoot);
+		requires(Robot.shooter);
 	}
 	@Override
 	protected void initialize() {
-		Robot.shoot.raiseShooter();
+		Robot.shooter.raiseShooter();
 	}
 
 	@Override

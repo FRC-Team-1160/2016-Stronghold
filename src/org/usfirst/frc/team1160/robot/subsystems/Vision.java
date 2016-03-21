@@ -95,11 +95,11 @@ public class Vision implements RobotMap {
 
 	public void runGrip() {
 	        /* Run GRIP in a new process */
-	        /*try {
+	        try {
 	            new ProcessBuilder("/home/lvuser/grip").inheritIO().start();
 	        } catch (IOException e) {
 	            e.printStackTrace();
-	        }*/
+	        }
 	    }
 	
 	/**************************************************************************************************

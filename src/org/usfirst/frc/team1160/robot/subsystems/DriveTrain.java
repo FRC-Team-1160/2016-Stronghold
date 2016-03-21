@@ -77,7 +77,7 @@ public class DriveTrain extends Subsystem implements RobotMap{
 	}
 	
 	public boolean isDone(){
-		return (frontRight.getError() < 0.5);
+		return ((frontLeft.getError() < 0.5) && (frontRight.getError() < 0.5));
 	}
 	
 	protected void initDefaultCommand() {

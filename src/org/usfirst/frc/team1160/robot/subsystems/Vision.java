@@ -4,11 +4,10 @@ import java.io.IOException;
 
 import org.usfirst.frc.team1160.robot.RobotMap;
 
-import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-public class Vision extends Subsystem implements RobotMap {
+public class Vision implements RobotMap {
 
 	private static Vision instance;
 
@@ -96,11 +95,11 @@ public class Vision extends Subsystem implements RobotMap {
 
 	public void runGrip() {
 	        /* Run GRIP in a new process */
-	        /*try {
+	        try {
 	            new ProcessBuilder("/home/lvuser/grip").inheritIO().start();
 	        } catch (IOException e) {
 	            e.printStackTrace();
-	        }*/
+	        }
 	    }
 	
 	/**************************************************************************************************
@@ -172,10 +171,6 @@ public class Vision extends Subsystem implements RobotMap {
 	
 	public double neededRpm(){
 		return addEnergy(getDistance());
-	}
-	
-	protected void initDefaultCommand() {
-		//setDefaultCommand(new Distance());
 	}
 
 }

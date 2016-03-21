@@ -16,8 +16,9 @@ public class OI implements RobotMap{
 		return instance;
 		}
 	
-	public OI(){
-
+	private OI(){
+		stick = new ModifiedJoystick(1);
+		autoInput = new Joystick(0);
 	}
 	
 	public void buttons(){

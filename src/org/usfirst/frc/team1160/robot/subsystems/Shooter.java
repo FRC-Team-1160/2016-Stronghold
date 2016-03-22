@@ -48,6 +48,7 @@ public class Shooter extends Subsystem implements RobotMap {
 		talon.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
 		talon.configEncoderCodesPerRev(1024);
 		talon.changeControlMode(TalonControlMode.Speed);
+		talon.setPID(P, I, D);
 	}
 	
 	protected void initDefaultCommand() {

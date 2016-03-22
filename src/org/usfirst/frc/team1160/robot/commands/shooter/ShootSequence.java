@@ -16,7 +16,7 @@ public class ShootSequence extends CommandGroup {
 		
 		addSequential(new CradleHold());
 		addSequential(new ShootPosition());
-		addSequential(new SpinWheels(this.targetRpm, 10));
+		addSequential(new SpinWheels(this.targetRpm, 3000));
 		addSequential(new CradleShoot());
 		addSequential(new WaitCommand(1));
 		addSequential(new SpinWheels(0, 100));

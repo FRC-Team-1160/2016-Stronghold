@@ -17,7 +17,7 @@ public class DriveTrain extends Subsystem implements RobotMap{
 		System.out.println("Drive train created and stuff.");
 		frontLeft = new CANTalon(DT_FRONTLEFT);
 		frontRight = new CANTalon(DT_FRONTRIGHT);
-		//backLeft = new CANTalon(DT_//backLeft);
+		//backLeft = new CANTalon(DT_backLeft);
 		backRight = new CANTalon(DT_BACKRIGHT);
 		frontLeft.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
 		frontRight.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);

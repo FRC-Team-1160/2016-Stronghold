@@ -117,14 +117,14 @@ public class Vision extends Subsystem implements RobotMap {
 		table.putNumber("borked? ", 8732);
 		
 		for (double area : NetworkTable.getTable("GRIP").getNumberArray("targets/width", new double[0])) {
-		    System.out.println("Got contour with width=" + area);
+		    //System.out.println("Got contour with width=" + area);
 		}
-		System.out.println("size of networktable array: " + NetworkTable.getTable("GRIP").getNumberArray("targets/width", new double[0]).length);
+		//System.out.println("size of networktable array: " + NetworkTable.getTable("GRIP").getNumberArray("targets/width", new double[0]).length);
 		
 		alignmentCenterX = (X_MAX + X_MIN) / 2;
 		
 		if(width.length == 0){
-			System.out.println("HAH BORKED");
+			//System.out.println("HAH BORKED");
 			return 7;
 		}
 
@@ -135,14 +135,14 @@ public class Vision extends Subsystem implements RobotMap {
 		}
 
 		if(width.length == 0){
-			System.out.println("nooooo :(");
+			//System.out.println("nooooo :(");
 			return 7;
 		}
 		
 		System.out.println(width[0]);
 		distance = FOCAL_X * WIDTH_ACTUAL / width[0];
 		SmartDashboard.putNumber("Distance Recorded as: ", distance / 12);
-		System.out.println("distance: " + distance / 12);
+		//System.out.println("distance: " + distance / 12);
 		return distance / 12;
 	}
 

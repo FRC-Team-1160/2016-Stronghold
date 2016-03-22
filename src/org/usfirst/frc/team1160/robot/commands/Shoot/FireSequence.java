@@ -15,7 +15,7 @@ public class FireSequence extends CommandGroup implements RobotMap{
 	public FireSequence(){
 		addSequential(new CradleHold());
 		addSequential(new ShootPosition());
-		addSequential(new Aim());
+		//addSequential(new Aim());
 		addSequential(new SpinAndFire());
 		addSequential(new StopWheels());
 		addSequential(new CradleHold());	

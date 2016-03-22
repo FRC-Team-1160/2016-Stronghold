@@ -45,8 +45,8 @@ public interface RobotMap {
 	public static final int DT_FRONTRIGHT = 20;
 	public static final int DT_BACKLEFT = 6;
 	public static final int DT_FRONTLEFT = 5;
-	public static final int S_FLYWHEEL_LARGE = 20;
-	public static final int S_FLYWHEEL_SMALL = 21;
+	public static final int S_FLYWHEEL_LARGE = 21;
+	public static final int S_FLYWHEEL_SMALL = 4;
 	public static final int SERVO = 1;
 	
 	//Joysticks
@@ -69,8 +69,8 @@ public interface RobotMap {
 	//Pneumatics
 	public static final int COMPRESSOR = 0;
 	public static final int S_PIVOT_A = 0;
-	public static final int S_HOLD_B = 4;
-	public static final int S_HOLD_A = 3;
+	public static final int S_HOLD_B = 6;
+	public static final int S_HOLD_A = 1;
 	public static final int S_PIVOT_B = 7;
 		
     //Targeting Variables

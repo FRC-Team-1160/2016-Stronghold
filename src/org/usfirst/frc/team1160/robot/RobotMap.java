@@ -33,11 +33,11 @@ public interface RobotMap {
 	 ***********************************/
 	//Speed Controllers
 	public static final int DT_BACKRIGHT = 1;
-	public static final int DT_FRONTRIGHT = 2;
-	public static final int DT_BACKLEFT = 3;
-	public static final int DT_FRONTLEFT = 0;
+	public static final int DT_FRONTRIGHT = 0;
+	public static final int DT_BACKLEFT = 2;
+	public static final int DT_FRONTLEFT = 3;
 	public static final int S_FLYWHEEL_TOP = 21;
-	public static final int S_FLYWHEEL_BOTTOM = 4;
+	public static final int S_FLYWHEEL_BOTTOM = 10;
 	public static final int SERVO = 1;
 	
 	//Joysticks
@@ -53,8 +53,8 @@ public interface RobotMap {
 	//Pneumatics
 	public static final int COMPRESSOR = 0;
 	public static final int S_PIVOT_A = 0;
-	public static final int S_HOLD_B = 4;
-	public static final int S_HOLD_A = 3;
+	public static final int S_HOLD_B = 1;
+	public static final int S_HOLD_A = 6;
 	public static final int S_PIVOT_B = 7;
 
 	public static final double px = 53;
@@ -62,7 +62,8 @@ public interface RobotMap {
 	public static final double px_margin_error = 3;
 		
 	//PID Variables
-	public static double P = 1;
+	public static double bP = 1.5;
+	public static double tP = 1;
 	public static int I = 0;
 	public static int D = 0;
 
@@ -100,7 +101,7 @@ public interface RobotMap {
 	public static final double GRAVITATIONAL_ACCEL = -32.17;
 	public static final double BALL_VERTICAL_DISPLACEMENT = 6.56;
 	public static final double SHOOTER_WHEEL_CIRCUMFERENCE = Math.PI/3;
-	public static final double SHOOTER_ANGLE_DEGREES = 68;
+	public static final double SHOOTER_ANGLE_DEGREES = 54;
 	public static final double SHOOTER_ANGLE_RADIANS = Math.toRadians(SHOOTER_ANGLE_DEGREES);
 	public static final double TARGET_CENTER_HEIGHT_FEET = 8.08 - (32/12);
 	

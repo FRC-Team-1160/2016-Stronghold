@@ -7,9 +7,9 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 
 public class Intake extends CommandGroup {
 	public Intake(){
-		addSequential(new CradleHold());
-		addSequential(new PickupPosition());
-		addSequential(new SpinWheels(1000, 10));
+		//addSequential(new CradleHold());
+		//addSequential(new PickupPosition());
+		addSequential(new RollIn());
 		// ^ these are placeholder values ^ //
 	}
 }

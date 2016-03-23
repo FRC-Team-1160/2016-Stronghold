@@ -2,6 +2,7 @@ package org.usfirst.frc.team1160.robot.commands.shooter;
 
 import org.usfirst.frc.team1160.robot.Robot;
 import org.usfirst.frc.team1160.robot.RobotMap;
+import org.usfirst.frc.team1160.robot.subsystems.Vision;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -19,22 +20,25 @@ public class SpinWheels extends Command implements RobotMap {
 	
 	@Override
 	protected void initialize() {
+		Robot.shooter.setShoot();
 		Robot.shooter.setBoth(rpm);
+		System.out.println("Vision logged at: " + Vision.getInstance().neededRpm());
 	}
 
 	@Override
 	protected void execute() {
-		// TODO Auto-generated method stub
+		Robot.shooter.logRevolutions();
 	}
 
 	@Override
 	protected boolean isFinished() {
-		return inRange(Robot.shooter.getTopRpm()) && 
-			inRange(Robot.shooter.getBottomRpm());
+		return (inRange(Robot.shooter.getTopRpm()) && 
+			inRange(Robot.shooter.getBottomRpm()));
 	}
 	
 	private boolean inRange(double rpm){
-		return Math.abs(this.rpm - rpm) < error;
+		System.out.println(Math.abs(Math.abs(rpm) - this.rpm));
+		return Math.abs(Math.abs(rpm) - this.rpm) < error;
 	}
 
 	

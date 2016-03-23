@@ -112,8 +112,6 @@ public class Vision implements RobotMap {
 		width = NetworkTable.getTable("GRIP").getNumberArray("targets/width", defaultValue);
 		centerX = table.getNumberArray("centerX", defaultValue);
 		
-		table.putNumber("borked? ", 8732);
-		
 		for (double area : NetworkTable.getTable("GRIP").getNumberArray("targets/width", new double[0])) {
 		    //System.out.println("Got contour with width=" + area);
 		}
@@ -162,11 +160,11 @@ public class Vision implements RobotMap {
 		// Calculated on wolfram alpha
 		// Update when shoot angle changes
 		double wolframConstant = 102.788;
-		
-		return speedFromDistance(distance) 
+		double goal = speedFromDistance(distance) 
 				+ wolframConstant 
-				* velocity(distance)
-				* 1.25;
+				* velocity(distance);
+		SmartDashboard.putNumber("Goal RPMs", goal*2);
+		return goal*2;
 	}
 	
 	public double neededRpm(){

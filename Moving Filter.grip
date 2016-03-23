@@ -9,19 +9,19 @@
       <grip:Input step="0" socket="0"/>
       <grip:Input step="0" socket="1">
         <value>
-          <double>61.51060713129485</double>
-          <double>91.51222704463481</double>
+          <double>58.08687132068144</double>
+          <double>101.45234560507011</double>
         </value>
       </grip:Input>
       <grip:Input step="0" socket="2">
         <value>
-          <double>52.74280575539568</double>
-          <double>255.0</double>
+          <double>41.276978417266186</double>
+          <double>246.4141414141414</double>
         </value>
       </grip:Input>
       <grip:Input step="0" socket="3">
         <value>
-          <double>137.58992805755395</double>
+          <double>160.52158273381295</double>
           <double>255.0</double>
         </value>
       </grip:Input>
@@ -63,22 +63,22 @@
     <grip:Step name="Filter Contours">
       <grip:Input step="4" socket="0"/>
       <grip:Input step="4" socket="1">
-        <value>100.0</value>
+        <value>300.0</value>
       </grip:Input>
       <grip:Input step="4" socket="2">
         <value>0.0</value>
       </grip:Input>
       <grip:Input step="4" socket="3">
-        <value>0.0</value>
+        <value>20.0</value>
       </grip:Input>
       <grip:Input step="4" socket="4">
         <value>1000.0</value>
       </grip:Input>
       <grip:Input step="4" socket="5">
-        <value>0.0</value>
+        <value>20.0</value>
       </grip:Input>
       <grip:Input step="4" socket="6">
-        <value>1000.0</value>
+        <value>100.0</value>
       </grip:Input>
       <grip:Input step="4" socket="7">
         <value>
@@ -87,23 +87,23 @@
         </value>
       </grip:Input>
       <grip:Input step="4" socket="8">
-        <value>0</value>
+        <value>0.0</value>
       </grip:Input>
       <grip:Input step="4" socket="9">
-        <value>0</value>
+        <value>1000000.0</value>
       </grip:Input>
       <grip:Input step="4" socket="10">
-        <value>0</value>
+        <value>0.0</value>
       </grip:Input>
       <grip:Input step="4" socket="11">
-        <value>1000</value>
+        <value>1000.0</value>
       </grip:Input>
-      <grip:Output step="4" socket="0" previewed="false"/>
+      <grip:Output step="4" socket="0" previewed="true"/>
     </grip:Step>
     <grip:Step name="Publish ContoursReport">
       <grip:Input step="5" socket="0"/>
       <grip:Input step="5" socket="1">
-        <value>GRIP/myContoursReport</value>
+        <value>targets</value>
       </grip:Input>
       <grip:Input step="5" socket="2">
         <value>true</value>
@@ -127,24 +127,28 @@
   </steps>
   <connections>
     <grip:Connection>
-      <grip:Output step="0" socket="0" previewed="true"/>
-      <grip:Input step="1" socket="0"/>
-    </grip:Connection>
-    <grip:Connection>
       <grip:Output step="2" socket="0" previewed="false"/>
       <grip:Input step="3" socket="0"/>
+    </grip:Connection>
+    <grip:Connection>
+      <grip:Output step="4" socket="0" previewed="true"/>
+      <grip:Input step="5" socket="0"/>
     </grip:Connection>
     <grip:Connection>
       <grip:Output step="1" socket="0" previewed="false"/>
       <grip:Input step="2" socket="0"/>
     </grip:Connection>
     <grip:Connection>
-      <grip:Output step="3" socket="0" previewed="true"/>
-      <grip:Input step="5" socket="0"/>
-    </grip:Connection>
-    <grip:Connection>
       <grip:Output source="0" socket="0" previewed="true"/>
       <grip:Input step="0" socket="0"/>
+    </grip:Connection>
+    <grip:Connection>
+      <grip:Output step="3" socket="0" previewed="true"/>
+      <grip:Input step="4" socket="0"/>
+    </grip:Connection>
+    <grip:Connection>
+      <grip:Output step="0" socket="0" previewed="true"/>
+      <grip:Input step="1" socket="0"/>
     </grip:Connection>
   </connections>
   <settings>

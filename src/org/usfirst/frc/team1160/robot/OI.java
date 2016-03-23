@@ -3,6 +3,7 @@ package org.usfirst.frc.team1160.robot;
 import org.usfirst.frc.team1160.robot.commands.shooter.Intake;
 import org.usfirst.frc.team1160.robot.commands.shooter.ShootSequence;
 import org.usfirst.frc.team1160.robot.commands.shooter.SpinWheels;
+import org.usfirst.frc.team1160.robot.commands.shooter.StopWheel;
 import org.usfirst.frc.team1160.robot.commands.shooter.StowIntake;
 import org.usfirst.frc.team1160.robot.commands.shooter.air.CradleHold;
 import org.usfirst.frc.team1160.robot.commands.shooter.air.CradleShoot;
@@ -49,7 +50,7 @@ public class OI implements RobotMap{
 		intake.whenPressed(new Intake());
 		cradleDown.whenPressed(new CradleHold());
 		cradleUp.whenPressed(new CradleShoot());
-		stop.whenPressed(new SpinWheels(0,50));
+		stop.whenPressed(new StopWheel());
 		armDown.whenPressed(new PickupPosition());
 		armUp.whenPressed(new ShootPosition());
 		shoot.whenPressed(new ShootSequence());

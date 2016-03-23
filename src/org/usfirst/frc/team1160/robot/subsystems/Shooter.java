@@ -15,7 +15,7 @@ public class Shooter extends Subsystem implements RobotMap {
 	private static Shooter instance;
 
 	protected final CANTalon top, bottom;
-	private double smallRPM, largeRPM;
+	private double bottomRPM, topRPM;
 	private Timer time;
 	protected final Compressor comp;
 	protected final DoubleSolenoid pivot, cradle;
@@ -45,14 +45,38 @@ public class Shooter extends Subsystem implements RobotMap {
 	}
 
 	private void configureTalon(CANTalon talon){
+		if(talon.getDeviceID() == 10){
+			talon.reverseSensor(true);
+		}
 		talon.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
 		talon.configEncoderCodesPerRev(1024);
 		talon.changeControlMode(TalonControlMode.Speed);
-		talon.setPID(P, I, D);
+		if(talon.getDeviceID() == 10){
+			talon.setPID(bP, I, D);
+		}else{
+			talon.setPID(tP, I, D);
+		}
+	}
+	
+	public void shootClose(){
+		//top.set(-1000);
+		bottom.set(-3000);
 	}
 	
 	protected void initDefaultCommand() {
 		
+	}
+	
+	public void setVBus(double speed){
+		bottom.changeControlMode(TalonControlMode.PercentVbus);
+		top.changeControlMode(TalonControlMode.PercentVbus);
+		bottom.set(speed);
+		top.set(speed);
+	}
+	
+	public void setShoot(){
+		configureTalon(bottom);
+		configureTalon(top);
 	}
 
 	public void setTop(double speed) {
@@ -64,19 +88,19 @@ public class Shooter extends Subsystem implements RobotMap {
 	}
 
 	public void setBoth(double speed) {
-		top.set(speed);
+		top.set(-speed);
 		bottom.set(-speed);
 	}
 
 	public void logRevolutions() {
-		smallRPM = bottom.getSpeed();
-		largeRPM = top.getSpeed();
+		bottomRPM = bottom.getSpeed();
+		topRPM = top.getSpeed();
 		
-		System.out.println("SmallRPM: " + smallRPM);
-		System.out.println("LargeRPM: " + largeRPM);
+		System.out.println("bottomRPM: " + bottomRPM);
+		System.out.println("topRPM: " + topRPM);
 
-		SmartDashboard.putNumber("SmallRPM: ", smallRPM);
-		SmartDashboard.putNumber("LargeRPM: ", largeRPM);
+		SmartDashboard.putNumber("bottomRPM: ", bottomRPM);
+		SmartDashboard.putNumber("topRPM: ", topRPM);
 
 	}
 

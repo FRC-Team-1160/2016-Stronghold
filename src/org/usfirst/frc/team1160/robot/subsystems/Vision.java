@@ -2,6 +2,7 @@ package org.usfirst.frc.team1160.robot.subsystems;
 
 import java.io.IOException;
 
+import org.usfirst.frc.team1160.robot.OI;
 import org.usfirst.frc.team1160.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
@@ -28,7 +29,7 @@ public class Vision implements RobotMap {
 		table = NetworkTable.getTable("GRIP/myContoursReport");
 		defaultValue = new double[0];
 		centerX = new double[defaultValue.length];
-		runGrip();
+		//runGrip();
 	}
 
 	public boolean aligned() {
@@ -163,11 +164,16 @@ public class Vision implements RobotMap {
 		double goal = speedFromDistance(distance) 
 				+ wolframConstant 
 				* velocity(distance);
-		SmartDashboard.putNumber("Goal RPMs", goal*2);
-		return goal*2;
+		SmartDashboard.putNumber("Goal RPMs", goal*1.25);
+		return goal*1.25;
 	}
 	
 	public double neededRpm(){
+		if(OI.getInstance().getFireMode()){
+			SmartDashboard.putBoolean("FIRE 2500 MODERS", true);
+			return 1315;
+		}
+		SmartDashboard.putBoolean("FIRE 2500 MODERS", false);
 		return addEnergy(getDistance());
 	}
 

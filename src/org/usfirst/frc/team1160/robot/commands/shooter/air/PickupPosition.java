@@ -12,6 +12,7 @@ public class PickupPosition extends Command {
 	@Override
 	protected void initialize() {
 		Robot.shooter.lowerShooter();
+		Robot.oi.getFireMode();
 	}
 
 	@Override

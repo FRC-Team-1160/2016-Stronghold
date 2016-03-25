@@ -1,5 +1,7 @@
 package org.usfirst.frc.team1160.robot.subsystems;
 
+import org.usfirst.frc.team1160.robot.OI;
+import org.usfirst.frc.team1160.robot.Robot;
 import org.usfirst.frc.team1160.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.CANTalon;
@@ -31,8 +33,8 @@ public class Shooter extends Subsystem implements RobotMap {
 		top = new CANTalon(S_FLYWHEEL_TOP);
 		bottom = new CANTalon(S_FLYWHEEL_BOTTOM);
 		
-		configureTalon(top);
-		configureTalon(bottom);
+		configureTalonShoot(top);
+		configureTalonShoot(bottom);
 		
 		SmartDashboard.putNumber("TEST_DISTANCE", TEST_DISTANCE);
 		time = new Timer();
@@ -43,18 +45,32 @@ public class Shooter extends Subsystem implements RobotMap {
 		pivot = new DoubleSolenoid(S_PIVOT_A, S_PIVOT_B);
 		cradle = new DoubleSolenoid(S_HOLD_A, S_HOLD_B);
 	}
-
-	private void configureTalon(CANTalon talon){
-		if(talon.getDeviceID() == 10){
+	
+	private void configureTalonIntake(CANTalon talon){
+		if(talon.getDeviceID() == 21){
 			talon.reverseSensor(true);
 		}
 		talon.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
 		talon.configEncoderCodesPerRev(1024);
 		talon.changeControlMode(TalonControlMode.Speed);
-		if(talon.getDeviceID() == 10){
-			talon.setPID(bP, I, D);
+		if(talon.getDeviceID() == 21){
+			talon.setPID(biP, I, D);
 		}else{
-			talon.setPID(tP, I, D);
+			talon.setPID(tiP, I, D);
+		}
+	}
+
+	private void configureTalonShoot(CANTalon talon){
+		if(talon.getDeviceID() == 21){
+			talon.reverseSensor(true);
+		}
+		talon.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
+		talon.configEncoderCodesPerRev(1024);
+		talon.changeControlMode(TalonControlMode.Speed);
+		if(talon.getDeviceID() == 21){
+			talon.setPID(bsP, I, D);
+		}else{
+			talon.setPID(tsP, I, D);
 		}
 	}
 	
@@ -74,9 +90,14 @@ public class Shooter extends Subsystem implements RobotMap {
 		top.set(speed);
 	}
 	
+	public void setIntake(){
+		configureTalonIntake(bottom);
+		configureTalonIntake(top);
+	}
+	
 	public void setShoot(){
-		configureTalon(bottom);
-		configureTalon(top);
+		configureTalonShoot(bottom);
+		configureTalonShoot(top);
 	}
 
 	public void setTop(double speed) {
@@ -96,8 +117,8 @@ public class Shooter extends Subsystem implements RobotMap {
 		bottomRPM = bottom.getSpeed();
 		topRPM = top.getSpeed();
 		
-		System.out.println("bottomRPM: " + bottomRPM);
-		System.out.println("topRPM: " + topRPM);
+		//System.out.println("bottomRPM: " + bottomRPM);
+		//System.out.println("topRPM: " + topRPM);
 
 		SmartDashboard.putNumber("bottomRPM: ", bottomRPM);
 		SmartDashboard.putNumber("topRPM: ", topRPM);
@@ -120,6 +141,14 @@ public class Shooter extends Subsystem implements RobotMap {
 	public double getBottomRpm(){
 		return bottom.getSpeed();
 	}
+	
+	/*public double rpm(){
+		if(OI.getInstance().getAutoInput().getRawButton(11)){
+			return 2500;
+		}else{
+			return Robot.see.neededRpm();
+		}
+	}*/
 	
 	//Pneumatic stuff beyond this point
 	public void lowerShooter(){

@@ -16,11 +16,12 @@ public class DriveDistance extends Command{
 	@Override
 	protected void initialize() {
 		Robot.dt.setAuto();
+		Robot.dt.driveDistance(distance);
 	}
 
 	@Override
 	protected void execute() {
-		Robot.dt.driveDistance(distance);
+		Robot.dt.log();
 	}
 
 	@Override
@@ -30,8 +31,7 @@ public class DriveDistance extends Command{
 
 	@Override
 	protected void end() {
-		// TODO Auto-generated method stub
-		
+		Robot.dt.setManual();
 	}
 
 	@Override

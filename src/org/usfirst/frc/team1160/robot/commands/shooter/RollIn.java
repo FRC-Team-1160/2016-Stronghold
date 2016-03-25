@@ -1,39 +1,57 @@
+
 package org.usfirst.frc.team1160.robot.commands.shooter;
 
 import org.usfirst.frc.team1160.robot.Robot;
+import org.usfirst.frc.team1160.robot.RobotMap;
+import org.usfirst.frc.team1160.robot.subsystems.Vision;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-/**
- *
- */
-public class RollIn extends Command {
 
-    public RollIn() {
-    	// eg. requires(chassis);
-    	requires(Robot.shooter);
+public class RollIn extends Command implements RobotMap{
+	
+	double error, rpm;
+	
+	public RollIn(double rpm, double error) {
+		requires(Robot.shooter);
+		this.rpm = rpm;
+		this.error = rpm;
     }
 
-    // Called just before this Command runs the first time
-    protected void initialize() {
-    }
+    
+	
+	@Override
+	protected void initialize() {
+		Robot.shooter.setIntake();
+		Robot.shooter.setBoth(rpm);
+	}
 
-    // Called repeatedly when this Command is scheduled to run
-    protected void execute() {
-    	Robot.shooter.setVBus(-1);
-    }
+	@Override
+	protected void execute() {
+		Robot.shooter.logRevolutions();
+	}
 
-    // Make this return true when this Command no longer needs to run execute()
-    protected boolean isFinished() {
-        return false;
-    }
+	@Override
+	protected boolean isFinished() {
+		return (inRange(Robot.shooter.getTopRpm()) && 
+			inRange(Robot.shooter.getBottomRpm()));
+	}
+	
+	private boolean inRange(double rpm){
+		System.out.println(Math.abs(Math.abs(rpm) - this.rpm));
+		return Math.abs(Math.abs(rpm) - this.rpm) < error;
+	}
 
-    // Called once after isFinished returns true
-    protected void end() {
-    }
+	
+	@Override
+	protected void end() {
+		// We don't do anything here so the wheels maintain speed 
+		// after command ends but still triggers the next sequential 
+		// command when speed is hit
+	}
 
-    // Called when another command which requires one or more of the same
-    // subsystems is scheduled to run
-    protected void interrupted() {
-    }
+	@Override
+	protected void interrupted() {
+		
+	}
 }

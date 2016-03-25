@@ -30,8 +30,8 @@ public class Robot extends IterativeRobot implements RobotMap{
     	shooter = Shooter.getInstance();
     	see = Vision.getInstance();
     	oi = OI.getInstance();
+    	oi.buttons();
 		dc = new DeployConfirm();
-		
     }
 
     public void disabledInit(){
@@ -52,8 +52,10 @@ public class Robot extends IterativeRobot implements RobotMap{
 	 * or additional comparisons to the switch structure below with additional strings & commands.
 	 */
     public void autonomousInit() {
+		autochoose = new AutoSelection(OI.getInstance().autoInput);
+		autonomousCommand = autochoose.selection();
+		System.out.println("auto chosed");
     	dt.resetPos();
-        autonomousCommand = new UnevenTerrain();
         autonomousCommand.start();
     }
 

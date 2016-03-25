@@ -31,7 +31,6 @@ public class OI implements RobotMap{
 	private OI(){
 		stick = new ModifiedJoystick(1);
 		autoInput = new Joystick(0);
-		buttons();
 	}
 	
 	public void buttons(){
@@ -67,6 +66,10 @@ public class OI implements RobotMap{
 	
 	public Joystick getTest(){
 		return fireTest;
+	}
+	
+	public boolean getFireMode(){
+		return autoInput.getRawButton(12);
 	}
 	
 }

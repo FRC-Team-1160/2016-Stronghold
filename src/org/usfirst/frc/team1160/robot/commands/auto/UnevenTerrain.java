@@ -9,6 +9,7 @@ public class UnevenTerrain extends CommandGroup implements RobotMap{
 	
 	public UnevenTerrain(){
 		
+		addSequential(new DriveDistance(-.5));
 		addSequential(new DriveDistance(ROUGH_DISTANCE));
 		
 	}

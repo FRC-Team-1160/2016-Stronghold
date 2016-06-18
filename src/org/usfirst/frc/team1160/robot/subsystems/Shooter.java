@@ -54,7 +54,7 @@ public class Shooter extends Subsystem implements RobotMap {
 		talon.configEncoderCodesPerRev(1024);
 		talon.changeControlMode(TalonControlMode.Speed);
 		if(talon.getDeviceID() == 21){
-			talon.setPID(biP, I, D);
+			talon.setPID(biP/2, I, D);
 		}else{
 			talon.setPID(tiP, I, D);
 		}
@@ -101,24 +101,25 @@ public class Shooter extends Subsystem implements RobotMap {
 	}
 
 	public void setTop(double speed) {
-		top.set(speed);
+		top.set(-speed);
 	}
 
 	public void setBottom(double speed) {
-		bottom.set(speed);
+		bottom.set(-speed);
 	}
 
 	public void setBoth(double speed) {
 		top.set(-speed);
 		bottom.set(-speed);
+		logRevolutions();
 	}
 
 	public void logRevolutions() {
 		bottomRPM = bottom.getSpeed();
 		topRPM = top.getSpeed();
 		
-		//System.out.println("bottomRPM: " + bottomRPM);
-		//System.out.println("topRPM: " + topRPM);
+		System.out.println("bottomRPM: " + bottomRPM);
+		System.out.println("topRPM: " + topRPM);
 
 		SmartDashboard.putNumber("bottomRPM: ", bottomRPM);
 		SmartDashboard.putNumber("topRPM: ", topRPM);

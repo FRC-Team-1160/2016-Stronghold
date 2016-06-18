@@ -14,15 +14,15 @@ public interface RobotMap {
 	
 	//Joystick Buttons
 
-	
+
 	/************************************
 	 * -----------PRACTICE------------
-	 * DT_BACKRIGHT = 10;
-	 * DT_FRONTRIGHT = 11;
+	 * DT_BACKRIGHT = 15;
+	 * DT_FRONTRIGHT = 14;
 	 * DT_BACKLEFT = 12;
 	 * DT_FRONTLEFT = 13;
-	 * S_FLYWHEEL_LARGE = 20;
-	 * S_FLYWHEEL_SMALL = 21; 
+	 * S_FLYWHEEL_LARGE = 21;
+	 * S_FLYWHEEL_SMALL = 10; 
 	 * ------------FINAL---------------
 	 * DT_BACKRIGHT = 10;
 	 * DT_FRONTRIGHT = 11;
@@ -31,6 +31,15 @@ public interface RobotMap {
 	 * S_FLYWHEEL_LARGE = 20;
 	 * S_FLYWHEEL_SMALL = 21;
 	 ***********************************/
+/*	//Speed Controllers
+	public static final int DT_BACKRIGHT = 1;
+	public static final int DT_FRONTRIGHT = 0;
+	public static final int DT_BACKLEFT = 2;
+	public static final int DT_FRONTLEFT = 3;
+	public static final int S_FLYWHEEL_TOP = 21;
+	public static final int S_FLYWHEEL_BOTTOM = 10;*/
+
+	
 	//Speed Controllers
 	public static final int DT_BACKRIGHT = 10;
 	public static final int DT_FRONTRIGHT = 11;
@@ -38,7 +47,6 @@ public interface RobotMap {
 	public static final int DT_FRONTLEFT = 13;
 	public static final int S_FLYWHEEL_TOP = 20;
 	public static final int S_FLYWHEEL_BOTTOM = 21;
-	public static final int SERVO = 1;
 	
 	//Joysticks
 	public static final int AUTO_INPUT_PORT = 0;
@@ -46,9 +54,6 @@ public interface RobotMap {
 
 	
 	public static final double TICKS_PER_REV = 4096;
-	
-	//Shooter PID
-	public static final double P_CONSTANT = .000001;
 	
 	//Pneumatics
 	public static final int COMPRESSOR = 0;
@@ -60,10 +65,13 @@ public interface RobotMap {
 	public static final double px = 53;
 	public static final double px_dis = 118;
 	public static final double px_margin_error = 3;
-		
+	
+	public static final double X_MAX = 170;
+	public static final double X_MIN = 150;
+	
 	//PID Variables
-	public static double bsP = 1.5; 	//Bottom P Constant
-	public static double tsP = 1;  	//Top P Constant
+	public static double bsP = 2.25; 	//Bottom P Constant
+	public static double tsP = .5;  	//Top P Constant
 	public static double dP = 1;	//Drive P Constant
 	public static double biP = .5;
 	public static double tiP = .5;
@@ -86,21 +94,11 @@ public interface RobotMap {
 	
 	//A Group
 	public static final double WHEEL_DIAMETER = (8*Math.PI)/12;
-	public static final double LOWBAR_DISTANCE = 4/WHEEL_DIAMETER;
+	public static final double LOWBAR_DISTANCE = -12/WHEEL_DIAMETER;
 	public static final double PORTCULLIS_DISTANCE = 2/WHEEL_DIAMETER;
 	public static final double CHEVAL_A_DISTANCE = 3/WHEEL_DIAMETER;
 	public static final double CHEVAL_B_DISTANCE = 3/WHEEL_DIAMETER;
-	//B Group
-	public static final double MOAT_DISTANCE = 4/WHEEL_DIAMETER;
-	public static final double RAMPART_DISTANCE = 4/WHEEL_DIAMETER;
-	//C Group
-	public static final double DRAWBRIDGE_A_DISTANCE = 0/WHEEL_DIAMETER;
-	public static final double DRAWBRIDGE_B_DISTANCE = 0/WHEEL_DIAMETER;
-	public static final double SALLYPORT_A_DISTANCE = 0/WHEEL_DIAMETER;
-	public static final double SALLYPORT_B_DISTANCE = 0/WHEEL_DIAMETER;
-	//D Group
-	public static final double ROUGH_DISTANCE = 4/WHEEL_DIAMETER;
-	public static final double ROCK_DISTANCE = 4/WHEEL_DIAMETER;
+	public static final double ROUGH_DISTANCE = -12/WHEEL_DIAMETER;
 	
 	//Shooting Equation Variables
 	public static final double GRAVITATIONAL_ACCEL = -32.17;

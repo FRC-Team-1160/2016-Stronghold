@@ -12,10 +12,9 @@ public class Vision implements RobotMap {
 
 	private static Vision instance;
 
-	private double[]  width, centerX, defaultValue;
+	private double[]  width, centerX, centerY, defaultValue;
 	private double distance, alignmentCenterX, abc;
 	private int index;
-	public NetworkTable table;
 	private final NetworkTable grip = NetworkTable.getTable("grip");
 
 	public static Vision getInstance() {
@@ -26,15 +25,13 @@ public class Vision implements RobotMap {
 	}
 
 	private Vision() {
-		table = NetworkTable.getTable("GRIP/myContoursReport");
 		defaultValue = new double[0];
 		centerX = new double[defaultValue.length];
 		//runGrip();
 	}
 
 	public boolean aligned() {
-		table = NetworkTable.getTable("GRIP/myContoursReport");
-		centerX = table.getNumberArray("centerX", defaultValue);
+		centerX = NetworkTable.getTable("GRIP").getNumberArray("centerX/width", defaultValue);
 
 		if (centerX[0] - 160 <= Math.abs(10)) {
 			return true;
@@ -44,10 +41,8 @@ public class Vision implements RobotMap {
 	}
 
 	public boolean alignCheck() {
-		/*
-		table = NetworkTable.getTable("GRIP/myContoursReport");
-		centerX = table.getNumberArray("centerX", defaultValue);
-		centerY = table.getNumberArray("centerY", defaultValue);
+/*		centerX = NetworkTable.getTable("GRIP").getNumberArray("centerX/width", defaultValue);
+		centerY = NetworkTable.getTable("GRIP").getNumberArray("centerY/width", defaultValue);
 		alignmentCenterX = (X_MAX + X_MIN) / 2;
 
 		if (centerX.length > 1) {
@@ -62,19 +57,16 @@ public class Vision implements RobotMap {
 		if (centerX[0] <= X_MAX && centerX[0] >= X_MIN) {
 			System.out.println("Aligned");
 			return true;
-		}
-		return false;
-		*/
+		}*/
 		return true;
+		
 	}
 
 	public int getAlign() {
-		/*
-		table = NetworkTable.getTable("GRIP/myContoursReport");
-		centerX = table.getNumberArray("centerX", defaultValue);
+		/*centerX = NetworkTable.getTable("GRIP").getNumberArray("centerX/width", defaultValue);
 		alignmentCenterX = (X_MAX + X_MIN) / 2;
 
-		
+
 		if (centerX.length > 1) {
 			for (int i = 0; i < centerX.length; i++) {
 				if (Math.abs(centerX[i] - alignmentCenterX) < Math.abs(centerX[0] - alignmentCenterX)) {
@@ -90,9 +82,12 @@ public class Vision implements RobotMap {
 		else if (centerX[0] > alignmentCenterX + px_margin_error) {
 			return 2;
 		} else {
-			*/
 			return 0;
-		}
+		}*/
+		return 0;
+	}
+		
+		
 
 	public void runGrip() {
 	        /* Run GRIP in a new process */
@@ -111,7 +106,7 @@ public class Vision implements RobotMap {
 	 **************************************************************************************************/
 	public double getDistance() {
 		width = NetworkTable.getTable("GRIP").getNumberArray("targets/width", defaultValue);
-		centerX = table.getNumberArray("centerX", defaultValue);
+		centerX = NetworkTable.getTable("GRIP").getNumberArray("centerX/width", defaultValue);
 		
 		for (double area : NetworkTable.getTable("GRIP").getNumberArray("targets/width", new double[0])) {
 		    //System.out.println("Got contour with width=" + area);
@@ -164,8 +159,8 @@ public class Vision implements RobotMap {
 		double goal = speedFromDistance(distance) 
 				+ wolframConstant 
 				* velocity(distance);
-		SmartDashboard.putNumber("Goal RPMs", goal*1.25);
-		return goal*1.25;
+		SmartDashboard.putNumber("Goal RPMs", goal);
+		return goal;
 	}
 	
 	public double neededRpm(){

@@ -1,10 +1,10 @@
 package org.usfirst.frc.team1160.robot;
 
 import org.usfirst.frc.team1160.robot.commands.shooter.Intake;
+import org.usfirst.frc.team1160.robot.commands.shooter.LowGoal;
 import org.usfirst.frc.team1160.robot.commands.shooter.ShootSequence;
-import org.usfirst.frc.team1160.robot.commands.shooter.SpinWheels;
+import org.usfirst.frc.team1160.robot.commands.shooter.Spitter;
 import org.usfirst.frc.team1160.robot.commands.shooter.StopWheel;
-import org.usfirst.frc.team1160.robot.commands.shooter.StowIntake;
 import org.usfirst.frc.team1160.robot.commands.shooter.air.CradleHold;
 import org.usfirst.frc.team1160.robot.commands.shooter.air.CradleShoot;
 import org.usfirst.frc.team1160.robot.commands.shooter.air.PickupPosition;
@@ -19,7 +19,7 @@ public class OI implements RobotMap{
 	public static OI instance;
 	Joystick autoInput, fireTest;
 	ModifiedJoystick stick;
-	JoystickButton intake, cradleUp, cradleDown, shoot, armDown, armUp, stop, stowIntake;
+	JoystickButton intake, cradleUp, cradleDown, shoot, armDown, armUp, stop, spit, lowGoal;
 	
 	public static OI getInstance(){
 		if(instance == null){
@@ -41,7 +41,8 @@ public class OI implements RobotMap{
 		armDown = new JoystickButton(stick, 7);
 		armUp = new JoystickButton(stick, 8);
 		shoot = new JoystickButton(stick, 9);
-		stowIntake = new JoystickButton(stick, 2);
+		spit = new JoystickButton(stick, 2);
+		lowGoal = new JoystickButton(stick, 1);
 		tieButtons();
 	}
 	
@@ -53,7 +54,9 @@ public class OI implements RobotMap{
 		armDown.whenPressed(new PickupPosition());
 		armUp.whenPressed(new ShootPosition());
 		shoot.whenPressed(new ShootSequence());
-		stowIntake.whenPressed(new StowIntake());
+		spit.whenPressed(new Spitter());
+		lowGoal.whenPressed(new LowGoal());
+		
 	}
 	
 	public ModifiedJoystick getStick(){

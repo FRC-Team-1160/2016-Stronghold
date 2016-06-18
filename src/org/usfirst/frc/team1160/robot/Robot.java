@@ -1,6 +1,7 @@
 
 package org.usfirst.frc.team1160.robot;
 
+import org.usfirst.frc.team1160.robot.commands.auto.Lowbar;
 import org.usfirst.frc.team1160.robot.commands.auto.UnevenTerrain;
 import org.usfirst.frc.team1160.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team1160.robot.subsystems.Shooter;
@@ -10,7 +11,6 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
-import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 
 
 public class Robot extends IterativeRobot implements RobotMap{
@@ -53,10 +53,8 @@ public class Robot extends IterativeRobot implements RobotMap{
 	 */
     public void autonomousInit() {
 		autochoose = new AutoSelection(OI.getInstance().autoInput);
-		autonomousCommand = autochoose.selection();
-		System.out.println("auto chosed");
-    	dt.resetPos();
-        autonomousCommand.start();
+		autonomousCommand = new UnevenTerrain();
+		autonomousCommand.start();
     }
 
     /**

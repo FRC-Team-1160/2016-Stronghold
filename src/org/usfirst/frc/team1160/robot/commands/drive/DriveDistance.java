@@ -11,6 +11,7 @@ public class DriveDistance extends Command{
 	public DriveDistance(double distance){
 		this.distance = distance;
 		requires(Robot.dt);
+		Robot.dt.resetPos();
 	}
 	
 	@Override
@@ -31,7 +32,7 @@ public class DriveDistance extends Command{
 
 	@Override
 	protected void end() {
-		Robot.dt.setManual();
+		
 	}
 
 	@Override

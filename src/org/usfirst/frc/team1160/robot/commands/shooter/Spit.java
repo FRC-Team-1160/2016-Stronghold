@@ -8,38 +8,28 @@ import org.usfirst.frc.team1160.robot.subsystems.Vision;
 import edu.wpi.first.wpilibj.command.Command;
 
 
-public class RollIn extends Command implements RobotMap{
+public class Spit extends Command implements RobotMap{
 	
 	double error, rpm;
 	
-	public RollIn(double rpm, double error) {
+	public Spit() {
 		requires(Robot.shooter);
-		this.rpm = rpm;
-		this.error = rpm;
     }
+
+    
 	
 	@Override
 	protected void initialize() {
-/*		Robot.shooter.setIntake();
-		Robot.shooter.setBoth(rpm);
-*/	
-		Robot.shooter.setVBus(-0.25);
+		Robot.shooter.setVBus(-.25);
 	}
 
 	@Override
 	protected void execute() {
-		Robot.shooter.logRevolutions();
 	}
 
 	@Override
 	protected boolean isFinished() {
-		return (inRange(Robot.shooter.getTopRpm()) && 
-			inRange(Robot.shooter.getBottomRpm()));
-	}
-	
-	private boolean inRange(double rpm){
-		System.out.println(Math.abs(Math.abs(rpm) - this.rpm));
-		return Math.abs(Math.abs(rpm) - this.rpm) < error;
+		return true;
 	}
 
 	

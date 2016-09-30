@@ -31,13 +31,15 @@ public class Vision implements RobotMap {
 	}
 
 	public boolean aligned() {
-		centerX = NetworkTable.getTable("GRIP").getNumberArray("centerX/width", defaultValue);
-
-		if (centerX[0] - 160 <= Math.abs(10)) {
-			return true;
-		}
-
-		return false;
+//			
+//		centerX = NetworkTable.getTable("GRIP").getNumberArray("centerX/width", defaultValue);
+//
+//		if (centerX[0] - 160 <= Math.abs(10)) {
+//			return true;
+//		}
+//
+//		return false;
+		return true;
 	}
 
 	public boolean alignCheck() {

@@ -86,8 +86,8 @@ public class Shooter extends Subsystem implements RobotMap {
 	public void setVBus(double speed){
 		bottom.changeControlMode(TalonControlMode.PercentVbus);
 		top.changeControlMode(TalonControlMode.PercentVbus);
-		bottom.set(speed);
-		top.set(speed);
+		bottom.set(-0.6*speed);
+		top.set(0.6*speed);
 	}
 	
 	public void setIntake(){

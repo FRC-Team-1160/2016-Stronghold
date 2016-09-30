@@ -25,7 +25,7 @@ public class SpinWheels extends Command implements RobotMap {
 	protected void initialize() {
 		Robot.shooter.setShoot();
 		Robot.shooter.setBottom(rpmBot);
-		Robot.shooter.setTop(rpmTop);
+		Robot.shooter.setTop(-rpmTop);
 		System.out.println("Vision logged at: " + Vision.getInstance().neededRpm());
 	}
 
@@ -40,6 +40,10 @@ public class SpinWheels extends Command implements RobotMap {
 			inRange(Robot.shooter.getBottomRpm(), false));
 	}
 	
+	/*
+	 * Finds the average rpm over the last 7 readings, then compares the average with the target in order
+	 * to determine if the rpms are within an acceptable range
+	 */
 	private boolean inRange(double rpm, boolean top){
 		if(top){
 			input[6] = Robot.shooter.getTopRpm();
@@ -69,9 +73,9 @@ public class SpinWheels extends Command implements RobotMap {
 	
 	@Override
 	protected void end() {
-		// We don't do anything here so the wheels maintain speed 
-		// after command ends but still triggers the next sequential 
-		// command when speed is hit
+		for(int i = 0; i< input.length; i++){
+			input[i] = 0;
+		}
 	}
 
 	@Override

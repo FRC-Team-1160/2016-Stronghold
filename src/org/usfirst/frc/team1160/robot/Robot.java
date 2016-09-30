@@ -20,7 +20,7 @@ public class Robot extends IterativeRobot implements RobotMap{
 	public static Shooter shooter;
 	public static Vision see;
 	public static DeployConfirm dc;
-	public static AutoSelection autochoose;
+	//public static AutoSelection autochoose;
 
     Command autonomousCommand;
 
@@ -52,9 +52,11 @@ public class Robot extends IterativeRobot implements RobotMap{
 	 * or additional comparisons to the switch structure below with additional strings & commands.
 	 */
     public void autonomousInit() {
-		autochoose = new AutoSelection(OI.getInstance().autoInput);
-		autonomousCommand = new UnevenTerrain();
-		autonomousCommand.start();
+	//	autochoose = new AutoSelection(OI.getInstance().autoInput);
+		//dt.resetPos();
+    	dt.setAuto();
+    	autonomousCommand = new UnevenTerrain();
+		//autonomousCommand.start();
     }
 
     /**

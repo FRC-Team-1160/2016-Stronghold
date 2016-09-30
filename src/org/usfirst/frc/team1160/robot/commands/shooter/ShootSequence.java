@@ -14,11 +14,12 @@ public class ShootSequence extends CommandGroup {
 	double targetRpm;
 	public ShootSequence(){
 		
-		targetRpm = Robot.see.neededRpm();
+		//targetRpm = Robot.see.neededRpm();
+		targetRpm = 1000;
 		
 		addSequential(new CradleHold());
 		addSequential(new ShootPosition());
-		addSequential(new SpinWheels(this.targetRpm, 75));
+		addSequential(new SpinWheels(this.targetRpm, 175));
 		addSequential(new CradleShoot());
 		addSequential(new WaitCommand(1));
 		addSequential(new StopWheel());

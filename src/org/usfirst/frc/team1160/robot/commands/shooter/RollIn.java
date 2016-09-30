@@ -23,7 +23,7 @@ public class RollIn extends Command implements RobotMap{
 /*		Robot.shooter.setIntake();
 		Robot.shooter.setBoth(rpm);
 */	
-		Robot.shooter.setVBus(-0.25);
+		Robot.shooter.setVBus(-0.5);
 	}
 
 	@Override

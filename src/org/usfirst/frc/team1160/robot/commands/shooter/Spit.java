@@ -20,7 +20,7 @@ public class Spit extends Command implements RobotMap{
 	
 	@Override
 	protected void initialize() {
-		Robot.shooter.setVBus(-.25);
+		Robot.shooter.setVBus(.55);
 	}
 
 	@Override

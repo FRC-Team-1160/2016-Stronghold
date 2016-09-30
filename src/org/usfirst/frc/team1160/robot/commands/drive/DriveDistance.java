@@ -12,11 +12,12 @@ public class DriveDistance extends Command{
 		this.distance = distance;
 		requires(Robot.dt);
 		Robot.dt.resetPos();
-	}
+	} 
 	
 	@Override
 	protected void initialize() {
 		Robot.dt.setAuto();
+		Robot.dt.resetPos();
 		Robot.dt.driveDistance(distance);
 	}
 
@@ -32,7 +33,7 @@ public class DriveDistance extends Command{
 
 	@Override
 	protected void end() {
-		
+		Robot.dt.resetPos();
 	}
 
 	@Override

@@ -13,9 +13,9 @@ public class Lowbar extends CommandGroup implements RobotMap{
 	public Lowbar(){
 		addSequential(new PickupPosition());
 		addSequential(new Wait(4));
-		addSequential(new DriveDistance(-.5));
-		addSequential(new DriveDistance(LOWBAR_DISTANCE));
-		//addSequential(new ShootPosition());
+		//addSequential(new DriveDistance(-.5));
+		addSequential(new UnevenTerrain());
+		addSequential(new ShootPosition());
 	}
 	
 }
